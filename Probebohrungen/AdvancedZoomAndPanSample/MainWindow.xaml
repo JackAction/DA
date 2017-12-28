@@ -12,6 +12,7 @@
     <Window.Resources>
 
         <!-- UI commands. -->
+        <RoutedUICommand x:Key="Commands.DrawMode" />
         <RoutedUICommand x:Key="Commands.ClearPicture" />
         <RoutedUICommand x:Key="Commands.AddPicture" />
         <RoutedUICommand x:Key="Commands.ZoomOut" />
@@ -56,6 +57,10 @@
         Bind commands to event handlers.
         -->
         <CommandBinding 
+            Command="{StaticResource Commands.DrawMode}" 
+            Executed="DrawMode_Executed" 
+            />
+        <CommandBinding 
             Command="{StaticResource Commands.ClearPicture}" 
             Executed="ClearPicture_Executed" 
             />
@@ -88,6 +93,106 @@
     </Window.CommandBindings>
 
     <DockPanel>
+
+
+
+        <!-- 
+        Grid placed below everything to change input mode
+        -->
+        <Grid
+            Margin="5,5,5,5"
+            DockPanel.Dock="Bottom"
+            >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <!-- rest of the bar -->
+                <ColumnDefinition Width="50"/>
+                <!-- the clear picture button -->
+                <ColumnDefinition Width="5"/>
+                <!-- empty space -->
+                <ColumnDefinition Width="50"/>
+                <!-- the add picture button -->
+                <ColumnDefinition Width="5"/>
+                <!-- empty space -->
+                <ColumnDefinition Width="40" />
+                <!-- the fill button -->
+                <ColumnDefinition Width="5" />
+                <!-- spacer -->
+                <ColumnDefinition Width="40" />
+                <!-- the 100% button -->
+                <ColumnDefinition Width="5" />
+                <!-- spacer -->
+                <ColumnDefinition Width="242" />
+                <!-- the zoom percentage label -->
+                <!-- resize grip -->
+                <!-- spacer -->
+            </Grid.ColumnDefinitions>
+
+            <!-- 
+            The Draw button.  
+            -->
+            <RadioButton
+                Grid.Column="1"
+                Name="DrawButton"
+                Command="{StaticResource Commands.DrawMode}"
+                GroupName="DrawGroup"
+                IsChecked="True">
+                Draw
+            </RadioButton>
+            <!-- 
+            The Erase button.  
+            -->
+            <RadioButton
+                Grid.Column="3"
+                Name="EraseButton"
+                Command="{StaticResource Commands.DrawMode}"
+                GroupName="DrawGroup">
+                Erase
+            </RadioButton>
+            <!-- 
+            The Select button.  
+            -->
+            <RadioButton
+                Grid.Column="5"
+                Name="SelectButton"
+                Command="{StaticResource Commands.DrawMode}"
+                GroupName="DrawGroup">
+                Select
+            </RadioButton>
+            <!-- 
+            The - button. 
+            -->
+            <Button
+                Grid.Column="7"
+                Command="{StaticResource Commands.OneHundredPercent}"
+                >
+                -
+            </Button>
+
+            <!--
+            This is the label that shows what the current zoom level
+            is while zooming in and out.
+            -->
+
+            <!-- Button to zoom out. -->
+
+            <!-- Slider to change the current zoom level. -->
+
+            <!--
+            Button to zoom in.
+            -->
+
+            <!-- Stick a resize grip in the bottom right corner of the window. -->
+            <ResizeGrip
+                Grid.Column="9" Margin="225,0,0,0"
+                />
+
+        </Grid>
+
+
+
+
+
 
         <!-- 
         Grid placed below the zoom and pan control that contains the zoom slider, zoom label and

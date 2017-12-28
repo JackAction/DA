@@ -214,6 +214,39 @@ namespace ZoomAndPanSample
             }
         }
 
+
+
+
+
+
+
+
+        /// <summary>
+        /// The 'DrawMode' command was executed.
+        /// </summary>
+        private void DrawMode_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            // Get a reference to the radiobutton
+            var radiobutton = e.OriginalSource as RadioButton;
+
+            // Get the radiobutton pressed
+            string radioBPressed = radiobutton.Content.ToString();
+
+            // Change settings based on button
+            if (radioBPressed == "Draw")
+            {
+                this.content.EditingMode = InkCanvasEditingMode.Ink;
+            }
+            else if (radioBPressed == "Erase")
+            {
+                this.content.EditingMode = InkCanvasEditingMode.EraseByPoint;
+            }
+            else if (radioBPressed == "Select")
+            {
+                this.content.EditingMode = InkCanvasEditingMode.Select;
+            }
+        }
+
         /// <summary>
         /// The 'AddPicture' command was executed.
         /// </summary>
@@ -221,10 +254,12 @@ namespace ZoomAndPanSample
         {
             Image image = new Image
             {
-                Width = 100,
+                Width = 100, // Um Pin kleiner zu machen
                 Source = new BitmapImage(new Uri(@"Pin.png", UriKind.Relative))
 
             };
+            InkCanvas.SetTop(image, 500);
+            InkCanvas.SetLeft(image, 500);
             content.Children.Add(image);
         }
 
