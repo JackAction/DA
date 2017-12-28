@@ -215,6 +215,30 @@ namespace ZoomAndPanSample
         }
 
         /// <summary>
+        /// The 'AddPicture' command was executed.
+        /// </summary>
+        private void AddPicture_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Image image = new Image
+            {
+                Width = 100,
+                Source = new BitmapImage(new Uri(@"Pin.png", UriKind.Relative))
+
+            };
+            content.Children.Add(image);
+        }
+
+        /// <summary>
+        /// The 'ClearPicture' command was executed.
+        /// </summary>
+        private void ClearPicture_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            // Currently removes all childs to test.
+            content.Children.Clear();
+        }
+
+
+        /// <summary>
         /// The 'ZoomIn' command (bound to the plus key) was executed.
         /// </summary>
         private void ZoomIn_Executed(object sender, ExecutedRoutedEventArgs e)
