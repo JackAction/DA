@@ -1,0 +1,57 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SlidingWindows"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="SlidingWindows.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Background="#FF2828B0">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="HideShowNav">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:0.3"/>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="ShowNav">
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="NavPanel">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="76"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Hidenav"/>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Rectangle x:Name="ShowObject" Fill="#00F4F4F5" Stroke="Black" Height="22.5" VerticalAlignment="Top">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseEnter">
+                    <ei:GoToStateAction StateName="ShowNav"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Rectangle>
+
+        <StackPanel x:Name="NavPanel" Height="86.174" Margin="0,-76.37,0,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Orientation="Horizontal" Background="#FFD12222" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Width="58.408" Margin="0,22.046,10,35.082"/>
+            <Button x:Name="button_Copy" Content="Button" HorizontalAlignment="Left" Width="58.803" Margin="0,22.046,10,35.082"/>
+            <Button x:Name="button_Copy1" Content="Button" HorizontalAlignment="Left" Width="58.803" Margin="0,22.046,10,35.082"/>
+            <Button x:Name="button_Copy2" Content="Button" HorizontalAlignment="Left" Width="58.803" Margin="0,22.046,10,35.082"/>
+        </StackPanel>
+        <Rectangle x:Name="HIdeObject" Fill="#00F4F4F5" Margin="0,75.5,0,152.5" Stroke="Black">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseEnter">
+                    <ei:GoToStateAction StateName="Hidenav"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Rectangle>
+
+    </Grid>
+</Window>

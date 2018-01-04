@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoomAndPan", "AdvancedZoomA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InkCanvasBasicFunction", "InkCanvasBasicFunction\InkCanvasBasicFunction.csproj", "{4E0F1D13-FEAB-4A5A-80B1-35A9120EE4FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlidingWindows", "SlidingWindows\SlidingWindows.csproj", "{27905803-EA19-4D13-B2EA-FC636ED88A64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4E0F1D13-FEAB-4A5A-80B1-35A9120EE4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E0F1D13-FEAB-4A5A-80B1-35A9120EE4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E0F1D13-FEAB-4A5A-80B1-35A9120EE4FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27905803-EA19-4D13-B2EA-FC636ED88A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27905803-EA19-4D13-B2EA-FC636ED88A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27905803-EA19-4D13-B2EA-FC636ED88A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27905803-EA19-4D13-B2EA-FC636ED88A64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
