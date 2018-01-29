@@ -113,6 +113,9 @@ namespace InkCanvasBasicFunction
         {
             using (FileStream fs = new FileStream("MyPicture.bin", FileMode.Create))
             {
+                // Setzt die 1. Zeichnungslinie auf halbe Transparenz
+                Color c = this.DrawingCanvas.Strokes.First().DrawingAttributes.Color;
+                this.DrawingCanvas.Strokes.First().DrawingAttributes.Color = Color.FromArgb(50, c.R, c.G, c.B);
                 this.DrawingCanvas.Strokes.Save(fs);
             }
         }
