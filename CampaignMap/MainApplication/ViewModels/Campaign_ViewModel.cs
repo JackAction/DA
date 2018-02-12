@@ -1,9 +1,11 @@
 ﻿using MVVM_Framework;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Ink;
 
 namespace MainApplication
 {
@@ -22,7 +24,7 @@ namespace MainApplication
             set
             {
                 _campaign = value;
-                RaisePropertyChanged("Campaign");
+                RaisePropertyChanged();
             }
         }
 
@@ -32,8 +34,19 @@ namespace MainApplication
             set
             {
                 _campaign.BackgroundImagePath = value;
-                RaisePropertyChanged("BackgroundImagePath");
+                RaisePropertyChanged();
             }
         }
+
+        public StrokeCollection Strokes
+        {
+            get { return _campaign.Strokes; }
+            set
+            {
+                _campaign.Strokes = value;
+                RaisePropertyChanged();
+            }
+        }
+
     }
 }

@@ -1,9 +1,11 @@
 ﻿using MVVM_Framework;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Ink;
 
 namespace MainApplication
 {
@@ -15,6 +17,12 @@ namespace MainApplication
         {
             // Load soll nacher erst apssieren wenn LoadButton geklickt wird
             _campaign = new Campaign_ViewModel() { Campaign = campaignRepository.Load()};
+
+
+            // https://stackoverflow.com/questions/728005/mvvm-binding-to-inkcanvas
+            // Stokes müssen vorgegeben werden
+            _campaign.Strokes = new StrokeCollection();
+            (_campaign.Strokes as INotifyCollectionChanged).CollectionChanged += delegate { };
         }
 
 
@@ -33,7 +41,6 @@ namespace MainApplication
                 RaisePropertyChanged("Campaign");
             }
         }
-
 
         void ExecuteChangeBackground()
         {

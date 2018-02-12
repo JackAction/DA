@@ -376,8 +376,9 @@
                     <!--
             		This Canvas is the main part of the content that is displayed.
 					-->
+
                     <InkCanvas
-						x:Name="content" IsHitTestVisible="True"
+						x:Name="content" IsHitTestVisible="True" Strokes="{Binding Campaign.Strokes}"
 						>
                         <InkCanvas.Background>
                             <ImageBrush ImageSource="{Binding Campaign.BackgroundImagePath}"
