@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Repositories\Campaign_Repository.cs" />
+    <Compile Include="ViewModels\Campaign_ViewModel.cs" />
+    <Compile Include="ViewModels\MainWindow_ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,6 +73,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Campaign_Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -108,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="map_faerunLarge.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="map_faerunLarge_2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

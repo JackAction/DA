@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MainApplication"
         xmlns:ZoomAndPan="clr-namespace:ZoomAndPan;assembly=ZoomAndPan"
         mc:Ignorable="d"
-        Title="DnD Campaign Map" Height="350" Width="525"
+        Title="DnD Campaign Map" Height="600" Width="800"
         Loaded="MainWindow_Loaded"
         FocusManager.FocusedElement="{Binding ElementName=scroller}">
     
@@ -93,6 +93,10 @@
 
     </Window.CommandBindings>
 
+    <Window.DataContext>
+        <local:MainWindow_ViewModel />
+    </Window.DataContext>
+
     <DockPanel>
 
 
@@ -165,9 +169,9 @@
             -->
             <Button
                 Grid.Column="7"
-                Command="{StaticResource Commands.OneHundredPercent}"
+                Command="{Binding ChangeBackground}"
                 >
-                -
+                BG
             </Button>
 
             <!--
@@ -376,7 +380,7 @@
 						x:Name="content" IsHitTestVisible="True"
 						>
                         <InkCanvas.Background>
-                            <ImageBrush ImageSource="map_faerunLarge.jpg"
+                            <ImageBrush ImageSource="{Binding Campaign.BackgroundImagePath}"
                         Stretch="Fill" />
                         </InkCanvas.Background>
                     </InkCanvas>
