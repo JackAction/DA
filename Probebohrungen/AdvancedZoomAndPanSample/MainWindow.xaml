@@ -353,7 +353,7 @@
             <ZoomAndPan:ZoomAndPanControl
                 x:Name="zoomAndPanControl"
                 Background="LightGray"
-	            MouseDown="zoomAndPanControl_MouseDown"
+	            PreviewMouseDown="zoomAndPanControl_MouseDown"
 	            MouseUp="zoomAndPanControl_MouseUp"
 	            MouseMove="zoomAndPanControl_MouseMove"
 	            MouseWheel="zoomAndPanControl_MouseWheel"

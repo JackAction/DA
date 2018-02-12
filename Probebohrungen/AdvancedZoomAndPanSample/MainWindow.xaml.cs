@@ -96,7 +96,7 @@ namespace ZoomAndPanSample
                 // Shift + left- or right-down initiates zooming mode.
                 mouseHandlingMode = MouseHandlingMode.Zooming;
             }
-            else if (mouseButtonDown == MouseButton.Left)
+            else if (mouseButtonDown == MouseButton.Right)
             {
                 // Just a plain old left-down initiates panning mode.
                 mouseHandlingMode = MouseHandlingMode.Panning;
