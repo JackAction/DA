@@ -24,13 +24,17 @@ namespace MVVMUserControls
         public ObservableCollection<IconInfo> SourceIconInfos
         {
             get { return _SourceIconInfos; }
-            set { SetProperty(ref _SourceIconInfos, value); }
+            set { _SourceIconInfos = value;
+                RaisePropertyChanged("SourceIconInfos");
+            }
         }
 
         public string Prompt
         {
             get { return _Prompt; }
-            set { SetProperty(ref _Prompt, value); }
+            set { _Prompt = value;
+                RaisePropertyChanged("Prompt");
+            }
         }
 
         private void OnIconClicked(string msg)

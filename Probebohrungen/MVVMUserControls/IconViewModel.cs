@@ -23,7 +23,9 @@ namespace MVVMUserControls
         public ObservableCollection<IconInfo> IconInfos
         {
             get { return _IconInfos; }
-            set { SetProperty(ref _IconInfos, value); }
+            set { _IconInfos = value;
+                RaisePropertyChanged("IconInfos");
+            }
         }
 
         private void OnSortAsc()

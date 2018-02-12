@@ -26,7 +26,7 @@ namespace MainApplication
             }
         }
 
-        public String BackgroundImagePath
+        public string BackgroundImagePath
         {
             get { return _campaign.BackgroundImagePath; }
             set
