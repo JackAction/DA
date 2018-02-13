@@ -55,10 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FlyoutViews\Top_UC.xaml.cs">
+      <DependentUpon>Top_UC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\XMLHelper.cs" />
     <Compile Include="Repositories\Campaign_Repository.cs" />
     <Compile Include="ViewModels\Campaign_ViewModel.cs" />
     <Compile Include="ViewModels\MainWindow_ViewModel.cs" />
+    <Page Include="FlyoutViews\Top_UC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
