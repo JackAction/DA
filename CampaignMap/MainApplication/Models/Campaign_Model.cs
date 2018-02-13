@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Ink;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace MainApplication
 {
@@ -13,6 +15,7 @@ namespace MainApplication
         public string BackgroundImagePath { get; set; }
         public string StrokePath { get; set; }
 
+        [XmlIgnore]
         public StrokeCollection Strokes { get; set; }
 
     }

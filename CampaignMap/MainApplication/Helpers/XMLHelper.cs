@@ -35,13 +35,13 @@ namespace MainApplication
 
                 xs.Serialize(stm, singleObject);
                 stm.Close();
-            }
+        }
             catch (Exception)
             {
 
                 throw new Exception("Fehler beim speichern des xml.");
-            }
-        }
+    }
+}
 
         //public static List<T> Deserialize(string path)
         //{
@@ -64,7 +64,7 @@ namespace MainApplication
         {
             try
             {
-                XmlSerializer xs = new XmlSerializer(typeof(List<T>));
+                XmlSerializer xs = new XmlSerializer(typeof(T));
                 StreamReader stm = new StreamReader(path);
                 object obj = xs.Deserialize(stm);
                 stm.Close();

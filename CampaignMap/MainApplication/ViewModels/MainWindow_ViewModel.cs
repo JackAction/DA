@@ -15,39 +15,69 @@ namespace MainApplication
 
         public MainWindow_ViewModel()
         {
-            // Load soll nacher erst apssieren wenn LoadButton geklickt wird
-            _campaign = new Campaign_ViewModel() { Campaign = campaignRepository.Create()};
-
-
-            // https://stackoverflow.com/questions/728005/mvvm-binding-to-inkcanvas
-            // Stokes müssen vorgegeben werden
-            _campaign.Strokes = new StrokeCollection();
-            (_campaign.Strokes as INotifyCollectionChanged).CollectionChanged += delegate { };
         }
 
+        private Campaign_ViewModel _campaignVM;
 
-        private Campaign_ViewModel _campaign;
-
-        public Campaign_ViewModel Campaign
+        public Campaign_ViewModel CampaignVM
         {
-            get { return _campaign; }
+            get { return _campaignVM; }
             set
             {
-                if (_campaign == value)
+                if (_campaignVM == value)
                 {
                     return;
                 }
-                _campaign = value;
-                RaisePropertyChanged("Campaign");
+                _campaignVM = value;
+                RaisePropertyChanged("CampaignVM");
             }
         }
 
+        #region GUI Handling
+
         void ExecuteChangeBackground()
         {
-            Campaign.BackgroundImagePath = "map_faerunLarge_2.jpg";
+            CampaignVM.BackgroundImagePath = "map_faerunLarge_2.jpg";
         }
 
-        public RelayCommand ChangeBackground { get { return new RelayCommand(ExecuteChangeBackground); } }
+        public RelayCommand ChangeBackground { get { return new RelayCommand(ExecuteChangeBackground); } } 
+
+        #endregion
+
+        #region Campaign Handling
+
+        void ExecuteSaveCampaign()
+        {
+            campaignRepository.Save(CampaignVM.Campaign, "Campaign.xml");
+        }
+
+        public RelayCommand SaveCampaign { get { return new RelayCommand(ExecuteSaveCampaign); } }
+
+        void ExecuteLoadCampaign()
+        {
+            CampaignVM = new Campaign_ViewModel() { Campaign = campaignRepository.Load("Campaign.xml") };
+
+            // https://stackoverflow.com/questions/728005/mvvm-binding-to-inkcanvas
+            // Stokes müssen vorgegeben werden
+            CampaignVM.Strokes = new StrokeCollection();
+            (CampaignVM.Strokes as INotifyCollectionChanged).CollectionChanged += delegate { };
+        }
+
+        public RelayCommand LoadCampaign { get { return new RelayCommand(ExecuteLoadCampaign); } }
+
+        void ExecuteCreateCampaign()
+        {
+            CampaignVM = new Campaign_ViewModel() { Campaign = campaignRepository.Create() };
+
+            // https://stackoverflow.com/questions/728005/mvvm-binding-to-inkcanvas
+            // Stokes müssen vorgegeben werden
+            CampaignVM.Strokes = new StrokeCollection();
+            (CampaignVM.Strokes as INotifyCollectionChanged).CollectionChanged += delegate { };
+        }
+
+        public RelayCommand CreateCampaign { get { return new RelayCommand(ExecuteCreateCampaign); } }
+
+        #endregion
 
     }
 }

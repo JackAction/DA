@@ -25,6 +25,8 @@ namespace MainApplication
             {
                 _campaign = value;
                 RaisePropertyChanged();
+                //RaisePropertyChanged("BackgroundImagePath");
+                //RaisePropertyChanged("Strokes");
             }
         }
 
