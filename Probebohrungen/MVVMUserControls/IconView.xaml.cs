@@ -31,14 +31,14 @@ namespace MVVMUserControls
             ((IconView)d)._vm.IconInfos = e.NewValue as ObservableCollection<IconInfo>;
         }
 
-        public double IconWidth
+        public double IconWidthFranz
         {
             get { return (double)GetValue(IconWidthProperty); }
             set { SetValue(IconWidthProperty, value); }
         }
 
         public static readonly DependencyProperty IconWidthProperty =
-            DependencyProperty.Register("IconWidth", typeof(double), 
+            DependencyProperty.Register("IconWidthFranz", typeof(double), 
                 typeof(IconView), new PropertyMetadata(-1.0));
 
         public Thickness IconMargin

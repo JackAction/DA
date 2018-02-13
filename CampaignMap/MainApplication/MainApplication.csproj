@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\XMLHelper.cs" />
     <Compile Include="Repositories\Campaign_Repository.cs" />
     <Compile Include="ViewModels\Campaign_ViewModel.cs" />
     <Compile Include="ViewModels\MainWindow_ViewModel.cs" />

@@ -11,7 +11,7 @@
         <DataTemplate x:Key="IconTemplate">
             <Button Command="{Binding Command}"
                     CommandParameter="{Binding Label}"
-                    Width="{Binding RelativeSource={RelativeSource AncestorType=local:IconView}, Path=IconWidth}"
+                    Width="{Binding RelativeSource={RelativeSource AncestorType=local:IconView}, Path=IconWidthFranz}"
                     Margin="{Binding RelativeSource={RelativeSource AncestorType=local:IconView}, Path=IconMargin}">
                 <Button.ToolTip>
                     <TextBlock Text="{Binding Label}" />

@@ -24,7 +24,7 @@
                 VerticalAlignment="Top"
                 Width="75" />
         <local:IconView IconInfos="{Binding SourceIconInfos}"
-                        IconWidth="32"
+                        IconWidthFranz="50"
                         IconMargin="3"
                         Grid.Row="1"
                         Margin="10"

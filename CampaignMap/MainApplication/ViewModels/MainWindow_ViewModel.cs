@@ -16,7 +16,7 @@ namespace MainApplication
         public MainWindow_ViewModel()
         {
             // Load soll nacher erst apssieren wenn LoadButton geklickt wird
-            _campaign = new Campaign_ViewModel() { Campaign = campaignRepository.Load()};
+            _campaign = new Campaign_ViewModel() { Campaign = campaignRepository.Create()};
 
 
             // https://stackoverflow.com/questions/728005/mvvm-binding-to-inkcanvas
