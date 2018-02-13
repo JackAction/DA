@@ -7,13 +7,12 @@ namespace MainApplication
 {
     public class Campaign_Repository
     {
-        public Campaign_Model Create()
+        public Campaign_Model Create(string name, string backgroundImagePath)
         {
-            // Testcode
-            return new Campaign_Model() { Name = "TestCampaign", BackgroundImagePath= "map_faerunLarge.jpg" };
+            return new Campaign_Model() { Name = name, BackgroundImagePath= backgroundImagePath };
         }
 
-        // Überlaene Methode könnte string für definierte Kampagne mitgeben. Irgendwo gibt es dann eine Collection mit Kampagnen aus denen man auswählen kann
+        // Überladene Methode könnte string für definierte Kampagne mitgeben. Irgendwo gibt es dann eine Collection mit Kampagnen aus denen man auswählen kann
         public Campaign_Model Load(string path)
         {
             Campaign_Model campaign = XMLHelper<Campaign_Model>.Deserialize(path);

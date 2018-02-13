@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,6 +59,7 @@
     <Compile Include="FlyoutViews\Top_UC.xaml.cs">
       <DependentUpon>Top_UC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImageFilterString.cs" />
     <Compile Include="Helpers\XMLHelper.cs" />
     <Compile Include="Repositories\Campaign_Repository.cs" />
     <Compile Include="ViewModels\Campaign_ViewModel.cs" />

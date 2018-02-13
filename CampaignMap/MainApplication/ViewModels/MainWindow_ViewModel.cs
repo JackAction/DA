@@ -38,18 +38,18 @@ namespace MainApplication
 
         #region GUI Handling
 
-        void ExecuteChangeBackground()
+        void ChangeBackground_Execute()
         {
             CampaignVM.BackgroundImagePath = "map_faerunLarge_2.jpg";
         }
 
-        public RelayCommand ChangeBackground { get { return new RelayCommand(ExecuteChangeBackground); } } 
+        public RelayCommand ChangeBackground { get { return new RelayCommand(ChangeBackground_Execute); } } 
 
         #endregion
 
         #region Campaign Handling
 
-        void ExecuteSaveCampaign()
+        void SaveCampaign_Execute()
         {
             SaveFileDialog save = new SaveFileDialog();
             save.Title = "Save Campaign";
@@ -71,9 +71,9 @@ namespace MainApplication
             }
         }
 
-        public RelayCommand SaveCampaign { get { return new RelayCommand(ExecuteSaveCampaign); } }
+        public RelayCommand SaveCampaign { get { return new RelayCommand(SaveCampaign_Execute); } }
 
-        void ExecuteLoadCampaign()
+        void LoadCampaign_Execute()
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Title = "Open Campaign";
@@ -95,19 +95,37 @@ namespace MainApplication
             }
         }
 
-        public RelayCommand LoadCampaign { get { return new RelayCommand(ExecuteLoadCampaign); } }
+        public RelayCommand LoadCampaign { get { return new RelayCommand(LoadCampaign_Execute); } }
 
-        void ExecuteCreateCampaign()
+        void CreateCampaign_Execute()
         {
-            CampaignVM = new Campaign_ViewModel() { Campaign = campaignRepository.Create() };
+            OpenFileDialog open = new OpenFileDialog();
+            open.Title = "Choose Background Picture";
+            open.Filter = ImageFilterString.GetImageFilter();
+            open.InitialDirectory = $"{Directory.GetCurrentDirectory()}";
+            // Current directory nur zum Testen. SpecialFolder kann auf alles lustige zugreifen für release version
+            //save.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-            // https://stackoverflow.com/questions/728005/mvvm-binding-to-inkcanvas
-            // Stokes müssen vorgegeben werden
-            CampaignVM.Strokes = new StrokeCollection();
-            (CampaignVM.Strokes as INotifyCollectionChanged).CollectionChanged += delegate { };
+            if (open.ShowDialog() == true)
+            {
+                try
+                {
+                    // Name ist im moment noch fix. Sollte von Benutzer eingegeben werden können
+                    CampaignVM = new Campaign_ViewModel() { Campaign = campaignRepository.Create("NewCampaign", open.FileName) };
+
+                    // https://stackoverflow.com/questions/728005/mvvm-binding-to-inkcanvas
+                    // Stokes müssen vorgegeben werden
+                    CampaignVM.Strokes = new StrokeCollection();
+                    (CampaignVM.Strokes as INotifyCollectionChanged).CollectionChanged += delegate { };
+                }
+                catch (Exception fail)
+                {
+                    MessageBox.Show(fail.Message);
+                }
+            }
         }
 
-        public RelayCommand CreateCampaign { get { return new RelayCommand(ExecuteCreateCampaign); } }
+        public RelayCommand CreateCampaign { get { return new RelayCommand(CreateCampaign_Execute); } }
 
         #endregion
 
