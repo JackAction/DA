@@ -448,7 +448,7 @@
 					    -->
 
                         <InkCanvas
-						    x:Name="content" IsHitTestVisible="True" Strokes="{Binding Campaign.Strokes}"
+						    x:Name="content" IsHitTestVisible="True" Strokes="{Binding CampaignVM.Strokes}"
 						    >
                             <InkCanvas.Background>
                                 <ImageBrush ImageSource="{Binding CampaignVM.BackgroundImagePath}"
