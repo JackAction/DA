@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Ink;
+using System.Windows.Media;
 
-namespace MainApplication { 
+namespace MainApplication
+{
     public class Campaign_Repository
     {
         public Campaign_Model Create()
@@ -16,12 +16,29 @@ namespace MainApplication {
         // Überlaene Methode könnte string für definierte Kampagne mitgeben. Irgendwo gibt es dann eine Collection mit Kampagnen aus denen man auswählen kann
         public Campaign_Model Load(string path)
         {
-            return XMLHelper<Campaign_Model>.Deserialize(path);
+            Campaign_Model campaign = XMLHelper<Campaign_Model>.Deserialize(path);
+
+            using (FileStream fs = new FileStream(CreateStrokePath(path), FileMode.Open, FileAccess.Read))
+            {
+                StrokeCollection sc = new StrokeCollection(fs);
+                campaign.Strokes = sc;
+            }
+
+            return campaign;
         }
 
         public void Save(Campaign_Model campaign, string path)
         {
             XMLHelper<Campaign_Model>.Serialize(path, campaign);
+
+            using (FileStream fs = new FileStream(CreateStrokePath(path), FileMode.Create))
+            {
+                campaign.Strokes.Save(fs);
+            }
+        }
+        private static string CreateStrokePath(string path)
+        {
+            return $"{ Path.GetDirectoryName(path) }\\{Path.GetFileNameWithoutExtension(path)}_Strokes.bin";
         }
     }
 }
