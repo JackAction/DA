@@ -13,6 +13,19 @@
                     <CheckBox x:Name="CheckBox_TestCase" Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
                 </HierarchicalDataTemplate>
             </ListBox.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.Width" Value="100"/>
+                    <Setter Property="Control.Margin" Value="5"/>
+                    <Style.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.ToolTip"
+                  Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                          Path=Content.Description}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
         </ListBox>
     </Grid>
 </Window>

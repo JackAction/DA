@@ -133,17 +133,40 @@ namespace MainApplication
 
         void DeleteLayers_Execute()
         {
-            CampaignVM.ToString();
+            CampaignVM.Layers.Remove(SelectedLayer_Workaround);
         }
 
         public RelayCommand DeleteLayers { get { return new RelayCommand(DeleteLayers_Execute); } }
 
-        void AddLayer_Execute()
+        void AddLayer_Execute(string name)
         {
-            CampaignVM.Layers.Add(new Layer_Model() { IsSelected = false, Name = "NewAdd", Guid = Guid.NewGuid() });
+            CampaignVM.Layers.Add(new Layer_Model() { IsSelected = false, Name = name, Guid = Guid.NewGuid() });
         }
 
-        public RelayCommand AddLayer { get { return new RelayCommand(AddLayer_Execute); } }
+        public RelayCommand<string> AddLayer { get { return new RelayCommand<string>(AddLayer_Execute); } }
+
+        void LayerChanged_Execute(Layer_Model layer)
+        {
+            SelectedLayer_Workaround = layer;
+        }
+
+        public RelayCommand<Layer_Model> LayerChanged { get { return new RelayCommand<Layer_Model>(LayerChanged_Execute); } }
+
+        private Layer_Model _selectedLayer_Workaround;
+
+        public Layer_Model SelectedLayer_Workaround
+        {
+            get { return _selectedLayer_Workaround; }
+            set
+            {
+                if (_selectedLayer_Workaround == value)
+                {
+                    return;
+                }
+                _selectedLayer_Workaround = value;
+                RaisePropertyChanged("SelectedLayer_Workaround");
+            }
+        }
 
         #endregion
 

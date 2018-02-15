@@ -141,7 +141,9 @@
                 <local:Left_UC 
                     DeleteLayers="{Binding DeleteLayers}"
                     AddLayer="{Binding AddLayer}"
-                    Layers="{Binding CampaignVM.Layers}"/>
+                    LayerChanged="{Binding LayerChanged}"
+                    Layers="{Binding CampaignVM.Layers}"
+                    SelectedLayer_Workaround="{Binding SelectedLayer_Workaround}"/>
             </Border>
             <Grid>
                 <Button x:Name="btnLeftMenuHide" Width="48" Height="48" Click="btnLeftMenuHide_Click" Content="Hide" Visibility="Hidden"/>

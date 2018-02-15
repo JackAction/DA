@@ -27,6 +27,8 @@ namespace MainApplication
             InitializeComponent();
         }
 
+        #region Dependency Properties
+
         public static readonly DependencyProperty DeleteLayersProperty =
             DependencyProperty.Register(
                 "DeleteLayers",
@@ -51,6 +53,18 @@ namespace MainApplication
             set { SetValue(AddLayerProperty, value); }
         }
 
+        public static readonly DependencyProperty LayerChangedProperty =
+            DependencyProperty.Register(
+                "LayerChanged",
+                typeof(ICommand),
+                typeof(Left_UC),
+                new UIPropertyMetadata(null));
+        public ICommand LayerChanged
+        {
+            get { return (ICommand)GetValue(LayerChangedProperty); }
+            set { SetValue(LayerChangedProperty, value); }
+        }
+
         public static readonly DependencyProperty LayersProperty =
             DependencyProperty.Register(
                 "Layers",
@@ -61,6 +75,42 @@ namespace MainApplication
         {
             get { return (ObservableCollection<Layer_Model>)GetValue(LayersProperty); }
             set { SetValue(LayersProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectedLayer_WorkaroundProperty =
+            DependencyProperty.Register(
+                "SelectedLayer_Workaround",
+                typeof(Layer_Model),
+                typeof(Left_UC),
+                new UIPropertyMetadata(null));
+        public Layer_Model SelectedLayer_Workaround
+        {
+            get { return (Layer_Model)GetValue(SelectedLayer_WorkaroundProperty); }
+            set { SetValue(SelectedLayer_WorkaroundProperty, value); }
+        }
+
+        #endregion
+
+        private void editName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                editName.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            }
+        }
+
+        private void add_Click(object sender, RoutedEventArgs e)
+        {
+            addName.Text = "";
+            addName.Visibility = Visibility.Visible;
+        }
+
+        private void addName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                addName.Visibility = Visibility.Hidden; 
+            }
         }
     }
 }

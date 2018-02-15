@@ -20,28 +20,45 @@
 
     <Grid DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Left_UC}}}">
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="*" />
             <!-- rest of the bar -->
             <RowDefinition Height="182"/>
             <!-- Button 1 -->
             <!-- empty space -->
             <!-- Button 2 -->
             <!-- empty space -->
-            <RowDefinition Height="74" />
+            <RowDefinition Height="106" />
             <!-- Button 3 -->
-            <RowDefinition />
+            <RowDefinition Height="*" />
             <!-- rest of the bar -->
         </Grid.RowDefinitions>
-        <xctk:CheckListBox Margin="10,0,0,0" Grid.Row="1"
+        <xctk:CheckListBox x:Name="checkListBox" Margin="10,0,0,0" Grid.Row="1"
                            DisplayMemberPath="Name"
                            SelectedMemberPath="IsSelected"
                            ItemsSource="{Binding Layers}"
+                           Command="{Binding LayerChanged}"
                            Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource listStyle}" />
-        <Button x:Name="delete" Command="{Binding DeleteLayers}" Style="{StaticResource buttonStyle}" Content="Delete" Grid.Row="2" Margin="9,18,101,36" Height="20"  />
-        <Button x:Name="add" Command="{Binding AddLayer}" Style="{StaticResource buttonStyle}" Content="Add" Grid.Row="2" Margin="57,18,53,36" Height="20" />
-        <Button x:Name="edit" Command="{Binding EditLayer}" Style="{StaticResource buttonStyle}" Content="Edit" Grid.Row="2" Margin="104,18,6,36" Height="20" />
-        <TextBox x:Name="layerName" HorizontalAlignment="Left" Height="23" Margin="14,43,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        
+        <Button x:Name="add" 
+                Click="add_Click"
+                Style="{StaticResource buttonStyle}" Content="Add" Grid.Row="2" Margin="0,10,110,76" Height="20" Width="Auto"  />
+        <TextBox x:Name="addName" HorizontalAlignment="Left" Height="23" Margin="45,10,0,0" Grid.Row="2" TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Top" Width="95" Visibility="Hidden" KeyUp="addName_KeyUp">
+            <TextBox.InputBindings>
+                <KeyBinding 
+                    Key="Enter" 
+                    Command="{Binding AddLayer}" 
+                    CommandParameter="{Binding Text, ElementName=addName}"  />
+            </TextBox.InputBindings>
+        </TextBox>
 
+        <TextBox x:Name="editName" HorizontalAlignment="Left" Height="23" Margin="45,38,0,0" Grid.Row="2" TextWrapping="Wrap" 
+                 Text="{Binding SelectedLayer_Workaround.Name}" VerticalAlignment="Top" Width="95"
+                 KeyUp="editName_KeyUp"/>
+        
+        <Button x:Name="delete" 
+                Command="{Binding DeleteLayers}" 
+                Style="{StaticResource buttonStyle}" Content="X" Grid.Row="2" Margin="122,41,10,45" Height="20" Width="Auto"  />
 
     </Grid>
 </UserControl>
