@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:MainApplication"
         xmlns:ZoomAndPan="clr-namespace:ZoomAndPan;assembly=ZoomAndPan"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="MainApplication.MainWindow"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:i2="http://schemas.microsoft.com/expression/2010/interactions"
         mc:Ignorable="d"
         Title="DnD Campaign Map" Height="600" Width="800"
         Loaded="MainWindow_Loaded"
@@ -143,6 +145,7 @@
                     AddLayer="{Binding AddLayer}"
                     LayerChanged="{Binding LayerChanged}"
                     Layers="{Binding CampaignVM.Layers}"
+                    ActiveLayers="{Binding ActiveLayers}"
                     SelectedLayer_Workaround="{Binding SelectedLayer_Workaround}"/>
             </Border>
             <Grid>
@@ -443,6 +446,13 @@
                                 <ImageBrush ImageSource="{Binding CampaignVM.BackgroundImagePath}"
                             Stretch="Fill" />
                             </InkCanvas.Background>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="StrokeCollected">
+                                    <i2:CallMethodAction
+                                        TargetObject="{Binding}"
+                                        MethodName="StrokeAdded"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </InkCanvas>
 
                         <!--

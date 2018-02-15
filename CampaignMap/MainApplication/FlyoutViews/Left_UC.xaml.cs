@@ -77,6 +77,18 @@ namespace MainApplication
             set { SetValue(LayersProperty, value); }
         }
 
+        public static readonly DependencyProperty ActiveLayersProperty =
+            DependencyProperty.Register(
+                "ActiveLayers",
+                typeof(ObservableCollection<Layer_Model>),
+                typeof(Left_UC),
+                new UIPropertyMetadata(null));
+        public ObservableCollection<Layer_Model> ActiveLayers
+        {
+            get { return (ObservableCollection<Layer_Model>)GetValue(ActiveLayersProperty); }
+            set { SetValue(ActiveLayersProperty, value); }
+        }
+
         public static readonly DependencyProperty SelectedLayer_WorkaroundProperty =
             DependencyProperty.Register(
                 "SelectedLayer_Workaround",

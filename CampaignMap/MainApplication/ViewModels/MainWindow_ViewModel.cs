@@ -2,12 +2,14 @@
 using MVVM_Framework;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Ink;
 
 namespace MainApplication
@@ -145,8 +147,41 @@ namespace MainApplication
 
         public RelayCommand<string> AddLayer { get { return new RelayCommand<string>(AddLayer_Execute); } }
 
+        public void StrokeAdded(object sender, InkCanvasStrokeCollectedEventArgs e)
+        {
+            // Beide Varianten weisen aktuell eingestellte Layer dem neuen Stroke zu. 
+            // Sinnvoll? besser neue Liste, nur für neue Strokes? Damit sichtbare Layer nicht immer
+            // gewechselt werden müssen, wenn neuer Stroke erstellt wird?
+
+            // ActiveLayers nicht gebraucht für Variante 2
+
+
+            foreach (var activeLayer in CampaignVM.Layers.Where(x => x.IsSelected))
+            {
+                e.Stroke.AddPropertyData(activeLayer.Guid, activeLayer.Name);
+            }
+
+            //foreach (var activeLayer in ActiveLayers)
+            //{
+            //    e.Stroke.AddPropertyData(activeLayer.Guid, activeLayer.Name);
+            //}
+
+
+        }
+
+        private ObservableCollection<Layer_Model> _activeLayers = new ObservableCollection<Layer_Model>();
+        public ObservableCollection<Layer_Model> ActiveLayers
+        {
+            get { return _activeLayers; }
+            set { _activeLayers = value; }
+        }
+
+
         void LayerChanged_Execute(Layer_Model layer)
         {
+
+
+
             SelectedLayer_Workaround = layer;
         }
 
