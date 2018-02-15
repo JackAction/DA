@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,18 @@ namespace MainApplication
         {
             get { return (ICommand)GetValue(AddLayerProperty); }
             set { SetValue(AddLayerProperty, value); }
+        }
+
+        public static readonly DependencyProperty LayersProperty =
+            DependencyProperty.Register(
+                "Layers",
+                typeof(ObservableCollection<Layer_Model>),
+                typeof(Left_UC),
+                new UIPropertyMetadata(null));
+        public ObservableCollection<Layer_Model> Layers
+        {
+            get { return (ObservableCollection<Layer_Model>)GetValue(LayersProperty); }
+            set { SetValue(LayersProperty, value); }
         }
     }
 }

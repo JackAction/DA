@@ -1,6 +1,7 @@
 ﻿using MVVM_Framework;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
@@ -48,6 +49,13 @@ namespace MainApplication
                 _campaign.Strokes = value;
                 RaisePropertyChanged();
             }
+        }
+
+        private ObservableCollection<Layer_Model> _layers = new ObservableCollection<Layer_Model>();
+        public ObservableCollection<Layer_Model> Layers
+        {
+            get { return _campaign.Layers; }
+            set { _campaign.Layers = value; }
         }
 
     }

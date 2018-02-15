@@ -9,7 +9,7 @@ namespace MainApplication
     {
         public Campaign_Model Create(string name, string backgroundImagePath)
         {
-            return new Campaign_Model() { Name = name, BackgroundImagePath= backgroundImagePath };
+            return new Campaign_Model() { Name = name, BackgroundImagePath = backgroundImagePath };
         }
 
         // Überladene Methode könnte string für definierte Kampagne mitgeben. Irgendwo gibt es dann eine Collection mit Kampagnen aus denen man auswählen kann

@@ -133,14 +133,14 @@ namespace MainApplication
 
         void DeleteLayers_Execute()
         {
-
+            CampaignVM.ToString();
         }
 
         public RelayCommand DeleteLayers { get { return new RelayCommand(DeleteLayers_Execute); } }
 
         void AddLayer_Execute()
         {
-
+            CampaignVM.Layers.Add(new Layer_Model() { IsSelected = false, Name = "NewAdd", Guid = Guid.NewGuid() });
         }
 
         public RelayCommand AddLayer { get { return new RelayCommand(AddLayer_Execute); } }
