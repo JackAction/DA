@@ -137,7 +137,9 @@
     <Grid>
         <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="400" HorizontalAlignment="Left" Margin="-150,0,0,0">
             <Border BorderBrush="#AF1719" BorderThickness="1" Width="150" Background="#4C808080" >
-                <!-- Inhalt von Sliding Panel hier -->
+                <local:Left_UC 
+                    DeleteLayers="{Binding DeleteLayers}"
+                    AddLayer="{Binding AddLayer}"/>
             </Border>
             <Grid>
                 <Button Name="btnLeftMenuHide" Width="48" Height="48" Click="btnLeftMenuHide_Click" Content="Hide" Visibility="Hidden"/>

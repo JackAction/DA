@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="MainApplication.Left_UC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MainApplication"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="150">
+    <UserControl.Resources>
+        <Style x:Key="buttonStyle" TargetType="Button">
+            <Setter Property="Width" Value="40" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+    <Grid DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Left_UC}}}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <!-- rest of the bar -->
+            <RowDefinition Height="182"/>
+            <!-- Button 1 -->
+            <!-- empty space -->
+            <!-- Button 2 -->
+            <!-- empty space -->
+            <RowDefinition Height="74" />
+            <!-- Button 3 -->
+            <RowDefinition />
+            <!-- rest of the bar -->
+        </Grid.RowDefinitions>
+        <Button x:Name="delete" Command="{Binding DeleteLayers}" Style="{StaticResource buttonStyle}" Content="Delete" Grid.Row="2" Margin="31,18,79,36" Height="20" Width="Auto" />
+        <Button x:Name="add" Command="{Binding AddLayer}" Style="{StaticResource buttonStyle}" Content="Add" Grid.Row="2" Margin="94,18,16,36" Height="20" Width="Auto" />
+        <xctk:CheckListBox x:Name="_listBox"
+                            DisplayMemberPath="Color"
+                            ValueMemberPath="Level" 
+                            SelectedMemberPath="IsSelected"
+                            SelectedValue="{Binding SelectedValue}"
+                            SelectedItemsOverride="{Binding SelectedItems}" Margin="10,0,10,0" Grid.Row="1" />
+
+    </Grid>
+</UserControl>

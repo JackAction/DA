@@ -129,5 +129,23 @@ namespace MainApplication
 
         #endregion
 
+        #region Layer Handling
+
+        void DeleteLayers_Execute()
+        {
+
+        }
+
+        public RelayCommand DeleteLayers { get { return new RelayCommand(DeleteLayers_Execute); } }
+
+        void AddLayer_Execute()
+        {
+
+        }
+
+        public RelayCommand AddLayer { get { return new RelayCommand(AddLayer_Execute); } }
+
+        #endregion
+
     }
 }
