@@ -8,14 +8,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="150">
     <UserControl.Resources>
-        <Style x:Key="buttonStyle" TargetType="Button">
-            <Setter Property="Width" Value="40" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../CampaignMapResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
-        <Style x:Key="listStyle">
-            <Setter Property="Control.Margin" Value="10"/>
-        </Style>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="Width" Value="40" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+
+        </ResourceDictionary>
     </UserControl.Resources>
 
     <Grid DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Left_UC}}}">
@@ -23,12 +26,9 @@
             <RowDefinition Height="*" />
             <!-- rest of the bar -->
             <RowDefinition Height="182"/>
-            <!-- Button 1 -->
-            <!-- empty space -->
-            <!-- Button 2 -->
-            <!-- empty space -->
+            <!-- layer list -->
             <RowDefinition Height="106" />
-            <!-- Button 3 -->
+            <!-- layer functions -->
             <RowDefinition Height="*" />
             <!-- rest of the bar -->
         </Grid.RowDefinitions>
@@ -38,7 +38,7 @@
                            ItemsSource="{Binding Layers}"
                            SelectedItemsOverride="{Binding ActiveLayers}"
                            Command="{Binding LayerChanged}"
-                           Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource listStyle}" />
+                           Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListBig}" />
         
         <Button x:Name="add" 
                 Click="add_Click"

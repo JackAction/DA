@@ -1,0 +1,64 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MainApplication"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="MainApplication.MapElementProperties_UC"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../CampaignMapResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MapElementProperties_UC}}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <!-- rest of the bar -->
+            <ColumnDefinition Width="68"/>
+            <!-- labels -->
+            <ColumnDefinition Width="161.02"/>
+            <ColumnDefinition Width="48.98"/>
+            <!-- inputs -->
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- rest of the bar -->
+            <RowDefinition Height="40"/>
+            <!-- name -->
+            <RowDefinition Height="8"/>
+            <!-- empty space -->
+            <RowDefinition Height="40"/>
+            <!-- color -->
+            <RowDefinition Height="8"/>
+            <!-- empty space -->
+            <RowDefinition Height="40" />
+            <!-- layers -->
+            <RowDefinition Height="8"/>
+            <!-- empty space -->
+            <RowDefinition Height="40" />
+            <!-- details -->
+            <RowDefinition Height="*" />
+            <!-- rest of the bar -->
+        </Grid.RowDefinitions>
+        <Label x:Name="lblName" Content="Name" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="26" />
+        <Label x:Name="lblColor" Content="Color" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" Height="26"/>
+        <Label x:Name="lblLayers" Content="Layers" Grid.Column="1" VerticalAlignment="Top" Grid.Row="5"/>
+        <Label x:Name="lblDetails" Content="Details" Grid.Column="1" VerticalAlignment="Top" Grid.Row="7"/>
+
+        <TextBox x:Name="txtName" Grid.Column="2" Height="23" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <xctk:ColorPicker Height="29" Grid.Row="3" VerticalAlignment="Top" Grid.Column="2" ShowRecentColors="True"/>
+        <xctk:CheckListBox x:Name="checkListBox" Grid.Row="5" Grid.Column="2"
+                           DisplayMemberPath="Name"
+                           SelectedMemberPath="IsSelected"
+                           ItemsSource="{Binding Layers}"
+                           SelectedItemsOverride="{Binding ActiveLayers}"
+                           Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListSmall}" />
+        <xctk:MultiLineTextEditor Grid.Row="7" Grid.Column="2" DropDownWidth="180" DropDownHeight="80"/>
+
+
+    </Grid>
+</UserControl>
