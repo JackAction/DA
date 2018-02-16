@@ -34,13 +34,12 @@ namespace MainApplication
         {
             if (layer.IsSelected)
             {
-                for (int i = 0; i < InvisibleStrokes.Count; i++) // for anstatt foreach, damit RemoveAt verwendet werden kann
+                foreach (var stroke in InvisibleStrokes.ToList())
                 {
-                    var currentStroke = InvisibleStrokes[i];
-                    if (currentStroke.ContainsPropertyData(layer.Guid))
+                    if (stroke.ContainsPropertyData(layer.Guid))
                     {
-                        Strokes.Add(currentStroke);
-                        InvisibleStrokes.RemoveAt(i); // Schneller als Remove()
+                        Strokes.Add(stroke);
+                        InvisibleStrokes.Remove(stroke);
                     }
                 }
             }
@@ -48,13 +47,12 @@ namespace MainApplication
             {
                 List<Layer_Model> inactiveLayers = Layers.Where(l => l.IsSelected == false).ToList();
 
-                for (int i = 0; i < Strokes.Count; i++)
+                foreach (var stroke in Strokes.ToList())
                 {
-                    var currentStroke = Strokes[i];
-                    if (currentStroke.ContainsPropertyData(layer.Guid))
+                    if (stroke.ContainsPropertyData(layer.Guid))
                     {
                         // Prüfe ob deselektierter Layer der letzte sichtbare war
-                        List<Guid> remainingLayers = currentStroke.GetPropertyDataIds().ToList();
+                        List<Guid> remainingLayers = stroke.GetPropertyDataIds().ToList();
                         remainingLayers.Remove(layer.Guid);
 
                         foreach (var guidLayer in remainingLayers.ToList())
@@ -64,19 +62,12 @@ namespace MainApplication
                                 remainingLayers.Remove(guidLayer);
                             }
                         }
-                        for (int k = 0; k < remainingLayers.Count; k++)
-                        {
-                            if (inactiveLayers.Any(x => x.Guid == remainingLayers[k]))
-                            {
-                                remainingLayers.RemoveAt(k);
-                            }
-                        }
 
                         // Lösche nur wenn Stroke keine anderen sichtbaren Layer mehr hat
                         if (remainingLayers.Count == 0)
                         {
-                            InvisibleStrokes.Add(currentStroke);
-                            Strokes.RemoveAt(i);
+                            InvisibleStrokes.Add(stroke);
+                            Strokes.Remove(stroke);
                         }
                     }
                 }

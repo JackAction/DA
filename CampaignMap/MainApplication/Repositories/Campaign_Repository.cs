@@ -12,15 +12,22 @@ namespace MainApplication
             return new Campaign_Model() { Name = name, BackgroundImagePath = backgroundImagePath };
         }
 
+        // ---> Überall ErrorHandling, falls Files nicht gefunden werden können!!
+
         // Überladene Methode könnte string für definierte Kampagne mitgeben. Irgendwo gibt es dann eine Collection mit Kampagnen aus denen man auswählen kann
         public Campaign_Model Load(string path)
         {
             Campaign_Model campaign = XMLHelper<Campaign_Model>.Deserialize(path);
 
-            using (FileStream fs = new FileStream(CreateStrokePath(path), FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(CreateStrokePath(path, ""), FileMode.Open, FileAccess.Read))
             {
                 StrokeCollection sc = new StrokeCollection(fs);
                 campaign.Strokes = sc;
+            }
+            using (FileStream fs = new FileStream(CreateStrokePath(path, "Invisible"), FileMode.Open, FileAccess.Read))
+            {
+                StrokeCollection sc = new StrokeCollection(fs);
+                campaign.InvisibleStrokes = sc;
             }
 
             return campaign;
@@ -30,14 +37,19 @@ namespace MainApplication
         {
             XMLHelper<Campaign_Model>.Serialize(path, campaign);
 
-            using (FileStream fs = new FileStream(CreateStrokePath(path), FileMode.Create))
+            using (FileStream fs = new FileStream(CreateStrokePath(path, ""), FileMode.Create))
             {
                 campaign.Strokes.Save(fs);
             }
+
+            using (FileStream fs = new FileStream(CreateStrokePath(path, "Invisible"), FileMode.Create))
+            {
+                campaign.InvisibleStrokes.Save(fs);
+            }
         }
-        private static string CreateStrokePath(string path)
+        private static string CreateStrokePath(string path, string strokeVariant)
         {
-            return $"{ Path.GetDirectoryName(path) }\\{Path.GetFileNameWithoutExtension(path)}_Strokes.bin";
+            return $"{ Path.GetDirectoryName(path) }\\{Path.GetFileNameWithoutExtension(path)}_{strokeVariant}Strokes.bin";
         }
     }
 }
