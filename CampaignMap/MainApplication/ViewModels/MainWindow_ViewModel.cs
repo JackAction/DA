@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Ink;
+using System.Windows.Media;
 
 namespace MainApplication
 {
@@ -179,7 +180,28 @@ namespace MainApplication
 
         void LayerChanged_Execute(Layer_Model layer)
         {
-
+            if (layer.IsSelected)
+            {
+                foreach (var stroke in CampaignVM.Strokes)
+                {
+                    if (stroke.ContainsPropertyData(layer.Guid))
+                    {
+                        Color c = stroke.DrawingAttributes.Color;
+                        stroke.DrawingAttributes.Color = Color.FromArgb(100, c.R, c.G, c.B);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var stroke in CampaignVM.Strokes)
+                {
+                    if (stroke.ContainsPropertyData(layer.Guid))
+                    {
+                        Color c = stroke.DrawingAttributes.Color;
+                        stroke.DrawingAttributes.Color = Color.FromArgb(0, c.R, c.G, c.B);
+                    }
+                }
+            }
 
 
             SelectedLayer_Workaround = layer;
