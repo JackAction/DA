@@ -55,7 +55,7 @@
                            DisplayMemberPath="Name"
                            SelectedMemberPath="IsSelected"
                            ItemsSource="{Binding Layers}"
-                           SelectedItemsOverride="{Binding ActiveLayers}"
+                           SelectedItemsOverride="{Binding LayersForNewStroke}"
                            Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListSmall}" />
         <xctk:MultiLineTextEditor Grid.Row="7" Grid.Column="2" DropDownWidth="180" DropDownHeight="80"/>
 

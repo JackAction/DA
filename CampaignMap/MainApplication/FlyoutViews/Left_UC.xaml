@@ -36,7 +36,6 @@
                            DisplayMemberPath="Name"
                            SelectedMemberPath="IsSelected"
                            ItemsSource="{Binding Layers}"
-                           SelectedItemsOverride="{Binding ActiveLayers}"
                            Command="{Binding LayerChanged}"
                            Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListBig}" />
         

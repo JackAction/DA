@@ -76,16 +76,16 @@ namespace MainApplication
             set { SetValue(LayersProperty, value); }
         }
 
-        public static readonly DependencyProperty ActiveLayersProperty =
+        public static readonly DependencyProperty LayersForNewStrokeProperty =
             DependencyProperty.Register(
-                "ActiveLayers",
+                "LayersForNewStroke",
                 typeof(ObservableCollection<Layer_Model>),
                 typeof(MapElementProperties_UC),
                 new UIPropertyMetadata(null));
-        public ObservableCollection<Layer_Model> ActiveLayers
+        public ObservableCollection<Layer_Model> LayersForNewStroke
         {
-            get { return (ObservableCollection<Layer_Model>)GetValue(ActiveLayersProperty); }
-            set { SetValue(ActiveLayersProperty, value); }
+            get { return (ObservableCollection<Layer_Model>)GetValue(LayersForNewStrokeProperty); }
+            set { SetValue(LayersForNewStrokeProperty, value); }
         }
 
         #endregion

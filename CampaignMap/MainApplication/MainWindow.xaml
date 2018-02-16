@@ -145,7 +145,6 @@
                     AddLayer="{Binding AddLayer}"
                     LayerChanged="{Binding LayerChanged}"
                     Layers="{Binding CampaignVM.Layers}"
-                    ActiveLayers="{Binding ActiveLayers}"
                     SelectedLayer_Workaround="{Binding SelectedLayer_Workaround}"/>
             </Border>
             <Grid>
@@ -175,7 +174,7 @@
             <Border BorderBrush="#AF1719" BorderThickness="1" Width="300" Background="#4C808080">
                 <local:Right_UC 
                     Layers="{Binding CampaignVM.Layers}"
-                    ActiveLayers="{Binding ActiveLayers}" />
+                    LayersForNewStroke="{Binding LayersForNewStroke}" />
             </Border>
         </StackPanel>
 

@@ -150,31 +150,18 @@ namespace MainApplication
 
         public void StrokeAdded(object sender, InkCanvasStrokeCollectedEventArgs e)
         {
-            // Beide Varianten weisen aktuell eingestellte Layer dem neuen Stroke zu. 
-            // Sinnvoll? besser neue Liste, nur für neue Strokes? Damit sichtbare Layer nicht immer
-            // gewechselt werden müssen, wenn neuer Stroke erstellt wird?
-
-            // ActiveLayers nicht gebraucht für Variante 1
-
-
-            foreach (var activeLayer in CampaignVM.Layers.Where(x => x.IsSelected))
+            // Layer hinzufügen
+            foreach (var layer in LayersForNewStroke)
             {
-                e.Stroke.AddPropertyData(activeLayer.Guid, activeLayer.Name);
+                e.Stroke.AddPropertyData(layer.Guid, layer.Name);
             }
-
-            //foreach (var activeLayer in ActiveLayers)
-            //{
-            //    e.Stroke.AddPropertyData(activeLayer.Guid, activeLayer.Name);
-            //}
-
-
         }
 
-        private ObservableCollection<Layer_Model> _activeLayers = new ObservableCollection<Layer_Model>();
-        public ObservableCollection<Layer_Model> ActiveLayers
+        private ObservableCollection<Layer_Model> _layersForNewStroke = new ObservableCollection<Layer_Model>();
+        public ObservableCollection<Layer_Model> LayersForNewStroke
         {
-            get { return _activeLayers; }
-            set { _activeLayers = value; }
+            get { return _layersForNewStroke; }
+            set { _layersForNewStroke = value; }
         }
 
         void LayerChanged_Execute(Layer_Model layer)
