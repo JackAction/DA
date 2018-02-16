@@ -154,7 +154,7 @@ namespace MainApplication
             // Sinnvoll? besser neue Liste, nur für neue Strokes? Damit sichtbare Layer nicht immer
             // gewechselt werden müssen, wenn neuer Stroke erstellt wird?
 
-            // ActiveLayers nicht gebraucht für Variante 2
+            // ActiveLayers nicht gebraucht für Variante 1
 
 
             foreach (var activeLayer in CampaignVM.Layers.Where(x => x.IsSelected))
@@ -177,33 +177,9 @@ namespace MainApplication
             set { _activeLayers = value; }
         }
 
-
         void LayerChanged_Execute(Layer_Model layer)
         {
-            if (layer.IsSelected)
-            {
-                foreach (var stroke in CampaignVM.Strokes)
-                {
-                    if (stroke.ContainsPropertyData(layer.Guid))
-                    {
-                        Color c = stroke.DrawingAttributes.Color;
-                        stroke.DrawingAttributes.Color = Color.FromArgb(100, c.R, c.G, c.B);
-                    }
-                }
-            }
-            else
-            {
-                foreach (var stroke in CampaignVM.Strokes)
-                {
-                    if (stroke.ContainsPropertyData(layer.Guid))
-                    {
-                        Color c = stroke.DrawingAttributes.Color;
-                        stroke.DrawingAttributes.Color = Color.FromArgb(0, c.R, c.G, c.B);
-                    }
-                }
-            }
-
-
+            CampaignVM.Campaign.ChangeLayerVisibility(layer);
             SelectedLayer_Workaround = layer;
         }
 

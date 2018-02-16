@@ -51,6 +51,16 @@ namespace MainApplication
             }
         }
 
+        //public StrokeCollection InvisibleStrokes
+        //{
+        //    get { return _campaign.InvisibleStrokes; }
+        //    set
+        //    {
+        //        _campaign.InvisibleStrokes = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
+
         private ObservableCollection<Layer_Model> _layers = new ObservableCollection<Layer_Model>();
         public ObservableCollection<Layer_Model> Layers
         {
