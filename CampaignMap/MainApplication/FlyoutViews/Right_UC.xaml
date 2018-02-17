@@ -11,7 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <!-- rest of the bar -->
-            <RowDefinition Height="500"/>
+            <RowDefinition Height="529"/>
             <!-- mode selection -->
             <!-- map element properties -->
             <RowDefinition Height="*" />
@@ -43,7 +43,7 @@
                         <!-- rest of the bar -->
                         <RowDefinition Height="107"/>
                         <!-- mode selection -->
-                        <RowDefinition Height="255" />
+                        <RowDefinition Height="295" />
                         <!-- map element properties -->
                         <RowDefinition Height="*" />
                         <!-- rest of the bar -->

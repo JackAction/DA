@@ -26,6 +26,8 @@ namespace MainApplication
             SelectedLayer_Workaround = new Layer_Model();
             DefaultDrawingAttributes = new DrawingAttributes();
             SelectedStroke = new Stroke(new StylusPointCollection(new StylusPoint[] { new StylusPoint(100, 100) }));
+
+            LayersOfSelectedStroke.CollectionChanged += new NotifyCollectionChangedEventHandler(LayersOfSelectedStrokeChanged);
         }
 
         private Campaign_ViewModel _campaignVM;
@@ -212,16 +214,41 @@ namespace MainApplication
                 }
                 _selectedStroke = value;
                 RaisePropertyChanged();
-                RaisePropertyChanged("LayersOfSelectedStroke");
             }
         }
 
+        //public ObservableCollection<Layer_Model> LayersOfSelectedStroke
+        //{
+        //    get { return CampaignVM.Campaign.GetLayersOfStroke(SelectedStroke); }
+        //    set { CampaignVM.Campaign.SetLayersOfStroke(SelectedStroke); }
+        //}
+
         public ObservableCollection<Layer_Model> LayersOfSelectedStroke
         {
-            get { return CampaignVM.Campaign.GetLayersOfStroke(SelectedStroke); }
+            get { return _layersOfSelectedStroke; }
+            set { _layersOfSelectedStroke = value; }
+        }
+
+        private ObservableCollection<Layer_Model> _layersOfSelectedStroke = new ObservableCollection<Layer_Model>();
+
+        private void LayersOfSelectedStrokeChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            CampaignVM.Campaign.SetLayersOfStroke(SelectedStroke);
         }
 
 
+        public void StrokeSelected(object sender, InkCanvasSelectionChangingEventArgs e)
+        {
+            StrokeCollection selectedStrokes = e.GetSelectedStrokes();
+
+            if (selectedStrokes.Count != 0)
+            {
+                // ----> first ist bullshit, sollte nur geschehen wenn nur 1 stroke selektiert ist. ansonsten fehler?
+                SelectedStroke = selectedStrokes.First();
+                LayersOfSelectedStroke = CampaignVM.Campaign.GetLayersOfStroke(SelectedStroke);
+                RaisePropertyChanged("LayersOfSelectedStroke");
+            }
+        }
 
 
 
@@ -262,17 +289,7 @@ namespace MainApplication
             e.Stroke.AddPropertyData(newStrokeData.Id, "Id");
         }
 
-        public void StrokeSelected(object sender, InkCanvasSelectionChangingEventArgs e)
-        {
-            StrokeCollection selectedStrokes = e.GetSelectedStrokes();
 
-            if (selectedStrokes.Count != 0)
-            {
-                // ----> first ist bullshit, sollte nur geschehen wenn nur 1 stroke selektiert ist. ansonsten fehler?
-                SelectedStroke = selectedStrokes.First();
-
-            }
-        }
 
     }
 }

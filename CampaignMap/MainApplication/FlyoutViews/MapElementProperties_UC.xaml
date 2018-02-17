@@ -35,7 +35,7 @@
             <!-- color -->
             <RowDefinition Height="8"/>
             <!-- empty space -->
-            <RowDefinition Height="40" />
+            <RowDefinition Height="80" />
             <!-- layers -->
             <RowDefinition Height="8"/>
             <!-- empty space -->
