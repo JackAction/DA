@@ -16,6 +16,7 @@ namespace MainApplication
         {
             Layers = new ObservableCollection<Layer_Model>();
             InvisibleStrokes = new StrokeCollection();
+            StrokeDataList = new ObservableCollection<StrokeData_Model>();
         }
 
         public string Name { get; set; }
@@ -28,7 +29,31 @@ namespace MainApplication
         [XmlIgnore]
         public StrokeCollection InvisibleStrokes { get; set; }
 
+        public ObservableCollection<StrokeData_Model> StrokeDataList { get; set; }
+
         public ObservableCollection<Layer_Model> Layers { get; set; }
+
+        public ObservableCollection<Layer_Model> GetLayersOfStroke(Stroke stroke)
+        {
+            List<Guid> guidLayers = stroke.GetPropertyDataIds().ToList();
+            ObservableCollection<Layer_Model> layers = new ObservableCollection<Layer_Model>();
+
+            foreach (var guidLayer in guidLayers)
+            {
+                Layer_Model layer = Layers.SingleOrDefault(x => x.Guid == guidLayer);
+                if (layer != null)
+                {
+                    layers.Add(layer); 
+                }
+            }
+            return layers;
+        }
+
+        public void SetLayersOfStroke(Stroke stroke)
+        {
+
+        }
+
 
         public void ChangeLayerVisibility(Layer_Model layer)
         {
@@ -64,7 +89,7 @@ namespace MainApplication
                         }
 
                         // Lösche nur wenn Stroke keine anderen sichtbaren Layer mehr hat
-                        if (remainingLayers.Count == 0)
+                        if (remainingLayers.Count == 1) // 1 Guid bleibt immer übrig, das ist StrokeData
                         {
                             InvisibleStrokes.Add(stroke);
                             Strokes.Remove(stroke);

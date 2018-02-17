@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Ink;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace MainApplication
@@ -21,8 +22,10 @@ namespace MainApplication
 
         public MainWindow_ViewModel()
         {
+            CampaignVM = new Campaign_ViewModel();
             SelectedLayer_Workaround = new Layer_Model();
             DefaultDrawingAttributes = new DrawingAttributes();
+            SelectedStroke = new Stroke(new StylusPointCollection(new StylusPoint[] { new StylusPoint(100, 100) }));
         }
 
         private Campaign_ViewModel _campaignVM;
@@ -150,15 +153,6 @@ namespace MainApplication
 
         public RelayCommand<string> AddLayer { get { return new RelayCommand<string>(AddLayer_Execute); } }
 
-        public void StrokeAdded(object sender, InkCanvasStrokeCollectedEventArgs e)
-        {
-            // Layer hinzufügen
-            foreach (var layer in LayersForNewStroke)
-            {
-                e.Stroke.AddPropertyData(layer.Guid, layer.Name);
-            }
-        }
-
         private ObservableCollection<Layer_Model> _layersForNewStroke = new ObservableCollection<Layer_Model>();
         public ObservableCollection<Layer_Model> LayersForNewStroke
         {
@@ -202,6 +196,36 @@ namespace MainApplication
 
         //public RelayCommand<Layer_Model> LayerChanged { get { return new RelayCommand<Layer_Model>(LayerChanged_Execute); } }
 
+
+
+
+        private Stroke _selectedStroke;
+
+        public Stroke SelectedStroke
+        {
+            get { return _selectedStroke; }
+            set
+            {
+                if (_selectedStroke == value)
+                {
+                    return;
+                }
+                _selectedStroke = value;
+                RaisePropertyChanged();
+                RaisePropertyChanged("LayersOfSelectedStroke");
+            }
+        }
+
+        public ObservableCollection<Layer_Model> LayersOfSelectedStroke
+        {
+            get { return CampaignVM.Campaign.GetLayersOfStroke(SelectedStroke); }
+        }
+
+
+
+
+
+
         private DrawingAttributes _defaultDrawingAttributes;
 
         public DrawingAttributes DefaultDrawingAttributes
@@ -220,6 +244,35 @@ namespace MainApplication
 
 
         #endregion
+
+        public void StrokeAdded(object sender, InkCanvasStrokeCollectedEventArgs e)
+        {
+            // Layer hinzufügen
+            foreach (var layer in LayersForNewStroke)
+            {
+                e.Stroke.AddPropertyData(layer.Guid, layer.Name);
+            }
+
+            // StrokeData hinzufügen
+
+
+            // ___>Name Details müssen von UC kommen!
+            StrokeData_Model newStrokeData = new StrokeData_Model() { Id = Guid.NewGuid(), Name = "Test", Details = "DetailsTe" };
+            CampaignVM.Campaign.StrokeDataList.Add(newStrokeData);
+            e.Stroke.AddPropertyData(newStrokeData.Id, "Id");
+        }
+
+        public void StrokeSelected(object sender, InkCanvasSelectionChangingEventArgs e)
+        {
+            StrokeCollection selectedStrokes = e.GetSelectedStrokes();
+
+            if (selectedStrokes.Count != 0)
+            {
+                // ----> first ist bullshit, sollte nur geschehen wenn nur 1 stroke selektiert ist. ansonsten fehler?
+                SelectedStroke = selectedStrokes.First();
+
+            }
+        }
 
     }
 }

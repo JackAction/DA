@@ -11,24 +11,50 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <!-- rest of the bar -->
-            <RowDefinition Height="233"/>
+            <RowDefinition Height="500"/>
             <!-- mode selection -->
-            <RowDefinition Height="260" />
             <!-- map element properties -->
             <RowDefinition Height="*" />
             <!-- rest of the bar -->
         </Grid.RowDefinitions>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="191" Margin="10,14,0,0" VerticalAlignment="Top" Width="280" Grid.Row="1">
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+        <TabControl x:Name="tabControl" Grid.Row="1" Background="{x:Null}">
+            <TabItem Header="Draw">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <!-- rest of the bar -->
+                        <RowDefinition Height="107"/>
+                        <!-- mode selection -->
+                        <RowDefinition Height="255" />
+                        <!-- map element properties -->
+                        <RowDefinition Height="*" />
+                        <!-- rest of the bar -->
+                    </Grid.RowDefinitions>
+                    <local:MapElementProperties_UC Grid.Row="2" 
+                        Layers="{Binding Layers}"
+                        SelectedLayers="{Binding LayersForNewStroke}" 
+                        DrawingAttributes="{Binding DefaultDrawingAttributes}" />
+                </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="Select">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <!-- rest of the bar -->
+                        <RowDefinition Height="107"/>
+                        <!-- mode selection -->
+                        <RowDefinition Height="255" />
+                        <!-- map element properties -->
+                        <RowDefinition Height="*" />
+                        <!-- rest of the bar -->
+                    </Grid.RowDefinitions>
+                    <local:MapElementProperties_UC Grid.Row="2" 
+                        Layers="{Binding Layers}"
+                        SelectedLayers="{Binding LayersOfSelectedStroke}" 
+                        DrawingAttributes="{Binding DrawingAttributesOfSelectedStroke}" />
+                </Grid>
             </TabItem>
         </TabControl>
-        <local:MapElementProperties_UC Grid.Row="2" 
-                    Layers="{Binding Layers}"
-                    LayersForNewStroke="{Binding LayersForNewStroke}" 
-                    DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"/>
+
     </Grid>
 </UserControl>

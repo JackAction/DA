@@ -174,8 +174,10 @@
             <Border BorderBrush="#AF1719" BorderThickness="1" Width="300" Background="#4C808080">
                 <local:Right_UC 
                     Layers="{Binding CampaignVM.Layers}"
-                    LayersForNewStroke="{Binding LayersForNewStroke}" 
-                    DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"/>
+                    LayersForNewStroke="{Binding LayersForNewStroke}"
+                    DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"
+                    LayersOfSelectedStroke="{Binding LayersOfSelectedStroke}"
+                    DrawingAttributesOfSelectedStroke="{Binding SelectedStroke.DrawingAttributes}"/>
             </Border>
         </StackPanel>
 
@@ -455,6 +457,11 @@
                                     <i2:CallMethodAction
                                         TargetObject="{Binding}"
                                         MethodName="StrokeAdded"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="SelectionChanging">
+                                    <i2:CallMethodAction
+                                        TargetObject="{Binding}"
+                                        MethodName="StrokeSelected"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </InkCanvas>

@@ -101,6 +101,30 @@ namespace MainApplication
             set { SetValue(DefaultDrawingAttributesProperty, value); }
         }
 
+        public static readonly DependencyProperty LayersOfSelectedStrokeProperty =
+            DependencyProperty.Register(
+                "LayersOfSelectedStroke",
+                typeof(ObservableCollection<Layer_Model>),
+                typeof(Right_UC),
+                new UIPropertyMetadata(null));
+        public ObservableCollection<Layer_Model> LayersOfSelectedStroke
+        {
+            get { return (ObservableCollection<Layer_Model>)GetValue(LayersOfSelectedStrokeProperty); }
+            set { SetValue(LayersOfSelectedStrokeProperty, value); }
+        }
+
+        public static readonly DependencyProperty DrawingAttributesOfSelectedStrokeProperty =
+            DependencyProperty.Register(
+                "DrawingAttributesOfSelectedStroke",
+                typeof(DrawingAttributes),
+                typeof(Right_UC),
+                new UIPropertyMetadata(null));
+        public DrawingAttributes DrawingAttributesOfSelectedStroke
+        {
+            get { return (DrawingAttributes)GetValue(DrawingAttributesOfSelectedStrokeProperty); }
+            set { SetValue(DrawingAttributesOfSelectedStrokeProperty, value); }
+        }
+
         #endregion
     }
 }

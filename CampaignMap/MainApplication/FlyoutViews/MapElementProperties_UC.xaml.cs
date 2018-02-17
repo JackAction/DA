@@ -77,28 +77,28 @@ namespace MainApplication
             set { SetValue(LayersProperty, value); }
         }
 
-        public static readonly DependencyProperty LayersForNewStrokeProperty =
+        public static readonly DependencyProperty SelectedLayersProperty =
             DependencyProperty.Register(
-                "LayersForNewStroke",
+                "SelectedLayers",
                 typeof(ObservableCollection<Layer_Model>),
                 typeof(MapElementProperties_UC),
                 new UIPropertyMetadata(null));
-        public ObservableCollection<Layer_Model> LayersForNewStroke
+        public ObservableCollection<Layer_Model> SelectedLayers
         {
-            get { return (ObservableCollection<Layer_Model>)GetValue(LayersForNewStrokeProperty); }
-            set { SetValue(LayersForNewStrokeProperty, value); }
+            get { return (ObservableCollection<Layer_Model>)GetValue(SelectedLayersProperty); }
+            set { SetValue(SelectedLayersProperty, value); }
         }
 
-        public static readonly DependencyProperty DefaultDrawingAttributesProperty =
+        public static readonly DependencyProperty DrawingAttributesProperty =
             DependencyProperty.Register(
-                "DefaultDrawingAttributes",
+                "DrawingAttributes",
                 typeof(DrawingAttributes),
                 typeof(MapElementProperties_UC),
                 new UIPropertyMetadata(null));
-        public DrawingAttributes DefaultDrawingAttributes
+        public DrawingAttributes DrawingAttributes
         {
-            get { return (DrawingAttributes)GetValue(DefaultDrawingAttributesProperty); }
-            set { SetValue(DefaultDrawingAttributesProperty, value); }
+            get { return (DrawingAttributes)GetValue(DrawingAttributesProperty); }
+            set { SetValue(DrawingAttributesProperty, value); }
         }
 
         #endregion
