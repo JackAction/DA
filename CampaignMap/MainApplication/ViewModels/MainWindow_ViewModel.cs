@@ -21,6 +21,8 @@ namespace MainApplication
 
         public MainWindow_ViewModel()
         {
+            SelectedLayer_Workaround = new Layer_Model();
+            DefaultDrawingAttributes = new DrawingAttributes();
         }
 
         private Campaign_ViewModel _campaignVM;
@@ -35,7 +37,7 @@ namespace MainApplication
                     return;
                 }
                 _campaignVM = value;
-                RaisePropertyChanged("CampaignVM");
+                RaisePropertyChanged();
             }
         }
 
@@ -184,9 +186,38 @@ namespace MainApplication
                     return;
                 }
                 _selectedLayer_Workaround = value;
-                RaisePropertyChanged("SelectedLayer_Workaround");
+                RaisePropertyChanged();
             }
         }
+
+        #endregion
+
+        #region StrokePropertyHandling
+
+        //void LayerChanged_Execute(Layer_Model layer)
+        //{
+        //    CampaignVM.Campaign.ChangeLayerVisibility(layer);
+        //    SelectedLayer_Workaround = layer;
+        //}
+
+        //public RelayCommand<Layer_Model> LayerChanged { get { return new RelayCommand<Layer_Model>(LayerChanged_Execute); } }
+
+        private DrawingAttributes _defaultDrawingAttributes;
+
+        public DrawingAttributes DefaultDrawingAttributes
+        {
+            get { return _defaultDrawingAttributes; }
+            set
+            {
+                if (_defaultDrawingAttributes == value)
+                {
+                    return;
+                }
+                _defaultDrawingAttributes = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         #endregion
 

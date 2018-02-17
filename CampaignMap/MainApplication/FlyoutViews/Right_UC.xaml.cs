@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -86,6 +87,18 @@ namespace MainApplication
         {
             get { return (ObservableCollection<Layer_Model>)GetValue(LayersForNewStrokeProperty); }
             set { SetValue(LayersForNewStrokeProperty, value); }
+        }
+
+        public static readonly DependencyProperty DefaultDrawingAttributesProperty =
+            DependencyProperty.Register(
+                "DefaultDrawingAttributes",
+                typeof(DrawingAttributes),
+                typeof(Right_UC),
+                new UIPropertyMetadata(null));
+        public DrawingAttributes DefaultDrawingAttributes
+        {
+            get { return (DrawingAttributes)GetValue(DefaultDrawingAttributesProperty); }
+            set { SetValue(DefaultDrawingAttributesProperty, value); }
         }
 
         #endregion

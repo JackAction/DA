@@ -174,7 +174,8 @@
             <Border BorderBrush="#AF1719" BorderThickness="1" Width="300" Background="#4C808080">
                 <local:Right_UC 
                     Layers="{Binding CampaignVM.Layers}"
-                    LayersForNewStroke="{Binding LayersForNewStroke}" />
+                    LayersForNewStroke="{Binding LayersForNewStroke}" 
+                    DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"/>
             </Border>
         </StackPanel>
 
@@ -443,11 +444,11 @@
 					    -->
 
                         <InkCanvas
-						    x:Name="content" IsHitTestVisible="True" Strokes="{Binding CampaignVM.Strokes}"
-						    >
+						    x:Name="content" IsHitTestVisible="True" 
+                            Strokes="{Binding CampaignVM.Strokes}" 
+                            DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}" >
                             <InkCanvas.Background>
-                                <ImageBrush ImageSource="{Binding CampaignVM.BackgroundImagePath}"
-                            Stretch="Fill" />
+                                <ImageBrush ImageSource="{Binding CampaignVM.BackgroundImagePath}" Stretch="Fill" />
                             </InkCanvas.Background>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="StrokeCollected">

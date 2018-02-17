@@ -28,6 +28,7 @@
         </TabControl>
         <local:MapElementProperties_UC Grid.Row="2" 
                     Layers="{Binding Layers}"
-                    LayersForNewStroke="{Binding LayersForNewStroke}" />
+                    LayersForNewStroke="{Binding LayersForNewStroke}" 
+                    DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"/>
     </Grid>
 </UserControl>

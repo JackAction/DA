@@ -49,8 +49,9 @@
         <Label x:Name="lblLayers" Content="Layers" Grid.Column="1" VerticalAlignment="Top" Grid.Row="5"/>
         <Label x:Name="lblDetails" Content="Details" Grid.Column="1" VerticalAlignment="Top" Grid.Row="7"/>
 
-        <TextBox x:Name="txtName" Grid.Column="2" Height="23" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
-        <xctk:ColorPicker Height="29" Grid.Row="3" VerticalAlignment="Top" Grid.Column="2" ShowRecentColors="True"/>
+        <TextBox x:Name="txtName" Grid.Column="2" Height="23" Grid.Row="1" TextWrapping="Wrap" Text="..." VerticalAlignment="Top"/>
+        <xctk:ColorPicker Height="29" Grid.Row="3" VerticalAlignment="Top" Grid.Column="2" ShowRecentColors="True"
+                          SelectedColor="{Binding DefaultDrawingAttributes.Color}"/>
         <xctk:CheckListBox x:Name="checkListBox" Grid.Row="5" Grid.Column="2"
                            DisplayMemberPath="Name"
                            SelectedMemberPath="IsSelected"
