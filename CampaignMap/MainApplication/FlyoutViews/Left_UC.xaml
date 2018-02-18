@@ -34,7 +34,7 @@
         </Grid.RowDefinitions>
         <xctk:CheckListBox x:Name="checkListBox" Margin="10,0,0,0" Grid.Row="1"
                            DisplayMemberPath="Name"
-                           SelectedMemberPath="IsSelected"
+                           SelectedMemberPath="IsSelectedForVisibilityHandling"
                            ItemsSource="{Binding Layers}"
                            Command="{Binding LayerChanged}"
                            Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListBig}" />

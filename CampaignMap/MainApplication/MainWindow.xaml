@@ -172,7 +172,8 @@
                 <Button x:Name="btnRightMenuShow" Width="48" Height="48" Click="btnRightMenuShow_Click" Content="Show"/>
             </Grid>
             <Border BorderBrush="#AF1719" BorderThickness="1" Width="300" Background="#4C808080">
-                <local:Right_UC 
+                <local:Right_UC
+                    LayerChanged="{Binding LayersOfSelectedStrokeChanged}"
                     Layers="{Binding CampaignVM.Layers}"
                     LayersForNewStroke="{Binding LayersForNewStroke}"
                     DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"

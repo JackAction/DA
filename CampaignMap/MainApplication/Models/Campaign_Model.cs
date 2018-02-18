@@ -49,15 +49,23 @@ namespace MainApplication
             return layers;
         }
 
-        public void SetLayersOfStroke(Stroke stroke)
+        public void SetLayersOfStroke(Stroke stroke, Layer_Model layer)
         {
-
+            if (layer.IsSelectedInExistingStroke)
+            {
+                stroke.AddPropertyData(layer.Guid, layer.Name);
+            }
+            else
+            {
+                stroke.RemovePropertyData(layer.Guid);
+            }
+            ChangeLayerVisibility(layer);
         }
 
 
         public void ChangeLayerVisibility(Layer_Model layer)
         {
-            if (layer.IsSelected)
+            if (layer.IsSelectedForVisibilityHandling)
             {
                 foreach (var stroke in InvisibleStrokes.ToList())
                 {
@@ -70,7 +78,7 @@ namespace MainApplication
             }
             else
             {
-                List<Layer_Model> inactiveLayers = Layers.Where(l => l.IsSelected == false).ToList();
+                List<Layer_Model> inactiveLayers = Layers.Where(l => l.IsSelectedForVisibilityHandling == false).ToList();
 
                 foreach (var stroke in Strokes.ToList())
                 {

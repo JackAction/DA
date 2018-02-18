@@ -53,14 +53,14 @@ namespace MainApplication.ViewModels
             }
         }
 
-        public bool IsSelected
-        {
-            get { return _layer.IsSelected; }
-            set
-            {
-                _layer.IsSelected = value;
-                RaisePropertyChanged();
-            }
-        }
+        //public bool IsSelected
+        //{
+        //    get { return _layer.IsSelected; }
+        //    set
+        //    {
+        //        _layer.IsSelected = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
     }
 }

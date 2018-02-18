@@ -29,41 +29,17 @@ namespace MainApplication
 
         #region Dependency Properties
 
-        //public static readonly DependencyProperty DeleteLayersProperty =
-        //    DependencyProperty.Register(
-        //        "DeleteLayers",
-        //        typeof(ICommand),
-        //        typeof(Left_UC),
-        //        new UIPropertyMetadata(null));
-        //public ICommand DeleteLayers
-        //{
-        //    get { return (ICommand)GetValue(DeleteLayersProperty); }
-        //    set { SetValue(DeleteLayersProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty AddLayerProperty =
-        //    DependencyProperty.Register(
-        //        "AddLayer",
-        //        typeof(ICommand),
-        //        typeof(Left_UC),
-        //        new UIPropertyMetadata(null));
-        //public ICommand AddLayer
-        //{
-        //    get { return (ICommand)GetValue(AddLayerProperty); }
-        //    set { SetValue(AddLayerProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty LayerChangedProperty =
-        //    DependencyProperty.Register(
-        //        "LayerChanged",
-        //        typeof(ICommand),
-        //        typeof(Left_UC),
-        //        new UIPropertyMetadata(null));
-        //public ICommand LayerChanged
-        //{
-        //    get { return (ICommand)GetValue(LayerChangedProperty); }
-        //    set { SetValue(LayerChangedProperty, value); }
-        //}
+        public static readonly DependencyProperty LayerChangedProperty =
+            DependencyProperty.Register(
+                "LayerChanged",
+                typeof(ICommand),
+                typeof(Right_UC),
+                new UIPropertyMetadata(null));
+        public ICommand LayerChanged
+        {
+            get { return (ICommand)GetValue(LayerChangedProperty); }
+            set { SetValue(LayerChangedProperty, value); }
+        }
 
         public static readonly DependencyProperty LayersProperty =
             DependencyProperty.Register(

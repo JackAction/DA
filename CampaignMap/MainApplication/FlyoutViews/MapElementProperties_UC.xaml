@@ -53,8 +53,9 @@
         <xctk:ColorPicker Height="29" Grid.Row="3" VerticalAlignment="Top" Grid.Column="2" ShowRecentColors="True"
                           SelectedColor="{Binding DrawingAttributes.Color}"/>
         <xctk:CheckListBox x:Name="checkListBox" Grid.Row="5" Grid.Column="2"
+                           Command="{Binding LayerChanged}"
                            DisplayMemberPath="Name"
-                           SelectedMemberPath="IsSelected"
+                           SelectedMemberPath="{Binding SelectedMemberPath}"
                            ItemsSource="{Binding Layers}"
                            SelectedItemsOverride="{Binding SelectedLayers}"
                            Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListSmall}" />

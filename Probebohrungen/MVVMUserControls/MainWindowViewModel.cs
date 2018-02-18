@@ -16,10 +16,13 @@ namespace MVVMUserControls
         public MainWindowViewModel()
         {
             LoadCommand = new RelayCommand(OnLoadIcons);
-            ClickHandlerCommand = new RelayCommand<string>(OnIconClicked);
+            //ClickHandlerCommand = new RelayCommand<string>(OnIconClicked, OnIconClicked_CanExecute);
         }
         public RelayCommand LoadCommand { get; set; }
-        public RelayCommand<string> ClickHandlerCommand { get; set; }
+        //public RelayCommand<string> ClickHandlerCommand { get; set; }
+
+        public RelayCommand<string> ClickHandlerCommand { get { return new RelayCommand<string>(OnIconClicked, OnIconClicked_CanExecute); } }
+
 
         public ObservableCollection<IconInfo> SourceIconInfos
         {
@@ -40,6 +43,11 @@ namespace MVVMUserControls
         private void OnIconClicked(string msg)
         {
             Prompt = msg + " Clicked";
+        }
+
+        bool OnIconClicked_CanExecute(string msg)
+        {
+            return false;
         }
 
         private void OnLoadIcons()

@@ -33,6 +33,7 @@
                     <local:MapElementProperties_UC Grid.Row="2" 
                         Layers="{Binding Layers}"
                         SelectedLayers="{Binding LayersForNewStroke}" 
+                        SelectedMemberPath="IsSelectedForNewStroke"
                         DrawingAttributes="{Binding DefaultDrawingAttributes}" />
                 </Grid>
             </TabItem>
@@ -48,9 +49,11 @@
                         <RowDefinition Height="*" />
                         <!-- rest of the bar -->
                     </Grid.RowDefinitions>
-                    <local:MapElementProperties_UC Grid.Row="2" 
+                    <local:MapElementProperties_UC Grid.Row="2"
+                        LayerChanged ="{Binding LayerChanged}"
                         Layers="{Binding Layers}"
                         SelectedLayers="{Binding LayersOfSelectedStroke}" 
+                        SelectedMemberPath="IsSelectedInExistingStroke"
                         DrawingAttributes="{Binding DrawingAttributesOfSelectedStroke}" />
                 </Grid>
             </TabItem>

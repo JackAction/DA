@@ -26,8 +26,6 @@ namespace MainApplication
             SelectedLayer_Workaround = new Layer_Model();
             DefaultDrawingAttributes = new DrawingAttributes();
             SelectedStroke = new Stroke(new StylusPointCollection(new StylusPoint[] { new StylusPoint(100, 100) }));
-
-            LayersOfSelectedStroke.CollectionChanged += new NotifyCollectionChangedEventHandler(LayersOfSelectedStrokeChanged);
         }
 
         private Campaign_ViewModel _campaignVM;
@@ -150,7 +148,7 @@ namespace MainApplication
 
         void AddLayer_Execute(string name)
         {
-            CampaignVM.Layers.Add(new Layer_Model() { IsSelected = false, Name = name, Guid = Guid.NewGuid() });
+            CampaignVM.Layers.Add(new Layer_Model() { Name = name, Guid = Guid.NewGuid() });
         }
 
         public RelayCommand<string> AddLayer { get { return new RelayCommand<string>(AddLayer_Execute); } }
@@ -190,17 +188,6 @@ namespace MainApplication
 
         #region StrokePropertyHandling
 
-        //void LayerChanged_Execute(Layer_Model layer)
-        //{
-        //    CampaignVM.Campaign.ChangeLayerVisibility(layer);
-        //    SelectedLayer_Workaround = layer;
-        //}
-
-        //public RelayCommand<Layer_Model> LayerChanged { get { return new RelayCommand<Layer_Model>(LayerChanged_Execute); } }
-
-
-
-
         private Stroke _selectedStroke;
 
         public Stroke SelectedStroke
@@ -217,12 +204,6 @@ namespace MainApplication
             }
         }
 
-        //public ObservableCollection<Layer_Model> LayersOfSelectedStroke
-        //{
-        //    get { return CampaignVM.Campaign.GetLayersOfStroke(SelectedStroke); }
-        //    set { CampaignVM.Campaign.SetLayersOfStroke(SelectedStroke); }
-        //}
-
         public ObservableCollection<Layer_Model> LayersOfSelectedStroke
         {
             get { return _layersOfSelectedStroke; }
@@ -231,14 +212,30 @@ namespace MainApplication
 
         private ObservableCollection<Layer_Model> _layersOfSelectedStroke = new ObservableCollection<Layer_Model>();
 
-        private void LayersOfSelectedStrokeChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            CampaignVM.Campaign.SetLayersOfStroke(SelectedStroke);
-        }
+        //private void LayersOfSelectedStrokeChanged(object sender, NotifyCollectionChangedEventArgs e)
+        //{
+        //    CampaignVM.Campaign.SetLayersOfStroke(SelectedStroke, e.);
+        //}
 
+        void LayersOfSelectedStrokeChanged_Execute(Layer_Model layer)
+        {
+
+            // ----> CanExecute nur wenn 
+            if (pfuuuuiFlag)
+            {
+                CampaignVM.Campaign.SetLayersOfStroke(SelectedStroke, layer); 
+            }
+        }
+        // -----> pfuuuuuuuiiiiiiii
+        bool pfuuuuiFlag;
+
+
+        public RelayCommand<Layer_Model> LayersOfSelectedStrokeChanged { get { return new RelayCommand<Layer_Model>(LayersOfSelectedStrokeChanged_Execute); } }
+        // CanExecute FUnktioniert hier nicht wegen Framework
 
         public void StrokeSelected(object sender, InkCanvasSelectionChangingEventArgs e)
         {
+            pfuuuuiFlag = false;
             StrokeCollection selectedStrokes = e.GetSelectedStrokes();
 
             if (selectedStrokes.Count != 0)
@@ -246,14 +243,13 @@ namespace MainApplication
                 // ----> first ist bullshit, sollte nur geschehen wenn nur 1 stroke selektiert ist. ansonsten fehler?
                 SelectedStroke = selectedStrokes.First();
                 LayersOfSelectedStroke = CampaignVM.Campaign.GetLayersOfStroke(SelectedStroke);
+                //LayersOfSelectedStroke.CollectionChanged += new NotifyCollectionChangedEventHandler(LayersOfSelectedStrokeChanged);
                 RaisePropertyChanged("LayersOfSelectedStroke");
+                pfuuuuiFlag = true;
             }
         }
 
-
-
-
-        private DrawingAttributes _defaultDrawingAttributes;
+        private DrawingAttributes _defaultDrawingAttributes = new DrawingAttributes();
 
         public DrawingAttributes DefaultDrawingAttributes
         {
@@ -268,9 +264,6 @@ namespace MainApplication
                 RaisePropertyChanged();
             }
         }
-
-
-        #endregion
 
         public void StrokeAdded(object sender, InkCanvasStrokeCollectedEventArgs e)
         {
@@ -289,7 +282,7 @@ namespace MainApplication
             e.Stroke.AddPropertyData(newStrokeData.Id, "Id");
         }
 
-
+        #endregion
 
     }
 }
