@@ -239,9 +239,11 @@ namespace MainApplication
         {
             pfuuuuiFlag = false;
             StrokeCollection selectedStrokes = e.GetSelectedStrokes();
+            var selectedPOIs = e.GetSelectedElements();
 
             if (selectedStrokes.Count != 0)
             {
+                SelectedPOI = new POI_Model();
                 // ----> first ist bullshit, sollte nur geschehen wenn nur 1 stroke selektiert ist. ansonsten fehler?
                 // Set Layers
                 SelectedStroke = selectedStrokes.First();
@@ -252,8 +254,39 @@ namespace MainApplication
 
                 // Set StrokeData
                 StrokeDataOfSelectedElement = CampaignVM.Campaign.GetStrokeDataOfStroke(SelectedStroke);
+                ElementNameForSelectedElement = StrokeDataOfSelectedElement.Name;
+                ElementDetailsForSelectedElement = StrokeDataOfSelectedElement.Details;
+            }
+
+            if (selectedPOIs.Count != 0)
+            {
+                StrokeDataOfSelectedElement = new StrokeData_Model();
+
+                SelectedPOI = (POI_Model)((Image)selectedPOIs.First()).Tag;
+                ElementNameForSelectedElement = SelectedPOI.Name;
+                ElementDetailsForSelectedElement = SelectedPOI.Details;
+            }
+
+
+        }
+
+
+        private POI_Model _selectedPOI = new POI_Model();
+
+        public POI_Model SelectedPOI
+        {
+            get { return _selectedPOI; }
+            set
+            {
+                if (_selectedPOI == value)
+                {
+                    return;
+                }
+                _selectedPOI = value;
+                RaisePropertyChanged();
             }
         }
+
 
         public void SelectionChanged(object sender, EventArgs e)
         {
@@ -275,6 +308,42 @@ namespace MainApplication
                     return;
                 }
                 _strokeDataOfSelectedElement = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private string _elementNameForSelectedElement;
+
+        public string ElementNameForSelectedElement
+        {
+            get { return _elementNameForSelectedElement; }
+            set
+            {
+                if (_elementNameForSelectedElement == value)
+                {
+                    return;
+                }
+                _elementNameForSelectedElement = value;
+                StrokeDataOfSelectedElement.Name = value;
+                SelectedPOI.Name = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private string _elementDetailsForSelectedElement;
+
+        public string ElementDetailsForSelectedElement
+        {
+            get { return _elementDetailsForSelectedElement; }
+            set
+            {
+                if (_elementDetailsForSelectedElement == value)
+                {
+                    return;
+                }
+                _elementDetailsForSelectedElement = value;
+                StrokeDataOfSelectedElement.Details = value;
+                SelectedPOI.Details = value;
                 RaisePropertyChanged();
             }
         }
@@ -357,11 +426,23 @@ namespace MainApplication
             var x = pictureDimension.Height;
             var y = pictureDimension.Width;
 
+
+            POI_Model poi = new POI_Model() { Name = ElementNameForNewElement, Details = ElementDetailsForNewElement };
+            // Layer hinzufügen
+            foreach (var layer in LayersForNewStroke)
+            {
+                poi.Layers.Add(layer);
+            }
+
+            CampaignVM.Campaign.POIs.Add(poi);
+
+
+
             Image image = new Image
             {
                 //Width = 100, // Um Pin kleiner zu machen
                 Source = new BitmapImage(new Uri(@"Pin.png", UriKind.Relative)),
-                Tag = "POI________________MODEL"
+                Tag = poi
                 
             };
             InkCanvas.SetTop(image, mouseDownPoint.Y - pictureDimension.Height);

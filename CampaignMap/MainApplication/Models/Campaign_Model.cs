@@ -33,6 +33,8 @@ namespace MainApplication
 
         public ObservableCollection<StrokeData_Model> StrokeDataList { get; set; }
 
+        public ObservableCollection<POI_Model> POIs { get; set; }
+
         public ObservableCollection<Layer_Model> Layers { get; set; }
 
         public StrokeData_Model GetStrokeDataOfStroke(Stroke stroke)

@@ -94,8 +94,10 @@
       <DependentUpon>MapElementProperties_UC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Layer_Model.cs" />
+    <Compile Include="Models\POI_Model.cs" />
     <Compile Include="Models\StrokeData_Model.cs" />
     <Compile Include="Helpers\PictureDimension.cs" />
+    <Compile Include="Models\Symbol_Model.cs" />
     <Compile Include="Repositories\Campaign_Repository.cs" />
     <Compile Include="FlyoutViews\Right_UC.xaml.cs">
       <DependentUpon>Right_UC.xaml</DependentUpon>

@@ -181,8 +181,8 @@
                     DrawingAttributesOfSelectedStroke="{Binding SelectedStroke.DrawingAttributes}"
                     ElementNameForNewElement="{Binding ElementNameForNewElement, Mode=TwoWay}"
                     ElementDetailsForNewElement="{Binding ElementDetailsForNewElement, Mode=TwoWay}"
-                    ElementNameOfSelectedElement="{Binding StrokeDataOfSelectedElement.Name, Mode=TwoWay}"
-                    ElementDetailsOfSelectedElement="{Binding StrokeDataOfSelectedElement.Details, Mode=TwoWay}"/>
+                    ElementNameOfSelectedElement="{Binding ElementNameForSelectedElement, Mode=TwoWay}"
+                    ElementDetailsOfSelectedElement="{Binding ElementDetailsForSelectedElement, Mode=TwoWay}"/>
             </Border>
         </StackPanel>
 
