@@ -17,6 +17,7 @@ namespace MainApplication
             Layers = new ObservableCollection<Layer_Model>();
             InvisibleStrokes = new StrokeCollection();
             StrokeDataList = new ObservableCollection<StrokeData_Model>();
+            POIs = new ObservableCollection<POI_Model>();
         }
 
         public string Name { get; set; }

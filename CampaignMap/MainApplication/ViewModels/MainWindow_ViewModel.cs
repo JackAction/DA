@@ -82,7 +82,7 @@ namespace MainApplication
 
         public RelayCommand SaveCampaign { get { return new RelayCommand(SaveCampaign_Execute); } }
 
-        void LoadCampaign_Execute()
+        void LoadCampaign_Execute(object window)
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Title = "Open Campaign";
@@ -96,6 +96,11 @@ namespace MainApplication
                 try
                 {
                     CampaignVM = new Campaign_ViewModel() { Campaign = campaignRepository.Load(open.FileName) };
+                    InkCanvas canvas = (InkCanvas)((MainWindow)window).FindName("content");
+                    foreach (var poi in CampaignVM.Campaign.POIs)
+                    {
+                        AddPOIToCanvas(canvas, poi);
+                    }
                 }
                 catch (Exception fail)
                 {
@@ -104,7 +109,7 @@ namespace MainApplication
             }
         }
 
-        public RelayCommand LoadCampaign { get { return new RelayCommand(LoadCampaign_Execute); } }
+        public RelayCommand<object> LoadCampaign { get { return new RelayCommand<object>(LoadCampaign_Execute); } }
 
         void CreateCampaign_Execute()
         {
@@ -245,8 +250,8 @@ namespace MainApplication
             {
                 SelectedPOI = new POI_Model();
                 // ----> first ist bullshit, sollte nur geschehen wenn nur 1 stroke selektiert ist. ansonsten fehler?
-                // Set Layers
                 SelectedStroke = selectedStrokes.First();
+                // Set Layers
                 LayersOfSelectedStroke = CampaignVM.Campaign.GetLayersOfStroke(SelectedStroke);
                 //LayersOfSelectedStroke.CollectionChanged += new NotifyCollectionChangedEventHandler(LayersOfSelectedStrokeChanged);
                 RaisePropertyChanged("LayersOfSelectedStroke");
@@ -266,6 +271,7 @@ namespace MainApplication
 
                 LayersOfSelectedStroke = SelectedPOI.Layers;
                 RaisePropertyChanged("LayersOfSelectedStroke");
+
                 ElementNameForSelectedElement = SelectedPOI.Name;
                 ElementDetailsForSelectedElement = SelectedPOI.Details;
             }
@@ -426,11 +432,11 @@ namespace MainApplication
 
 
             PictureDimension pictureDimension = new PictureDimension(@"C:\Users\JackAction\Documents\DA\CampaignMap\MainApplication\Pin.png");
-            var x = pictureDimension.Height;
-            var y = pictureDimension.Width;
+            var x = mouseDownPoint.Y - pictureDimension.Height;
+            var y = mouseDownPoint.X;
 
 
-            POI_Model poi = new POI_Model() { Name = ElementNameForNewElement, Details = ElementDetailsForNewElement };
+            POI_Model poi = new POI_Model() { Name = ElementNameForNewElement, Details = ElementDetailsForNewElement, PositionTop = x, PositionLeft = y };
             // Layer hinzufügen
             foreach (var layer in LayersForNewStroke)
             {
@@ -440,18 +446,23 @@ namespace MainApplication
             CampaignVM.Campaign.POIs.Add(poi);
 
 
+            AddPOIToCanvas(canvas, poi);
 
+
+        }
+
+        private void AddPOIToCanvas(InkCanvas canvas, POI_Model poi)
+        {
             Image image = new Image
             {
                 //Width = 100, // Um Pin kleiner zu machen
                 Source = new BitmapImage(new Uri(@"Pin.png", UriKind.Relative)),
                 Tag = poi
-                
-            };
-            InkCanvas.SetTop(image, mouseDownPoint.Y - pictureDimension.Height);
-            InkCanvas.SetLeft(image, mouseDownPoint.X);
-            canvas.Children.Add(image);
 
+            };
+            InkCanvas.SetTop(image, poi.PositionTop);
+            InkCanvas.SetLeft(image, poi.PositionLeft);
+            canvas.Children.Add(image);
         }
 
 

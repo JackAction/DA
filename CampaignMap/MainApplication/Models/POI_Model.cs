@@ -14,6 +14,8 @@ namespace MainApplication
             Layers = new ObservableCollection<Layer_Model>();
         }
 
+        public double PositionTop { get; set; }
+        public double PositionLeft { get; set; }
         public string Name { get; set; }
         public string Details { get; set; }
         public Symbol_Model Symbol { get; set; }
