@@ -33,6 +33,12 @@ namespace MainApplication
 
         public ObservableCollection<Layer_Model> Layers { get; set; }
 
+        public StrokeData_Model GetStrokeDataOfStroke(Stroke stroke)
+        {
+            List<Guid> guidLayers = stroke.GetPropertyDataIds().ToList();
+            return StrokeDataList.SingleOrDefault(x => x.Id == guidLayers.SingleOrDefault(r => r.Equals(x.Id)));
+        }
+
         public ObservableCollection<Layer_Model> GetLayersOfStroke(Stroke stroke)
         {
             List<Guid> guidLayers = stroke.GetPropertyDataIds().ToList();

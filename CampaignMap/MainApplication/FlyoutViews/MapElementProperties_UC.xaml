@@ -49,7 +49,8 @@
         <Label x:Name="lblLayers" Content="Layers" Grid.Column="1" VerticalAlignment="Top" Grid.Row="5"/>
         <Label x:Name="lblDetails" Content="Details" Grid.Column="1" VerticalAlignment="Top" Grid.Row="7"/>
 
-        <TextBox x:Name="txtName" Grid.Column="2" Height="23" Grid.Row="1" TextWrapping="Wrap" Text="..." VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" Grid.Column="2" Height="23" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"
+                  Text="{Binding ElementName, Mode=TwoWay}"/>
         <xctk:ColorPicker Height="29" Grid.Row="3" VerticalAlignment="Top" Grid.Column="2" ShowRecentColors="True"
                           SelectedColor="{Binding DrawingAttributes.Color}"/>
         <xctk:CheckListBox x:Name="checkListBox" Grid.Row="5" Grid.Column="2"
@@ -59,7 +60,8 @@
                            ItemsSource="{Binding Layers}"
                            SelectedItemsOverride="{Binding SelectedLayers}"
                            Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListSmall}" />
-        <xctk:MultiLineTextEditor Grid.Row="7" Grid.Column="2" DropDownWidth="180" DropDownHeight="80"/>
+        <xctk:MultiLineTextEditor Grid.Row="7" Grid.Column="2" DropDownWidth="180" DropDownHeight="80"
+                                  Text="{Binding ElementDetails, Mode=TwoWay}"/>
 
 
     </Grid>

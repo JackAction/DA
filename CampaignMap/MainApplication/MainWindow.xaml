@@ -176,9 +176,13 @@
                     LayerChanged="{Binding LayersOfSelectedStrokeChanged}"
                     Layers="{Binding CampaignVM.Layers}"
                     LayersForNewStroke="{Binding LayersForNewStroke}"
-                    DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"
                     LayersOfSelectedStroke="{Binding LayersOfSelectedStroke}"
-                    DrawingAttributesOfSelectedStroke="{Binding SelectedStroke.DrawingAttributes}"/>
+                    DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"
+                    DrawingAttributesOfSelectedStroke="{Binding SelectedStroke.DrawingAttributes}"
+                    ElementNameForNewElement="{Binding ElementNameForNewElement, Mode=TwoWay}"
+                    ElementDetailsForNewElement="{Binding ElementDetailsForNewElement, Mode=TwoWay}"
+                    ElementNameOfSelectedElement="{Binding StrokeDataOfSelectedElement.Name, Mode=TwoWay}"
+                    ElementDetailsOfSelectedElement="{Binding StrokeDataOfSelectedElement.Details, Mode=TwoWay}"/>
             </Border>
         </StackPanel>
 

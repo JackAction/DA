@@ -101,6 +101,54 @@ namespace MainApplication
             set { SetValue(DrawingAttributesOfSelectedStrokeProperty, value); }
         }
 
+        public static readonly DependencyProperty ElementNameForNewElementProperty =
+            DependencyProperty.Register(
+                "ElementNameForNewElement",
+                typeof(string),
+                typeof(Right_UC),
+                new UIPropertyMetadata(null));
+        public string ElementNameForNewElement
+        {
+            get { return (string)GetValue(ElementNameForNewElementProperty); }
+            set { SetValue(ElementNameForNewElementProperty, value); }
+        }
+
+        public static readonly DependencyProperty ElementDetailsForNewElementProperty =
+            DependencyProperty.Register(
+                "ElementDetailsForNewElement",
+                typeof(string),
+                typeof(Right_UC),
+                new UIPropertyMetadata(null));
+        public string ElementDetailsForNewElement
+        {
+            get { return (string)GetValue(ElementDetailsForNewElementProperty); }
+            set { SetValue(ElementDetailsForNewElementProperty, value); }
+        }
+
+        public static readonly DependencyProperty ElementNameOfSelectedElementProperty =
+            DependencyProperty.Register(
+                "ElementNameOfSelectedElement",
+                typeof(string),
+                typeof(Right_UC),
+                new UIPropertyMetadata(null));
+        public string ElementNameOfSelectedElement
+        {
+            get { return (string)GetValue(ElementNameOfSelectedElementProperty); }
+            set { SetValue(ElementNameOfSelectedElementProperty, value); }
+        }
+
+        public static readonly DependencyProperty ElementDetailsOfSelectedElementProperty =
+            DependencyProperty.Register(
+                "ElementDetailsOfSelectedElement",
+                typeof(string),
+                typeof(Right_UC),
+                new UIPropertyMetadata(null));
+        public string ElementDetailsOfSelectedElement
+        {
+            get { return (string)GetValue(ElementDetailsOfSelectedElementProperty); }
+            set { SetValue(ElementDetailsOfSelectedElementProperty, value); }
+        }
+
         #endregion
     }
 }

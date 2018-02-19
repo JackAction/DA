@@ -34,7 +34,9 @@
                         Layers="{Binding Layers}"
                         SelectedLayers="{Binding LayersForNewStroke}" 
                         SelectedMemberPath="IsSelectedForNewStroke"
-                        DrawingAttributes="{Binding DefaultDrawingAttributes}" />
+                        DrawingAttributes="{Binding DefaultDrawingAttributes}"
+                        ElementName="{Binding ElementNameForNewElement, Mode=TwoWay}"
+                        ElementDetails="{Binding ElementDetailsForNewElement, Mode=TwoWay}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Select">
@@ -54,7 +56,9 @@
                         Layers="{Binding Layers}"
                         SelectedLayers="{Binding LayersOfSelectedStroke}" 
                         SelectedMemberPath="IsSelectedInExistingStroke"
-                        DrawingAttributes="{Binding DrawingAttributesOfSelectedStroke}" />
+                        DrawingAttributes="{Binding DrawingAttributesOfSelectedStroke}"
+                        ElementName="{Binding ElementNameOfSelectedElement, Mode=TwoWay}"
+                        ElementDetails="{Binding ElementDetailsOfSelectedElement, Mode=TwoWay}"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -89,6 +89,30 @@ namespace MainApplication
             set { SetValue(SelectedMemberPathProperty, value); }
         }
 
+        public static readonly DependencyProperty ElementNameProperty =
+            DependencyProperty.Register(
+                "ElementName",
+                typeof(string),
+                typeof(MapElementProperties_UC),
+                new UIPropertyMetadata(null));
+        public string ElementName
+        {
+            get { return (string)GetValue(ElementNameProperty); }
+            set { SetValue(ElementNameProperty, value); }
+        }
+
+        public static readonly DependencyProperty ElementDetailsProperty =
+            DependencyProperty.Register(
+                "ElementDetails",
+                typeof(string),
+                typeof(MapElementProperties_UC),
+                new UIPropertyMetadata(null));
+        public string ElementDetails
+        {
+            get { return (string)GetValue(ElementDetailsProperty); }
+            set { SetValue(ElementDetailsProperty, value); }
+        }
+
         #endregion
     }
 }

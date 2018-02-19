@@ -241,11 +241,31 @@ namespace MainApplication
             if (selectedStrokes.Count != 0)
             {
                 // ----> first ist bullshit, sollte nur geschehen wenn nur 1 stroke selektiert ist. ansonsten fehler?
+                // Set Layers
                 SelectedStroke = selectedStrokes.First();
                 LayersOfSelectedStroke = CampaignVM.Campaign.GetLayersOfStroke(SelectedStroke);
                 //LayersOfSelectedStroke.CollectionChanged += new NotifyCollectionChangedEventHandler(LayersOfSelectedStrokeChanged);
                 RaisePropertyChanged("LayersOfSelectedStroke");
                 pfuuuuiFlag = true;
+
+                // Set StrokeData
+                StrokeDataOfSelectedElement = CampaignVM.Campaign.GetStrokeDataOfStroke(SelectedStroke);
+            }
+        }
+
+        private StrokeData_Model _strokeDataOfSelectedElement = new StrokeData_Model();
+
+        public StrokeData_Model StrokeDataOfSelectedElement
+        {
+            get { return _strokeDataOfSelectedElement; }
+            set
+            {
+                if (_strokeDataOfSelectedElement == value)
+                {
+                    return;
+                }
+                _strokeDataOfSelectedElement = value;
+                RaisePropertyChanged();
             }
         }
 
@@ -274,12 +294,41 @@ namespace MainApplication
             }
 
             // StrokeData hinzufügen
-
-
-            // ___>Name Details müssen von UC kommen!
-            StrokeData_Model newStrokeData = new StrokeData_Model() { Id = Guid.NewGuid(), Name = "Test", Details = "DetailsTe" };
+            StrokeData_Model newStrokeData = new StrokeData_Model() { Id = Guid.NewGuid(), Name = ElementNameForNewElement, Details = ElementDetailsForNewElement };
             CampaignVM.Campaign.StrokeDataList.Add(newStrokeData);
             e.Stroke.AddPropertyData(newStrokeData.Id, "Id");
+        }
+
+        private string _elementNameForNewElement;
+
+        public string ElementNameForNewElement
+        {
+            get { return _elementNameForNewElement; }
+            set
+            {
+                if (_elementNameForNewElement == value)
+                {
+                    return;
+                }
+                _elementNameForNewElement = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private string _elementDetailsForNewElement;
+
+        public string ElementDetailsForNewElement
+        {
+            get { return _elementDetailsForNewElement; }
+            set
+            {
+                if (_elementDetailsForNewElement == value)
+                {
+                    return;
+                }
+                _elementDetailsForNewElement = value;
+                RaisePropertyChanged();
+            }
         }
 
         #endregion
