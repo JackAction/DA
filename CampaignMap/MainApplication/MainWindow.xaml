@@ -448,8 +448,8 @@
 				    -->
                     <Grid
                         x:Name="theGrid"
-                        Width="5000"
-                        Height="2000"
+                        Width="{Binding CampaignVM.Campaign.BackGroundImageWidth}"
+                        Height="{Binding CampaignVM.Campaign.BackgroundImageHeight}"
 					    >
                         <!--
             		    This Canvas is the main part of the content that is displayed.

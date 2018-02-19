@@ -21,6 +21,8 @@ namespace MainApplication
 
         public string Name { get; set; }
         public string BackgroundImagePath { get; set; }
+        public int BackgroundImageHeight { get; set; }
+        public int BackGroundImageWidth { get; set; }
         public string StrokePath { get; set; }
 
         [XmlIgnore]

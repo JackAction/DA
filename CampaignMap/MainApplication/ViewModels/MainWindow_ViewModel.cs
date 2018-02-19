@@ -122,10 +122,6 @@ namespace MainApplication
                     // Name ist im moment noch fix. Sollte von Benutzer eingegeben werden können
                     CampaignVM = new Campaign_ViewModel() { Campaign = campaignRepository.Create("NewCampaign", open.FileName) };
 
-                    PictureDimension pictureDimension = new PictureDimension(open.FileName);
-                    var x = pictureDimension.Height;
-                    var y = pictureDimension.Width;
-
 
                     // https://stackoverflow.com/questions/728005/mvvm-binding-to-inkcanvas
                     // Stokes müssen vorgegeben werden

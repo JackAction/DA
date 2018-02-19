@@ -9,7 +9,15 @@ namespace MainApplication
     {
         public Campaign_Model Create(string name, string backgroundImagePath)
         {
-            return new Campaign_Model() { Name = name, BackgroundImagePath = backgroundImagePath };
+            // Bildgrösse auslesen
+            PictureDimension pictureDimension = new PictureDimension(backgroundImagePath);
+
+            return new Campaign_Model() {
+                Name = name,
+                BackgroundImagePath = backgroundImagePath,
+                BackgroundImageHeight = pictureDimension.Height,
+                BackGroundImageWidth = pictureDimension.Width
+            };
         }
 
         // ---> Überall ErrorHandling, falls Files nicht gefunden werden können!!
