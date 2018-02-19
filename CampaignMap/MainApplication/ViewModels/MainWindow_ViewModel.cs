@@ -263,6 +263,9 @@ namespace MainApplication
                 StrokeDataOfSelectedElement = new StrokeData_Model();
 
                 SelectedPOI = (POI_Model)((Image)selectedPOIs.First()).Tag;
+
+                LayersOfSelectedStroke = SelectedPOI.Layers;
+                RaisePropertyChanged("LayersOfSelectedStroke");
                 ElementNameForSelectedElement = SelectedPOI.Name;
                 ElementDetailsForSelectedElement = SelectedPOI.Details;
             }
