@@ -255,11 +255,16 @@
                 <!-- 
                 The - button. 
                 -->
-                <Button
+                <!--<Button
                     Grid.Column="7"
                     Command="{Binding ChangeBackground}"
                     Content="BG"
-                    />
+                    />-->
+                <RadioButton
+                    Grid.Column="7"
+                    x:Name="AddButton"
+                    Command="{StaticResource Commands.DrawMode}"
+                    GroupName="DrawGroup" Content="Add"/>
 
                 <!--
                 This is the label that shows what the current zoom level
@@ -443,7 +448,7 @@
 				    -->
                     <Grid
                         x:Name="theGrid"
-                        Width="2000"
+                        Width="5000"
                         Height="2000"
 					    >
                         <!--
@@ -455,7 +460,7 @@
                             Strokes="{Binding CampaignVM.Strokes}" 
                             DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}" >
                             <InkCanvas.Background>
-                                <ImageBrush ImageSource="{Binding CampaignVM.BackgroundImagePath}" Stretch="Fill" />
+                                <ImageBrush ImageSource="{Binding CampaignVM.BackgroundImagePath}" Stretch="None" />
                             </InkCanvas.Background>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="StrokeCollected">
@@ -472,6 +477,11 @@
                                     <i2:CallMethodAction
                                         TargetObject="{Binding}"
                                         MethodName="SelectionChanged"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <i2:CallMethodAction
+                                        TargetObject="{Binding}"
+                                        MethodName="AddPOI"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </InkCanvas>

@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace MainApplication
 {
@@ -120,6 +121,11 @@ namespace MainApplication
                 {
                     // Name ist im moment noch fix. Sollte von Benutzer eingegeben werden können
                     CampaignVM = new Campaign_ViewModel() { Campaign = campaignRepository.Create("NewCampaign", open.FileName) };
+
+                    PictureDimension pictureDimension = new PictureDimension(open.FileName);
+                    var x = pictureDimension.Height;
+                    var y = pictureDimension.Width;
+
 
                     // https://stackoverflow.com/questions/728005/mvvm-binding-to-inkcanvas
                     // Stokes müssen vorgegeben werden
@@ -338,6 +344,36 @@ namespace MainApplication
                 RaisePropertyChanged();
             }
         }
+
+        #endregion
+
+        #region POI
+
+        public void AddPOI(object sender, MouseButtonEventArgs e)
+        {
+            var canvas = (InkCanvas)sender;
+
+            //var mouseButtonDown = e.ChangedButton;
+            var mouseDownPoint = e.GetPosition(canvas);
+
+
+            PictureDimension pictureDimension = new PictureDimension(@"C:\Users\JackAction\Documents\DA\CampaignMap\MainApplication\Pin.png");
+            var x = pictureDimension.Height;
+            var y = pictureDimension.Width;
+
+            Image image = new Image
+            {
+                //Width = 100, // Um Pin kleiner zu machen
+                Source = new BitmapImage(new Uri(@"Pin.png", UriKind.Relative)),
+                Tag = "POI________________MODEL"
+                
+            };
+            InkCanvas.SetTop(image, mouseDownPoint.Y - pictureDimension.Height);
+            InkCanvas.SetLeft(image, mouseDownPoint.X);
+            canvas.Children.Add(image);
+
+        }
+
 
         #endregion
 

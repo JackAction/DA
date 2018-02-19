@@ -99,6 +99,7 @@ namespace MainApplication
             else if (mouseButtonDown == MouseButton.Right)
             {
                 // Just a plain old left-down initiates panning mode.
+                // Geändert nach Rechtsklick
                 mouseHandlingMode = MouseHandlingMode.Panning;
             }
 
@@ -244,6 +245,10 @@ namespace MainApplication
             else if (radioBPressed == "Select")
             {
                 this.content.EditingMode = InkCanvasEditingMode.Select;
+            }
+            else if (radioBPressed == "Add")
+            {
+                this.content.EditingMode = InkCanvasEditingMode.None;
             }
         }
 
