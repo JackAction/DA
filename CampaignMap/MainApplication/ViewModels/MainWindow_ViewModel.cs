@@ -253,6 +253,14 @@ namespace MainApplication
             }
         }
 
+        public void SelectionChanged(object sender, EventArgs e)
+        {
+            foreach (var layer in CampaignVM.Layers)
+            {
+                CampaignVM.Campaign.ChangeLayerVisibility(layer); 
+            }
+        }
+
         private StrokeData_Model _strokeDataOfSelectedElement = new StrokeData_Model();
 
         public StrokeData_Model StrokeDataOfSelectedElement

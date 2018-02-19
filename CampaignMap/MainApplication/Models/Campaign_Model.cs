@@ -65,7 +65,6 @@ namespace MainApplication
             {
                 stroke.RemovePropertyData(layer.Guid);
             }
-            ChangeLayerVisibility(layer);
         }
 
 

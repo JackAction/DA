@@ -468,6 +468,11 @@
                                         TargetObject="{Binding}"
                                         MethodName="StrokeSelected"/>
                                 </i:EventTrigger>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i2:CallMethodAction
+                                        TargetObject="{Binding}"
+                                        MethodName="SelectionChanged"/>
+                                </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </InkCanvas>
 
