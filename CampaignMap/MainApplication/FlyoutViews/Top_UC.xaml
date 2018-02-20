@@ -36,7 +36,7 @@
             <ColumnDefinition Width="*" />
             <!-- rest of the bar -->
         </Grid.ColumnDefinitions>
-        <Button x:Name="create" Command="{Binding CreateCampaign}" Style="{StaticResource buttonStyle}" Content="Create" Grid.Column="1" />
+        <Button x:Name="create" Command="{Binding CreateCampaign}" CommandParameter="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" Style="{StaticResource buttonStyle}" Content="Create" Grid.Column="1" />
         <Button x:Name="load" Command="{Binding LoadCampaign}" CommandParameter="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" Style="{StaticResource buttonStyle}" Content="Load" Grid.Column="3" />
         <Button x:Name="save" Command="{Binding SaveCampaign}" Style="{StaticResource buttonStyle}" Content="Save" Grid.Column="5" />
 

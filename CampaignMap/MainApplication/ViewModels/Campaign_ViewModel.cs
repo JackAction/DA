@@ -14,6 +14,9 @@ namespace MainApplication
     {
         private Campaign_Model _campaign;
 
+
+        // Wozu? ViemModel weglassen?
+
         public Campaign_ViewModel()
         {
             _campaign = new Campaign_Model();
@@ -50,16 +53,6 @@ namespace MainApplication
                 RaisePropertyChanged();
             }
         }
-
-        //public StrokeCollection InvisibleStrokes
-        //{
-        //    get { return _campaign.InvisibleStrokes; }
-        //    set
-        //    {
-        //        _campaign.InvisibleStrokes = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
 
         private ObservableCollection<Layer_Model> _layers = new ObservableCollection<Layer_Model>();
         public ObservableCollection<Layer_Model> Layers

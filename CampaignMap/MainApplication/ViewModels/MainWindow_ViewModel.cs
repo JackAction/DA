@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -44,17 +45,6 @@ namespace MainApplication
                 RaisePropertyChanged();
             }
         }
-
-        #region GUI Handling
-
-        void ChangeBackground_Execute()
-        {
-            CampaignVM.BackgroundImagePath = "map_faerunLarge_2.jpg";
-        }
-
-        public RelayCommand ChangeBackground { get { return new RelayCommand(ChangeBackground_Execute); } } 
-
-        #endregion
 
         #region Campaign Handling
 
@@ -97,6 +87,7 @@ namespace MainApplication
                 {
                     CampaignVM = new Campaign_ViewModel() { Campaign = campaignRepository.Load(open.FileName) };
                     InkCanvas canvas = (InkCanvas)((MainWindow)window).FindName("content");
+                    canvas.Children.Clear();
                     foreach (var poi in CampaignVM.Campaign.POIs)
                     {
                         AddPOIToCanvas(canvas, poi);
@@ -111,7 +102,7 @@ namespace MainApplication
 
         public RelayCommand<object> LoadCampaign { get { return new RelayCommand<object>(LoadCampaign_Execute); } }
 
-        void CreateCampaign_Execute()
+        void CreateCampaign_Execute(object window)
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Title = "Choose Background Picture";
@@ -132,6 +123,9 @@ namespace MainApplication
                     // Stokes müssen vorgegeben werden
                     CampaignVM.Strokes = new StrokeCollection();
                     (CampaignVM.Strokes as INotifyCollectionChanged).CollectionChanged += delegate { };
+
+                    InkCanvas canvas = (InkCanvas)((MainWindow)window).FindName("content");
+                    canvas.Children.Clear();
                 }
                 catch (Exception fail)
                 {
@@ -140,7 +134,7 @@ namespace MainApplication
             }
         }
 
-        public RelayCommand CreateCampaign { get { return new RelayCommand(CreateCampaign_Execute); } }
+        public RelayCommand<object> CreateCampaign { get { return new RelayCommand<object>(CreateCampaign_Execute); } }
 
         #endregion
 
@@ -427,7 +421,6 @@ namespace MainApplication
         {
             var canvas = (InkCanvas)sender;
 
-            //var mouseButtonDown = e.ChangedButton;
             var mouseDownPoint = e.GetPosition(canvas);
 
 
@@ -462,9 +455,15 @@ namespace MainApplication
             };
             InkCanvas.SetTop(image, poi.PositionTop);
             InkCanvas.SetLeft(image, poi.PositionLeft);
+
+            Binding myBinding = new Binding("IsEnabled");
+            myBinding.Mode = BindingMode.TwoWay;
+            myBinding.Converter = new BooleanToVisibilityConverter();
+            myBinding.Source = poi;
+            image.SetBinding(UIElement.VisibilityProperty, myBinding);
+
             canvas.Children.Add(image);
         }
-
 
         #endregion
 

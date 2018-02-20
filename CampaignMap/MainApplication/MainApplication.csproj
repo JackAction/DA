@@ -85,6 +85,7 @@
     <Compile Include="FlyoutViews\Top_UC.xaml.cs">
       <DependentUpon>Top_UC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
     <Compile Include="Helpers\ImageFilterString.cs" />
     <Compile Include="Helpers\XMLHelper.cs" />
     <Compile Include="FlyoutViews\Left_UC.xaml.cs">

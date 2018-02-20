@@ -257,15 +257,7 @@ namespace MainApplication
         /// </summary>
         private void AddPicture_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Image image = new Image
-            {
-                Width = 100, // Um Pin kleiner zu machen
-                Source = new BitmapImage(new Uri(@"Pin.png", UriKind.Relative))
-
-            };
-            InkCanvas.SetTop(image, 500);
-            InkCanvas.SetLeft(image, 500);
-            content.Children.Add(image);
+            
         }
 
         /// <summary>

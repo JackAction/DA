@@ -255,11 +255,6 @@
                 <!-- 
                 The - button. 
                 -->
-                <!--<Button
-                    Grid.Column="7"
-                    Command="{Binding ChangeBackground}"
-                    Content="BG"
-                    />-->
                 <RadioButton
                     Grid.Column="7"
                     x:Name="AddButton"

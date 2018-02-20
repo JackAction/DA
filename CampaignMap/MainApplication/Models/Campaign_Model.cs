@@ -77,6 +77,15 @@ namespace MainApplication
         {
             if (layer.IsSelectedForVisibilityHandling)
             {
+                // Setze POI Visibility
+                foreach (var poi in POIs)
+                {
+                    if (poi.Layers.Any(x => x.Guid == layer.Guid))
+                    {
+                        poi.IsEnabled = true;
+                    }
+                }
+                // Setze Stroke Visibility
                 foreach (var stroke in InvisibleStrokes.ToList())
                 {
                     if (stroke.ContainsPropertyData(layer.Guid))
@@ -89,7 +98,31 @@ namespace MainApplication
             else
             {
                 List<Layer_Model> inactiveLayers = Layers.Where(l => l.IsSelectedForVisibilityHandling == false).ToList();
+                // Setze POI Visibility
+                foreach (var poi in POIs)
+                {
+                    if (poi.Layers.Any(x => x.Guid == layer.Guid))
+                    {
+                        // Prüfe ob deselektierter Layer der letzte sichtbare war
+                        List<Layer_Model> remainingLayers = poi.Layers.ToList();
+                        remainingLayers.Remove(layer);
 
+                        foreach (var layerInPOI in poi.Layers.ToList())
+                        {
+                            if (inactiveLayers.Contains(layerInPOI))
+                            {
+                                remainingLayers.Remove(layerInPOI);
+                            }
+                        }
+
+                        // Lösche nur wenn Stroke keine anderen sichtbaren Layer mehr hat
+                        if (remainingLayers.Count == 0) 
+                        {
+                            poi.IsEnabled = false;
+                        }
+                    }
+                }
+                // Setze Stroke Visibility
                 foreach (var stroke in Strokes.ToList())
                 {
                     if (stroke.ContainsPropertyData(layer.Guid))
