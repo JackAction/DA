@@ -173,6 +173,8 @@
             </Grid>
             <Border BorderBrush="#AF1719" BorderThickness="1" Width="300" Background="#4C808080">
                 <local:Right_UC
+                    EraseMode="{Binding EraseMode}"
+                    InputMode="{Binding MapElementInputMode}"
                     LayerChanged="{Binding LayersOfSelectedStrokeChanged}"
                     Layers="{Binding CampaignVM.Layers}"
                     LayersForNewStroke="{Binding LayersForNewStroke}"
@@ -453,7 +455,8 @@
                         <InkCanvas
 						    x:Name="content" IsHitTestVisible="True" 
                             Strokes="{Binding CampaignVM.Strokes}" 
-                            DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}" >
+                            DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"
+                            EditingMode="{Binding InkCanvasEditingMode}">
                             <InkCanvas.Background>
                                 <ImageBrush ImageSource="{Binding CampaignVM.BackgroundImagePath}" Stretch="None" />
                             </InkCanvas.Background>

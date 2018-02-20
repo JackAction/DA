@@ -29,6 +29,30 @@ namespace MainApplication
 
         #region Dependency Properties
 
+        public static readonly DependencyProperty EraseModeProperty =
+            DependencyProperty.Register(
+                "EraseMode",
+                typeof(ICommand),
+                typeof(Right_UC),
+                new UIPropertyMetadata(null));
+        public ICommand EraseMode
+        {
+            get { return (ICommand)GetValue(EraseModeProperty); }
+            set { SetValue(EraseModeProperty, value); }
+        }
+
+        public static readonly DependencyProperty InputModeProperty =
+            DependencyProperty.Register(
+                "InputMode",
+                typeof(ICommand),
+                typeof(Right_UC),
+                new UIPropertyMetadata(null));
+        public ICommand InputMode
+        {
+            get { return (ICommand)GetValue(InputModeProperty); }
+            set { SetValue(InputModeProperty, value); }
+        }
+
         public static readonly DependencyProperty LayerChangedProperty =
             DependencyProperty.Register(
                 "LayerChanged",
@@ -75,6 +99,12 @@ namespace MainApplication
         {
             get { return (DrawingAttributes)GetValue(DefaultDrawingAttributesProperty); }
             set { SetValue(DefaultDrawingAttributesProperty, value); }
+        }
+
+        public double DefaultDrawingAttributesWidthHeight
+        {
+            get { return DefaultDrawingAttributes.Width; }
+            set { DefaultDrawingAttributes.Width = value; DefaultDrawingAttributes.Height = value; }
         }
 
         public static readonly DependencyProperty LayersOfSelectedStrokeProperty =
@@ -150,5 +180,15 @@ namespace MainApplication
         }
 
         #endregion
+
+        private void radioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
     }
 }

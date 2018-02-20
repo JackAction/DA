@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MainApplication"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:i2="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="MainApplication.Right_UC"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="300">
@@ -19,27 +21,59 @@
         </Grid.RowDefinitions>
         <TabControl x:Name="tabControl" Grid.Row="1" Background="{x:Null}">
             <TabItem Header="Draw">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                        <i2:CallMethodAction
+                                        TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext}"
+                                        MethodName="InputModeChanged"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="34*" />
                         <!-- rest of the bar -->
-                        <RowDefinition Height="107"/>
+                        <RowDefinition Height="157.04"/>
                         <!-- mode selection -->
-                        <RowDefinition Height="255" />
+                        <RowDefinition Height="281" />
                         <!-- map element properties -->
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="29*" />
                         <!-- rest of the bar -->
                     </Grid.RowDefinitions>
+                    <CheckBox x:Name="cbxErase" Content="Erase" Command="{Binding EraseMode}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="48"/>
+                    <RadioButton x:Name="rbPOI" Content="POI" Command="{Binding InputMode}" CommandParameter="POI" HorizontalAlignment="Left" Margin="0,27,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="38" Checked="radioButton_Checked"/>
+                    <RadioButton x:Name="rbRoute" Content="Route" Command="{Binding InputMode}" CommandParameter="Route" HorizontalAlignment="Left" Margin="0,52,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="50"/>
+                    <RadioButton x:Name="rbRegion" Content="Region" Command="{Binding InputMode}" CommandParameter="Region" HorizontalAlignment="Left" Margin="0,76,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="56"/>
+                    <Slider
+                        Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"
+                        Minimum="1" 
+                        LargeChange="4" 
+                        TickFrequency="1" 
+                        Maximum="40" 
+                        SmallChange="1" 
+                        TickPlacement="TopLeft"
+                        Value="{Binding DefaultDrawingAttributesWidthHeight}" 
+                    />
                     <local:MapElementProperties_UC Grid.Row="2" 
                         Layers="{Binding Layers}"
                         SelectedLayers="{Binding LayersForNewStroke}" 
                         SelectedMemberPath="IsSelectedForNewStroke"
                         DrawingAttributes="{Binding DefaultDrawingAttributes}"
                         ElementName="{Binding ElementNameForNewElement, Mode=TwoWay}"
-                        ElementDetails="{Binding ElementDetailsForNewElement, Mode=TwoWay}"/>
+                        ElementDetails="{Binding ElementDetailsForNewElement, Mode=TwoWay}" Grid.ColumnSpan="2" Margin="0,2.96,0,0.04" />
                 </Grid>
             </TabItem>
             <TabItem Header="Select">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                        <i2:CallMethodAction
+                                        TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext}"
+                                        MethodName="InputModeChanged"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -58,7 +92,7 @@
                         SelectedMemberPath="IsSelectedInExistingStroke"
                         DrawingAttributes="{Binding DrawingAttributesOfSelectedStroke}"
                         ElementName="{Binding ElementNameOfSelectedElement, Mode=TwoWay}"
-                        ElementDetails="{Binding ElementDetailsOfSelectedElement, Mode=TwoWay}"/>
+                        ElementDetails="{Binding ElementDetailsOfSelectedElement, Mode=TwoWay}" Grid.ColumnSpan="2" Margin="0,0.48,0,49.04" Grid.RowSpan="2"/>
                 </Grid>
             </TabItem>
         </TabControl>

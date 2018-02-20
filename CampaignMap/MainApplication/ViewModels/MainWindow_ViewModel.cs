@@ -429,7 +429,7 @@ namespace MainApplication
             var y = mouseDownPoint.X;
 
 
-            POI_Model poi = new POI_Model() { Name = ElementNameForNewElement, Details = ElementDetailsForNewElement, PositionTop = x, PositionLeft = y };
+            POI_Model poi = new POI_Model() { Name = ElementNameForNewElement, Details = ElementDetailsForNewElement, PositionTop = x, PositionLeft = y, IsEnabled = true };
             // Layer hinzufügen
             foreach (var layer in LayersForNewStroke)
             {
@@ -440,8 +440,6 @@ namespace MainApplication
 
 
             AddPOIToCanvas(canvas, poi);
-
-
         }
 
         private void AddPOIToCanvas(InkCanvas canvas, POI_Model poi)
@@ -463,6 +461,97 @@ namespace MainApplication
             image.SetBinding(UIElement.VisibilityProperty, myBinding);
 
             canvas.Children.Add(image);
+        }
+
+        #endregion
+
+        #region Input Mode
+
+        void EraseMode_Execute(bool isChecked)
+        {
+            if (isChecked)
+            {
+                SetInputMode("Erase");
+            }
+            else
+            {
+                SetInputMode("NonErase");
+            }
+        }
+
+        public RelayCommand<bool> EraseMode { get { return new RelayCommand<bool>(EraseMode_Execute); } }
+
+        void MapElementInputMode_Execute(string name)
+        {
+            SetInputMode(name);
+        }
+
+        public RelayCommand<string> MapElementInputMode { get { return new RelayCommand<string>(MapElementInputMode_Execute); } }
+
+        public void InputModeChanged(object sender, MouseButtonEventArgs e)
+        {
+            TabItem selectedTab = (TabItem)sender;
+            SetInputMode(selectedTab.Header.ToString());
+        }
+
+        private void SetInputMode(string mode)
+        {
+            switch (mode)
+            {
+                case "Draw":
+                    InkCanvasEditingMode = previousMode;
+                    break;
+
+                case "Select":
+                    InkCanvasEditingMode = InkCanvasEditingMode.Select;
+                    break;
+
+                case "Erase":
+                    InkCanvasEditingMode = InkCanvasEditingMode.EraseByPoint;
+                    break;
+
+                case "NonErase":
+                    InkCanvasEditingMode = previousMode;
+                    break;
+
+                case "POI":
+                    InkCanvasEditingMode = InkCanvasEditingMode.None;
+                    previousMode = InkCanvasEditingMode.None;
+                    break;
+
+                case "Route":
+                    InkCanvasEditingMode = InkCanvasEditingMode.Ink;
+                    previousMode = InkCanvasEditingMode.Ink;
+                    DefaultDrawingAttributes.IsHighlighter = false;
+                    break;
+
+                case "Region":
+                    InkCanvasEditingMode = InkCanvasEditingMode.Ink;
+                    previousMode = InkCanvasEditingMode.Ink;
+                    DefaultDrawingAttributes.IsHighlighter = true;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private InkCanvasEditingMode previousMode = InkCanvasEditingMode.Select;
+
+        private InkCanvasEditingMode _inkCanvasEditingMode = InkCanvasEditingMode.Select;
+
+        public InkCanvasEditingMode InkCanvasEditingMode
+        {
+            get { return _inkCanvasEditingMode; }
+            set
+            {
+                if (_inkCanvasEditingMode == value)
+                {
+                    return;
+                }
+                _inkCanvasEditingMode = value;
+                RaisePropertyChanged();
+            }
         }
 
         #endregion
