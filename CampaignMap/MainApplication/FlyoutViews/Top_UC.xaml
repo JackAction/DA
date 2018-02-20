@@ -8,10 +8,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="400">
     <UserControl.Resources>
-        <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Height" Value="30" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../CampaignMapResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="buttonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource GhostButtonBase}">
+                <Setter Property="Height" Value="30" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Top_UC}}}">
         <Grid.ColumnDefinitions>
@@ -30,7 +36,7 @@
             <ColumnDefinition Width="*" />
             <!-- rest of the bar -->
         </Grid.ColumnDefinitions>
-        <Button x:Name="create" Command="{Binding CreateCampaign}" Style="{StaticResource buttonStyle}" Content="Create" Grid.Column="1"/>
+        <Button x:Name="create" Command="{Binding CreateCampaign}" Style="{StaticResource buttonStyle}" Content="Create" Grid.Column="1" />
         <Button x:Name="load" Command="{Binding LoadCampaign}" CommandParameter="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" Style="{StaticResource buttonStyle}" Content="Load" Grid.Column="3" />
         <Button x:Name="save" Command="{Binding SaveCampaign}" Style="{StaticResource buttonStyle}" Content="Save" Grid.Column="5" />
 

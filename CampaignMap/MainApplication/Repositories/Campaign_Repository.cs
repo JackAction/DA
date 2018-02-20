@@ -27,6 +27,14 @@ namespace MainApplication
         {
             Campaign_Model campaign = XMLHelper<Campaign_Model>.Deserialize(path);
 
+            foreach (var poi in campaign.POIs)
+            {
+                for (int i = 0; i < poi.Layers.Count; i++)
+                {
+                    poi.Layers[i] = campaign.Layers.First(x => x.Guid == poi.Layers[i].Guid);
+                }
+            }
+
             using (FileStream fs = new FileStream(CreateStrokePath(path, ""), FileMode.Open, FileAccess.Read))
             {
                 StrokeCollection sc = new StrokeCollection(fs);

@@ -271,7 +271,7 @@ namespace MainApplication
 
                 LayersOfSelectedStroke = SelectedPOI.Layers;
                 RaisePropertyChanged("LayersOfSelectedStroke");
-
+                var x = CampaignVM.Campaign.Layers;
                 ElementNameForSelectedElement = SelectedPOI.Name;
                 ElementDetailsForSelectedElement = SelectedPOI.Details;
             }
