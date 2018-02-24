@@ -149,7 +149,7 @@ namespace MainApplication
 
         void AddLayer_Execute(string name)
         {
-            CampaignVM.Layers.Add(new Layer_Model() { Name = name, Guid = Guid.NewGuid() });
+            CampaignVM.Layers.Add(new Layer_Model() { Name = name, Id = Guid.NewGuid() });
         }
 
         public RelayCommand<string> AddLayer { get { return new RelayCommand<string>(AddLayer_Execute); } }
@@ -372,7 +372,7 @@ namespace MainApplication
             // Layer hinzufügen
             foreach (var layer in LayersForNewStroke)
             {
-                e.Stroke.AddPropertyData(layer.Guid, layer.Name);
+                e.Stroke.AddPropertyData(layer.Id, layer.Name);
             }
 
             // StrokeData hinzufügen

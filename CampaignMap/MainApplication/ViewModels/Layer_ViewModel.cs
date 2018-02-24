@@ -43,12 +43,12 @@ namespace MainApplication.ViewModels
             }
         }
 
-        public Guid Guid
+        public Guid Id
         {
-            get { return _layer.Guid; }
+            get { return _layer.Id; }
             set
             {
-                _layer.Guid = value;
+                _layer.Id = value;
                 RaisePropertyChanged();
             }
         }

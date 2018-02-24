@@ -24,7 +24,7 @@ namespace MainApplication
         public string BackgroundImagePath { get; set; }
         public int BackgroundImageHeight { get; set; }
         public int BackGroundImageWidth { get; set; }
-        public string StrokePath { get; set; }
+        //public string StrokePath { get; set; }
 
         [XmlIgnore]
         public StrokeCollection Strokes { get; set; }
@@ -51,7 +51,7 @@ namespace MainApplication
 
             foreach (var guidLayer in guidLayers)
             {
-                Layer_Model layer = Layers.SingleOrDefault(x => x.Guid == guidLayer);
+                Layer_Model layer = Layers.SingleOrDefault(x => x.Id == guidLayer);
                 if (layer != null)
                 {
                     layers.Add(layer); 
@@ -64,11 +64,11 @@ namespace MainApplication
         {
             if (layer.IsSelectedInExistingStroke)
             {
-                stroke.AddPropertyData(layer.Guid, layer.Name);
+                stroke.AddPropertyData(layer.Id, layer.Name);
             }
             else
             {
-                stroke.RemovePropertyData(layer.Guid);
+                stroke.RemovePropertyData(layer.Id);
             }
         }
 
@@ -80,7 +80,7 @@ namespace MainApplication
                 // Setze POI Visibility
                 foreach (var poi in POIs)
                 {
-                    if (poi.Layers.Any(x => x.Guid == layer.Guid))
+                    if (poi.Layers.Any(x => x.Id == layer.Id))
                     {
                         poi.IsEnabled = true;
                     }
@@ -88,7 +88,7 @@ namespace MainApplication
                 // Setze Stroke Visibility
                 foreach (var stroke in InvisibleStrokes.ToList())
                 {
-                    if (stroke.ContainsPropertyData(layer.Guid))
+                    if (stroke.ContainsPropertyData(layer.Id))
                     {
                         Strokes.Add(stroke);
                         InvisibleStrokes.Remove(stroke);
@@ -101,7 +101,7 @@ namespace MainApplication
                 // Setze POI Visibility
                 foreach (var poi in POIs)
                 {
-                    if (poi.Layers.Any(x => x.Guid == layer.Guid))
+                    if (poi.Layers.Any(x => x.Id == layer.Id))
                     {
                         // Prüfe ob deselektierter Layer der letzte sichtbare war
                         List<Layer_Model> remainingLayers = poi.Layers.ToList();
@@ -125,15 +125,15 @@ namespace MainApplication
                 // Setze Stroke Visibility
                 foreach (var stroke in Strokes.ToList())
                 {
-                    if (stroke.ContainsPropertyData(layer.Guid))
+                    if (stroke.ContainsPropertyData(layer.Id))
                     {
                         // Prüfe ob deselektierter Layer der letzte sichtbare war
                         List<Guid> remainingLayers = stroke.GetPropertyDataIds().ToList();
-                        remainingLayers.Remove(layer.Guid);
+                        remainingLayers.Remove(layer.Id);
 
                         foreach (var guidLayer in remainingLayers.ToList())
                         {
-                            if (inactiveLayers.Any(x => x.Guid == guidLayer))
+                            if (inactiveLayers.Any(x => x.Id == guidLayer))
                             {
                                 remainingLayers.Remove(guidLayer);
                             }

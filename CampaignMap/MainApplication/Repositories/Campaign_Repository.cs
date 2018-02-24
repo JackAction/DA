@@ -31,7 +31,7 @@ namespace MainApplication
             {
                 for (int i = 0; i < poi.Layers.Count; i++)
                 {
-                    poi.Layers[i] = campaign.Layers.First(x => x.Guid == poi.Layers[i].Guid);
+                    poi.Layers[i] = campaign.Layers.First(x => x.Id == poi.Layers[i].Id);
                 }
             }
 
