@@ -215,61 +215,6 @@ namespace MainApplication
             }
         }
 
-
-
-
-
-
-
-
-        /// <summary>
-        /// The 'DrawMode' command was executed.
-        /// </summary>
-        private void DrawMode_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            // Get a reference to the radiobutton
-            var radiobutton = e.OriginalSource as RadioButton;
-
-            // Get the radiobutton pressed
-            string radioBPressed = radiobutton.Content.ToString();
-
-            // Change settings based on button
-            if (radioBPressed == "Draw")
-            {
-                this.content.EditingMode = InkCanvasEditingMode.Ink;
-            }
-            else if (radioBPressed == "Erase")
-            {
-                this.content.EditingMode = InkCanvasEditingMode.EraseByPoint;
-            }
-            else if (radioBPressed == "Select")
-            {
-                this.content.EditingMode = InkCanvasEditingMode.Select;
-            }
-            else if (radioBPressed == "Add")
-            {
-                this.content.EditingMode = InkCanvasEditingMode.None;
-            }
-        }
-
-        /// <summary>
-        /// The 'AddPicture' command was executed.
-        /// </summary>
-        private void AddPicture_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            
-        }
-
-        /// <summary>
-        /// The 'ClearPicture' command was executed.
-        /// </summary>
-        private void ClearPicture_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            // Currently removes all childs to test.
-            content.Children.Clear();
-        }
-
-
         /// <summary>
         /// The 'ZoomIn' command (bound to the plus key) was executed.
         /// </summary>
@@ -548,10 +493,10 @@ namespace MainApplication
 
             e.Handled = true;
         }
+
         #endregion
 
         #region Flyout Windows
-
 
         private void btnLeftMenuHide_Click(object sender, RoutedEventArgs e)
         {

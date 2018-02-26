@@ -18,9 +18,6 @@
         <!--#region ZoomAndPan Framework -->
 
         <!-- UI commands. -->
-        <RoutedUICommand x:Key="Commands.DrawMode" />
-        <RoutedUICommand x:Key="Commands.ClearPicture" />
-        <RoutedUICommand x:Key="Commands.AddPicture" />
         <RoutedUICommand x:Key="Commands.ZoomOut" />
         <RoutedUICommand x:Key="Commands.ZoomIn" />
         <RoutedUICommand x:Key="Commands.JumpBackToPrevZoom" />
@@ -35,7 +32,7 @@
 
         <!--#endregion-->
 
-        <!--#region Storyboards for Flyout Windows -->
+        <!--#region Storyboards für Flyout Windows -->
 
         <Storyboard x:Key="sbShowLeftMenu" >
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
@@ -89,6 +86,26 @@
 			Key="Backspace"
 			Command="{StaticResource Commands.JumpBackToPrevZoom}"
 			/>
+        <KeyBinding
+			Key="P"
+			Command="{Binding MapElementInputMode}"
+            CommandParameter="POI"
+			/>
+        <KeyBinding
+			Key="S"
+			Command="{Binding MapElementInputMode}"
+            CommandParameter="Select"
+			/>
+        <KeyBinding
+			Key="R"
+			Command="{Binding MapElementInputMode}"
+            CommandParameter="Route"
+			/>
+        <KeyBinding
+			Key="E"
+			Command="{Binding MapElementInputMode}"
+            CommandParameter="Region"
+			/>
 
     </Window.InputBindings>
 
@@ -97,18 +114,6 @@
         <!--
         Bind commands to event handlers.
         -->
-        <CommandBinding 
-            Command="{StaticResource Commands.DrawMode}" 
-            Executed="DrawMode_Executed" 
-            />
-        <CommandBinding 
-            Command="{StaticResource Commands.ClearPicture}" 
-            Executed="ClearPicture_Executed" 
-            />
-        <CommandBinding 
-            Command="{StaticResource Commands.AddPicture}" 
-            Executed="AddPicture_Executed" 
-            />
         <CommandBinding 
             Command="{StaticResource Commands.ZoomOut}" 
             Executed="ZoomOut_Executed" 
@@ -199,90 +204,6 @@
 
         <DockPanel>
 
-            <!-- Grid placed below everything to change input mode -->
-            <Grid
-                Margin="5,5,5,5"
-                DockPanel.Dock="Bottom"
-                >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <!-- rest of the bar -->
-                    <ColumnDefinition Width="50"/>
-                    <!-- the clear picture button -->
-                    <ColumnDefinition Width="5"/>
-                    <!-- empty space -->
-                    <ColumnDefinition Width="50"/>
-                    <!-- the add picture button -->
-                    <ColumnDefinition Width="5"/>
-                    <!-- empty space -->
-                    <ColumnDefinition Width="40" />
-                    <!-- the fill button -->
-                    <ColumnDefinition Width="5" />
-                    <!-- spacer -->
-                    <ColumnDefinition Width="40" />
-                    <!-- the 100% button -->
-                    <ColumnDefinition Width="5" />
-                    <!-- spacer -->
-                    <ColumnDefinition Width="242" />
-                    <!-- the zoom percentage label -->
-                    <!-- resize grip -->
-                    <!-- spacer -->
-                </Grid.ColumnDefinitions>
-
-                <!-- 
-                The Draw button.  
-                -->
-                <RadioButton
-                    Grid.Column="1"
-                    x:Name="DrawButton"
-                    Command="{StaticResource Commands.DrawMode}"
-                    GroupName="DrawGroup"
-                    IsChecked="True" Content="Draw"/>
-                <!-- 
-                The Erase button.  
-                -->
-                <RadioButton
-                    Grid.Column="3"
-                    x:Name="EraseButton"
-                    Command="{StaticResource Commands.DrawMode}"
-                    GroupName="DrawGroup" Content="Erase"/>
-                <!-- 
-                The Select button.  
-                -->
-                <RadioButton
-                    Grid.Column="5"
-                    x:Name="SelectButton"
-                    Command="{StaticResource Commands.DrawMode}"
-                    GroupName="DrawGroup" Content="Select"/>
-                <!-- 
-                The - button. 
-                -->
-                <RadioButton
-                    Grid.Column="7"
-                    x:Name="AddButton"
-                    Command="{StaticResource Commands.DrawMode}"
-                    GroupName="DrawGroup" Content="Add"/>
-
-                <!--
-                This is the label that shows what the current zoom level
-                is while zooming in and out.
-                -->
-
-                <!-- Button to zoom out. -->
-
-                <!-- Slider to change the current zoom level. -->
-
-                <!--
-                Button to zoom in.
-                -->
-
-                <!-- Stick a resize grip in the bottom right corner of the window. -->
-                <ResizeGrip
-                    Grid.Column="9" Margin="225,0,0,0"
-                    />
-
-            </Grid>
-
             <!-- Grid placed below the zoom and pan control that contains the zoom slider, zoom label and some button. -->
             <Grid
                 Margin="5,5,5,5"
@@ -330,22 +251,6 @@
                     <!-- spacer -->
                 </Grid.ColumnDefinitions>
 
-                <!-- 
-                The clear button.  Clears the picture added by add button
-                -->
-                <Button
-                    Grid.Column="1"
-                    Command="{StaticResource Commands.ClearPicture}"
-                    Content="Clear"
-                    />
-                <!-- 
-                The add button.  Adds a picture of a pin to the Inkcanvas
-                -->
-                <Button
-                    Grid.Column="3"
-                    Command="{StaticResource Commands.AddPicture}"
-                    Content="Add"
-                    />
                 <!-- 
                 The fill button.  Causes the content to be scaled so that it fits in the viewport.
                 -->

@@ -24,13 +24,13 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Name="border" BorderThickness="2" BorderBrush="White" Background="{TemplateBinding Background}">
+                    <Border Name="border" BorderThickness="2" BorderBrush="White" Background="#FF3C3737" Opacity="0.8">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="0.8" />
-                            <Setter Property="Background" Value="#FF515151" />
+                            <Setter TargetName="border" Property="Opacity" Value="1" />
+                            <!--<Setter TargetName="border" Property="Background" Value="{x:Null}" />-->
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
