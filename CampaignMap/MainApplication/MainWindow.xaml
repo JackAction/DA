@@ -141,10 +141,10 @@
         <StackPanel Panel.ZIndex="2" x:Name="pnlLeftMenu" Orientation="Horizontal" Height="400" HorizontalAlignment="Left" Margin="-150,0,0,0">
             <Border BorderBrush="#AF1719" BorderThickness="1" Width="150" Background="#4C808080" >
                 <local:Left_UC 
-                    DeleteLayers="{Binding DeleteLayers}"
+                    DeleteLayer="{Binding DeleteLayer}"
                     AddLayer="{Binding AddLayer}"
-                    LayerChanged="{Binding LayerChanged}"
-                    Layers="{Binding CampaignVM.Layers}"
+                    LayerChanged="{Binding VisibilityOfLayerChanged}"
+                    Layers="{Binding CampaignVM.Campaign.Layers}"
                     SelectedLayer_Workaround="{Binding SelectedLayer_Workaround}"/>
             </Border>
             <Grid>
@@ -176,10 +176,10 @@
                     EraseMode="{Binding EraseMode}"
                     InputMode="{Binding MapElementInputMode}"
                     LayerChanged="{Binding LayersOfSelectedStrokeChanged}"
-                    Layers="{Binding CampaignVM.Layers}"
-                    LayersForNewStroke="{Binding LayersForNewStroke}"
-                    LayersOfSelectedStroke="{Binding LayersOfSelectedStroke}"
-                    DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"
+                    Layers="{Binding CampaignVM.Campaign.Layers}"
+                    LayersForNewElement="{Binding LayersForNewElement}"
+                    LayersOfSelectedElement="{Binding LayersOfSelectedElement}"
+                    DrawingAttributesForNewStroke="{Binding DrawingAttributesForNewStroke}"
                     DrawingAttributesOfSelectedStroke="{Binding SelectedStroke.DrawingAttributes}"
                     ElementNameForNewElement="{Binding ElementNameForNewElement, Mode=TwoWay}"
                     ElementDetailsForNewElement="{Binding ElementDetailsForNewElement, Mode=TwoWay}"
@@ -455,26 +455,26 @@
                         <InkCanvas
 						    x:Name="content" IsHitTestVisible="True" 
                             Strokes="{Binding CampaignVM.Strokes}" 
-                            DefaultDrawingAttributes="{Binding DefaultDrawingAttributes}"
+                            DefaultDrawingAttributes="{Binding DrawingAttributesForNewStroke}"
                             EditingMode="{Binding InkCanvasEditingMode}">
                             <InkCanvas.Background>
-                                <ImageBrush ImageSource="{Binding CampaignVM.BackgroundImagePath}" Stretch="None" />
+                                <ImageBrush ImageSource="{Binding CampaignVM.Campaign.BackgroundImagePath}" Stretch="None" />
                             </InkCanvas.Background>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="StrokeCollected">
                                     <i2:CallMethodAction
                                         TargetObject="{Binding}"
-                                        MethodName="StrokeAdded"/>
+                                        MethodName="AddStroke"/>
                                 </i:EventTrigger>
                                 <i:EventTrigger EventName="SelectionChanging">
                                     <i2:CallMethodAction
                                         TargetObject="{Binding}"
-                                        MethodName="StrokeSelected"/>
+                                        MethodName="ElementSelected"/>
                                 </i:EventTrigger>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i2:CallMethodAction
                                         TargetObject="{Binding}"
-                                        MethodName="SelectionChanged"/>
+                                        MethodName="SelectedElementChanged"/>
                                 </i:EventTrigger>
                                 <i:EventTrigger EventName="MouseDown">
                                     <i2:CallMethodAction
@@ -505,7 +505,5 @@
                 </ZoomAndPan:ZoomAndPanControl>
             </ScrollViewer>
         </DockPanel>
-
-
     </Grid>
 </Window>

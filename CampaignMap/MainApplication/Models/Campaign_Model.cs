@@ -73,7 +73,7 @@ namespace MainApplication
         }
 
 
-        public void ChangeLayerVisibility(Layer_Model layer)
+        public void UpdateVisibilityOfMapElements(Layer_Model layer)
         {
             if (layer.IsSelectedForVisibilityHandling)
             {

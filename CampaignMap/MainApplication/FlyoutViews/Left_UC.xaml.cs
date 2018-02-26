@@ -29,16 +29,16 @@ namespace MainApplication
 
         #region Dependency Properties
 
-        public static readonly DependencyProperty DeleteLayersProperty =
+        public static readonly DependencyProperty DeleteLayerProperty =
             DependencyProperty.Register(
-                "DeleteLayers",
+                "DeleteLayer",
                 typeof(ICommand),
                 typeof(Left_UC),
                 new UIPropertyMetadata(null));
-        public ICommand DeleteLayers
+        public ICommand DeleteLayer
         {
-            get { return (ICommand)GetValue(DeleteLayersProperty); }
-            set { SetValue(DeleteLayersProperty, value); }
+            get { return (ICommand)GetValue(DeleteLayerProperty); }
+            set { SetValue(DeleteLayerProperty, value); }
         }
 
         public static readonly DependencyProperty AddLayerProperty =

@@ -77,46 +77,46 @@ namespace MainApplication
             set { SetValue(LayersProperty, value); }
         }
 
-        public static readonly DependencyProperty LayersForNewStrokeProperty =
+        public static readonly DependencyProperty LayersForNewElementProperty =
             DependencyProperty.Register(
-                "LayersForNewStroke",
+                "LayersForNewElement",
                 typeof(ObservableCollection<Layer_Model>),
                 typeof(Right_UC),
                 new UIPropertyMetadata(null));
-        public ObservableCollection<Layer_Model> LayersForNewStroke
+        public ObservableCollection<Layer_Model> LayersForNewElement
         {
-            get { return (ObservableCollection<Layer_Model>)GetValue(LayersForNewStrokeProperty); }
-            set { SetValue(LayersForNewStrokeProperty, value); }
+            get { return (ObservableCollection<Layer_Model>)GetValue(LayersForNewElementProperty); }
+            set { SetValue(LayersForNewElementProperty, value); }
         }
 
-        public static readonly DependencyProperty DefaultDrawingAttributesProperty =
+        public static readonly DependencyProperty DrawingAttributesForNewStrokeProperty =
             DependencyProperty.Register(
-                "DefaultDrawingAttributes",
+                "DrawingAttributesForNewStroke",
                 typeof(DrawingAttributes),
                 typeof(Right_UC),
                 new UIPropertyMetadata(null));
-        public DrawingAttributes DefaultDrawingAttributes
+        public DrawingAttributes DrawingAttributesForNewStroke
         {
-            get { return (DrawingAttributes)GetValue(DefaultDrawingAttributesProperty); }
-            set { SetValue(DefaultDrawingAttributesProperty, value); }
+            get { return (DrawingAttributes)GetValue(DrawingAttributesForNewStrokeProperty); }
+            set { SetValue(DrawingAttributesForNewStrokeProperty, value); }
         }
 
-        public double DefaultDrawingAttributesWidthHeight
+        public double DrawingAttributesForNewStrokeWidthHeight
         {
-            get { return DefaultDrawingAttributes.Width; }
-            set { DefaultDrawingAttributes.Width = value; DefaultDrawingAttributes.Height = value; }
+            get { return DrawingAttributesForNewStroke.Width; }
+            set { DrawingAttributesForNewStroke.Width = value; DrawingAttributesForNewStroke.Height = value; }
         }
 
-        public static readonly DependencyProperty LayersOfSelectedStrokeProperty =
+        public static readonly DependencyProperty LayersOfSelectedElementProperty =
             DependencyProperty.Register(
-                "LayersOfSelectedStroke",
+                "LayersOfSelectedElement",
                 typeof(ObservableCollection<Layer_Model>),
                 typeof(Right_UC),
                 new UIPropertyMetadata(null));
-        public ObservableCollection<Layer_Model> LayersOfSelectedStroke
+        public ObservableCollection<Layer_Model> LayersOfSelectedElement
         {
-            get { return (ObservableCollection<Layer_Model>)GetValue(LayersOfSelectedStrokeProperty); }
-            set { SetValue(LayersOfSelectedStrokeProperty, value); }
+            get { return (ObservableCollection<Layer_Model>)GetValue(LayersOfSelectedElementProperty); }
+            set { SetValue(LayersOfSelectedElementProperty, value); }
         }
 
         public static readonly DependencyProperty DrawingAttributesOfSelectedStrokeProperty =
@@ -181,14 +181,5 @@ namespace MainApplication
 
         #endregion
 
-        private void radioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
     }
 }

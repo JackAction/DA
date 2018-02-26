@@ -44,7 +44,7 @@
                         <!-- rest of the bar -->
                     </Grid.RowDefinitions>
                     <CheckBox x:Name="cbxErase" Content="Erase" Command="{Binding EraseMode}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="48"/>
-                    <RadioButton x:Name="rbPOI" Content="POI" Command="{Binding InputMode}" CommandParameter="POI" HorizontalAlignment="Left" Margin="0,27,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="38" Checked="radioButton_Checked"/>
+                    <RadioButton x:Name="rbPOI" Content="POI" Command="{Binding InputMode}" CommandParameter="POI" HorizontalAlignment="Left" Margin="0,27,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="38" />
                     <RadioButton x:Name="rbRoute" Content="Route" Command="{Binding InputMode}" CommandParameter="Route" HorizontalAlignment="Left" Margin="0,52,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="50"/>
                     <RadioButton x:Name="rbRegion" Content="Region" Command="{Binding InputMode}" CommandParameter="Region" HorizontalAlignment="Left" Margin="0,76,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="56"/>
                     <Slider
@@ -55,13 +55,13 @@
                         Maximum="40" 
                         SmallChange="1" 
                         TickPlacement="TopLeft"
-                        Value="{Binding DefaultDrawingAttributesWidthHeight}" 
+                        Value="{Binding DrawingAttributesForNewStrokeWidthHeight}" 
                     />
                     <local:MapElementProperties_UC Grid.Row="2" 
                         Layers="{Binding Layers}"
-                        SelectedLayers="{Binding LayersForNewStroke}" 
+                        SelectedLayers="{Binding LayersForNewElement}" 
                         SelectedMemberPath="IsSelectedForNewStroke"
-                        DrawingAttributes="{Binding DefaultDrawingAttributes}"
+                        DrawingAttributes="{Binding DrawingAttributesForNewStroke}"
                         ElementName="{Binding ElementNameForNewElement, Mode=TwoWay}"
                         ElementDetails="{Binding ElementDetailsForNewElement, Mode=TwoWay}" Grid.ColumnSpan="2" Margin="0,2.96,0,0.04" />
                 </Grid>
@@ -88,7 +88,7 @@
                     <local:MapElementProperties_UC Grid.Row="2"
                         LayerChanged ="{Binding LayerChanged}"
                         Layers="{Binding Layers}"
-                        SelectedLayers="{Binding LayersOfSelectedStroke}" 
+                        SelectedLayers="{Binding LayersOfSelectedElement}" 
                         SelectedMemberPath="IsSelectedInExistingStroke"
                         DrawingAttributes="{Binding DrawingAttributesOfSelectedStroke}"
                         ElementName="{Binding ElementNameOfSelectedElement, Mode=TwoWay}"

@@ -14,9 +14,6 @@ namespace MainApplication
     {
         private Campaign_Model _campaign;
 
-
-        // Wozu? ViemModel weglassen?
-
         public Campaign_ViewModel()
         {
             _campaign = new Campaign_Model();
@@ -34,15 +31,15 @@ namespace MainApplication
             }
         }
 
-        public string BackgroundImagePath
-        {
-            get { return _campaign.BackgroundImagePath; }
-            set
-            {
-                _campaign.BackgroundImagePath = value;
-                RaisePropertyChanged();
-            }
-        }
+        //public string BackgroundImagePath
+        //{
+        //    get { return _campaign.BackgroundImagePath; }
+        //    set
+        //    {
+        //        _campaign.BackgroundImagePath = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
 
         public StrokeCollection Strokes
         {
@@ -54,12 +51,12 @@ namespace MainApplication
             }
         }
 
-        private ObservableCollection<Layer_Model> _layers = new ObservableCollection<Layer_Model>();
-        public ObservableCollection<Layer_Model> Layers
-        {
-            get { return _campaign.Layers; }
-            set { _campaign.Layers = value; }
-        }
+        //private ObservableCollection<Layer_Model> _layers = new ObservableCollection<Layer_Model>();
+        //public ObservableCollection<Layer_Model> Layers
+        //{
+        //    get { return _campaign.Layers; }
+        //    set { _campaign.Layers = value; }
+        //}
 
     }
 }

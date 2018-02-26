@@ -57,7 +57,7 @@
                  KeyUp="editName_KeyUp"/>
         
         <Button x:Name="delete" 
-                Command="{Binding DeleteLayers}" 
+                Command="{Binding DeleteLayer}" 
                 Style="{StaticResource buttonStyle}" Content="X" Grid.Row="2" Margin="122,41,10,45" Height="20" Width="Auto"  />
 
     </Grid>
