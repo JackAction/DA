@@ -91,25 +91,25 @@ namespace MainApplication
 
         #endregion
 
-        private void editName_KeyUp(object sender, KeyEventArgs e)
+        private void txtNameOfSelectedLayer_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                editName.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                txtNameOfSelectedLayer.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
         }
 
-        private void add_Click(object sender, RoutedEventArgs e)
+        private void btnAddLayer_Click(object sender, RoutedEventArgs e)
         {
-            addName.Text = "";
-            addName.Visibility = Visibility.Visible;
+            txtNameOfNewLayer.Text = "";
+            txtNameOfNewLayer.Visibility = Visibility.Visible;
         }
 
-        private void addName_KeyUp(object sender, KeyEventArgs e)
+        private void txtNameOfNewLayer_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                addName.Visibility = Visibility.Hidden; 
+                txtNameOfNewLayer.Visibility = Visibility.Hidden; 
             }
         }
     }

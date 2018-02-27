@@ -14,59 +14,64 @@
         >
 
     <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="CampaignMapResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
-        <!--#region ZoomAndPan Framework -->
+            <!--#region ZoomAndPan Framework -->
 
-        <!-- UI commands. -->
-        <RoutedUICommand x:Key="Commands.ZoomOut" />
-        <RoutedUICommand x:Key="Commands.ZoomIn" />
-        <RoutedUICommand x:Key="Commands.JumpBackToPrevZoom" />
-        <RoutedUICommand x:Key="Commands.Fill" />
-        <RoutedUICommand x:Key="Commands.OneHundredPercent" />
+            <!-- UI commands. -->
+            <RoutedUICommand x:Key="Commands.ZoomOut" />
+            <RoutedUICommand x:Key="Commands.ZoomIn" />
+            <RoutedUICommand x:Key="Commands.JumpBackToPrevZoom" />
+            <RoutedUICommand x:Key="Commands.Fill" />
+            <RoutedUICommand x:Key="Commands.OneHundredPercent" />
 
-        <!-- 
+            <!-- 
             This converts from a scale value to a percentage value.
             It is used to convert the value of 'ContentScale' to the percentage zoom level that is displayed in the UI.
             -->
-        <local:ScaleToPercentConverter x:Key="scaleToPercentConverter" />
+            <local:ScaleToPercentConverter x:Key="scaleToPercentConverter" />
 
-        <!--#endregion-->
+            <!--#endregion-->
 
-        <!--#region Storyboards für Flyout Windows -->
+            <!--#region Storyboards für Flyout Windows -->
 
-        <Storyboard x:Key="sbShowLeftMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
-        </Storyboard>
-        <Storyboard x:Key="sbHideLeftMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
-        </Storyboard>
-
-
-        <Storyboard x:Key="sbShowTopMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,-100,0,0" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
-        </Storyboard>
-        <Storyboard x:Key="sbHideTopMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,-100,0,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
-        </Storyboard>
+            <Storyboard x:Key="sbShowLeftMenu" >
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
+            </Storyboard>
+            <Storyboard x:Key="sbHideLeftMenu">
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
+            </Storyboard>
 
 
-        <Storyboard x:Key="sbShowRightMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,-150,0" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
-        </Storyboard>
-        <Storyboard x:Key="sbHideRightMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,-300,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
-        </Storyboard>
+            <Storyboard x:Key="sbShowTopMenu" >
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,-100,0,0" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
+            </Storyboard>
+            <Storyboard x:Key="sbHideTopMenu">
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,-100,0,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
+            </Storyboard>
 
 
-        <Storyboard x:Key="sbShowBottomMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,-100" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
-        </Storyboard>
-        <Storyboard x:Key="sbHideBottomMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,0,-100" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
-        </Storyboard>
+            <Storyboard x:Key="sbShowRightMenu" >
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,-150,0" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
+            </Storyboard>
+            <Storyboard x:Key="sbHideRightMenu">
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,-300,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
+            </Storyboard>
 
-        <!--#endregion-->
 
+            <Storyboard x:Key="sbShowBottomMenu" >
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,-100" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
+            </Storyboard>
+            <Storyboard x:Key="sbHideBottomMenu">
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,0,-100" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
+            </Storyboard>
+
+            <!--#endregion-->
+
+        </ResourceDictionary>
     </Window.Resources>
 
     <Window.InputBindings>
@@ -143,8 +148,8 @@
     </Window.DataContext>
 
     <Grid>
-        <StackPanel Panel.ZIndex="2" x:Name="pnlLeftMenu" Orientation="Horizontal" Height="400" HorizontalAlignment="Left" Margin="-150,0,0,0">
-            <Border BorderBrush="#AF1719" BorderThickness="1" Width="150" Background="#4C808080" >
+        <StackPanel Panel.ZIndex="2" x:Name="pnlLeftMenu" Orientation="Horizontal"  HorizontalAlignment="Left" Margin="-150,0,0,0">
+            <Border Width="150" >
                 <local:Left_UC 
                     DeleteLayer="{Binding DeleteLayer}"
                     AddLayer="{Binding AddLayer}"
@@ -159,7 +164,7 @@
         </StackPanel>
 
         <StackPanel Panel.ZIndex="2" x:Name="pnlTopMenu" Orientation="Vertical" Width="400" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-100,0,0">
-            <Border BorderBrush="#AF1719" BorderThickness="1" Height="100" Background="#4C808080" >
+            <Border Height="100" >
                 <local:Top_UC 
                     SaveCampaign="{Binding SaveCampaign}"
                     LoadCampaign="{Binding LoadCampaign}"
@@ -176,7 +181,7 @@
                 <Button x:Name="btnRightMenuHide" Width="48" Height="48" Click="btnRightMenuHide_Click" Content="Hide" Visibility="Hidden"/>
                 <Button x:Name="btnRightMenuShow" Width="48" Height="48" Click="btnRightMenuShow_Click" Content="Show"/>
             </Grid>
-            <Border BorderBrush="#AF1719" BorderThickness="1" Width="300" Background="#4C808080">
+            <Border Width="300" >
                 <local:Right_UC
                     EraseMode="{Binding EraseMode}"
                     InputMode="{Binding MapElementInputMode}"
@@ -201,100 +206,88 @@
             <Border BorderBrush="#AF1719" BorderThickness="1" Height="100" Background="#4C808080" />
         </StackPanel>
 
-
-        <DockPanel>
-
-            <!-- Grid placed below the zoom and pan control that contains the zoom slider, zoom label and some button. -->
-            <Grid
+        <StackPanel Panel.ZIndex="2" Orientation="Vertical" Width="350" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10">
+            <Border  Height="37" >
+                <Grid
                 Margin="5,5,5,5"
-                DockPanel.Dock="Bottom"
-                >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="342*" />
-                    <!-- rest of the bar -->
-                    <ColumnDefinition Width="50"/>
-                    <!-- the clear picture button -->
-                    <ColumnDefinition Width="5"/>
-                    <!-- empty space -->
-                    <ColumnDefinition Width="50"/>
-                    <!-- the add picture button -->
-                    <ColumnDefinition Width="5"/>
-                    <!-- empty space -->
-                    <ColumnDefinition Width="40" />
-                    <!-- the fill button -->
-                    <ColumnDefinition Width="5" />
-                    <!-- spacer -->
-                    <ColumnDefinition Width="40" />
-                    <!-- the 100% button -->
-                    <ColumnDefinition Width="5" />
-                    <!-- spacer -->
-                    <ColumnDefinition Width="25" />
-                    <!-- the zoom percentage label -->
-                    <ColumnDefinition Width="15" />
-                    <!-- the % symbol -->
-                    <ColumnDefinition Width="5" />
-                    <!-- spacer -->
-                    <ColumnDefinition Width="20" />
-                    <!-- the zoom out button -->
-                    <ColumnDefinition Width="5" />
-                    <!-- spacer -->
-                    <ColumnDefinition Width="120" />
-                    <!-- the zoom slider -->
-                    <ColumnDefinition Width="5" />
-                    <!-- spacer -->
-                    <ColumnDefinition Width="20" />
-                    <!-- the zoom in button -->
-                    <ColumnDefinition Width="10" />
-                    <!-- spacer -->
-                    <ColumnDefinition Width="Auto" />
-                    <!-- resize grip -->
-                    <!-- spacer -->
-                </Grid.ColumnDefinitions>
 
-                <!-- 
+                >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1" />
+                        <!-- empty space -->
+                        <ColumnDefinition Width="50" />
+                        <!-- the fill button -->
+                        <ColumnDefinition Width="5" />
+                        <!-- spacer -->
+                        <ColumnDefinition Width="50" />
+                        <!-- the 100% button -->
+                        <ColumnDefinition Width="5" />
+                        <!-- spacer -->
+                        <ColumnDefinition Width="30" />
+                        <!-- the zoom percentage label -->
+                        <ColumnDefinition Width="20" />
+                        <!-- the % symbol -->
+                        <ColumnDefinition Width="5" />
+                        <!-- spacer -->
+                        <ColumnDefinition Width="20" />
+                        <!-- the zoom out button -->
+                        <ColumnDefinition Width="5" />
+                        <!-- spacer -->
+                        <ColumnDefinition Width="120" />
+                        <!-- the zoom slider -->
+                        <ColumnDefinition Width="5" />
+                        <!-- spacer -->
+                        <ColumnDefinition Width="20" />
+                        <!-- the zoom in button -->
+                        <ColumnDefinition Width="27" />
+                        <!-- spacer -->
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Fill="#CC3C3737" Grid.Column="10"   />
+                    <Rectangle Fill="#CC3C3737" Grid.Column="5" Grid.ColumnSpan="2"   />
+                    <!-- 
                 The fill button.  Causes the content to be scaled so that it fits in the viewport.
                 -->
-                <Button
-                    Grid.Column="5"
+                    <Button
+                    Grid.Column="1"
                     Command="{StaticResource Commands.Fill}"
                     Content="Fill"
                     />
-                <!-- 
+                    <!-- 
                 The 100% button.  Causes the content to be scaled to 100 percent.
                 -->
-                <Button
-                    Grid.Column="7"
+                    <Button
+                    Grid.Column="3"
                     Command="{StaticResource Commands.OneHundredPercent}"
                     Content="100%"
                     />
 
-                <!--
+                    <!--
                 This is the label that shows what the current zoom level
                 is while zooming in and out.
                 -->
-                <TextBlock
-                    Grid.Column="9"
+                    <TextBlock
+                    Grid.Column="5"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Right"
-                    Text="{Binding ContentScale, Converter={StaticResource scaleToPercentConverter}, ElementName=zoomAndPanControl}" Margin="0,4.02"
+                    Text="{Binding ContentScale, Converter={StaticResource scaleToPercentConverter}, ElementName=zoomAndPanControl}" Margin="0,6"
                     />
 
-                <TextBlock
-                    Grid.Column="10"
+                    <TextBlock
+                    Grid.Column="6"
                     VerticalAlignment="Center"
-                    Text="%" Margin="0,4.02"
+                    Text="%" Margin="0,6"
                     />
 
-                <!-- Button to zoom out. -->
-                <Button
-                    Grid.Column="12"
+                    <!-- Button to zoom out. -->
+                    <Button
+                    Grid.Column="8"
                     Command="{StaticResource Commands.ZoomOut}"
                     Content="-"
                     />
 
-                <!-- Slider to change the current zoom level. -->
-                <Slider
-                    Grid.Column="14"
+                    <!-- Slider to change the current zoom level. -->
+                    <Slider
+                    Grid.Column="10"
                     Minimum="10" 
                     LargeChange="20" 
                     TickFrequency="10" 
@@ -304,22 +297,21 @@
                     Value="{Binding ContentScale, Converter={StaticResource scaleToPercentConverter}, ElementName=zoomAndPanControl}"
                     />
 
-                <!--
+                    <!--
                 Button to zoom in.
                 -->
-                <Button
-                    Grid.Column="16"
+                    <Button
+                    Grid.Column="12"
                     Command="{StaticResource Commands.ZoomIn}"
                     Content="+"
                     />
 
-                <!-- Stick a resize grip in the bottom right corner of the window. -->
-                <ResizeGrip
-                    Grid.Column="18"
-                    />
+                </Grid>
+            </Border>
+        </StackPanel>
 
-            </Grid>
 
+        <DockPanel>
             <!--
 	        Wrap the ZoomAndPanControl in a ScrollViewer.
 	        When the scaled content that is displayed in ZoomAndPanControl is larger than the viewport onto the content

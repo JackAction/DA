@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="MainApplication.App" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.Left_UC" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="6" Width="4" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAgAAAIAABAEIAAIAQAAAAgEgAAAIAACAAA=</HashCode>
+      <FileName>FlyoutViews\Left_UC.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MainApplication.MapElementProperties_UC" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="6.25" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAQAAAAIAAAAQAIAAwEACIAIAAAAAo=</HashCode>
+      <FileName>FlyoutViews\MapElementProperties_UC.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MainApplication.Right_UC" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="1.5" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAQAAgEAEAAAAAAAgAKEIABQQCBAAkGABAIIEAAiE=</HashCode>
+      <FileName>FlyoutViews\Right_UC.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MainApplication.Top_UC" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="3.25" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAIAAAgAAAAIAAAAAAIAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlyoutViews\Top_UC.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MainApplication.ImageFilterString" Collapsed="true">
+    <Position X="3.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\ImageFilterString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.PictureDimension" Collapsed="true">
+    <Position X="3.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\PictureDimension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.ScaleToPercentConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\ScaleToPercentConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MainApplication.XMLHelper&lt;T&gt;" Collapsed="true">
+    <Position X="3.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\XMLHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="1.5" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>kAQhRIJAAAIAAOASCEECRIQAABABAgCAAAdQAAgQASA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MainApplication.Campaign_Model" Collapsed="true">
+    <Position X="6.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAACEEAEAAAAAAAgAQAACiAAAAEBEAAAAAAAAA=</HashCode>
+      <FileName>Models\Campaign_Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.Layer_Model" Collapsed="true">
+    <Position X="8.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAADAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Models\Layer_Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.POI_Model" Collapsed="true">
+    <Position X="6.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIARAAAAAAEAAAQAABAAAAAEAAAAAAAACAA=</HashCode>
+      <FileName>Models\POI_Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.StrokeData_Model" Collapsed="true">
+    <Position X="10.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\StrokeData_Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.Symbol_Model" Collapsed="true">
+    <Position X="8.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Symbol_Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.Campaign_Repository" Collapsed="true">
+    <Position X="6.25" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAQAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Campaign_Repository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.Campaign_ViewModel" Collapsed="true">
+    <Position X="8.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Campaign_ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.MainWindow_ViewModel" Collapsed="true">
+    <Position X="6.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>oJCBgEAuERIBAACUIACEBEhwBCkCARAAnABCkBCCCAg=</HashCode>
+      <FileName>ViewModels\MainWindow_ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.Properties.Resources" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainApplication.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

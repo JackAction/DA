@@ -9,6 +9,13 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="MainApplication.Right_UC"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../CampaignMapResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Right_UC}}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -19,7 +26,7 @@
             <RowDefinition Height="*" />
             <!-- rest of the bar -->
         </Grid.RowDefinitions>
-        <TabControl x:Name="tabControl" Grid.Row="1" Background="{x:Null}">
+        <TabControl x:Name="tabControl" Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}">
             <TabItem Header="Draw">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonUp">
@@ -30,40 +37,50 @@
                 </i:Interaction.Triggers>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="49*"/>
+                        <ColumnDefinition Width="81*"/>
+                        <ColumnDefinition Width="164*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="34*" />
                         <!-- rest of the bar -->
-                        <RowDefinition Height="157.04"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="82.5"/>
                         <!-- mode selection -->
                         <RowDefinition Height="281" />
                         <!-- map element properties -->
                         <RowDefinition Height="29*" />
                         <!-- rest of the bar -->
                     </Grid.RowDefinitions>
-                    <CheckBox x:Name="cbxErase" Content="Erase" Command="{Binding EraseMode}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="48"/>
-                    <RadioButton x:Name="rbPOI" Content="POI" Command="{Binding InputMode}" CommandParameter="POI" HorizontalAlignment="Left" Margin="0,27,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="38" />
-                    <RadioButton x:Name="rbRoute" Content="Route" Command="{Binding InputMode}" CommandParameter="Route" HorizontalAlignment="Left" Margin="0,52,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="50"/>
-                    <RadioButton x:Name="rbRegion" Content="Region" Command="{Binding InputMode}" CommandParameter="Region" HorizontalAlignment="Left" Margin="0,76,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="15" Width="56"/>
+                    <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="1" Height="20.28" VerticalAlignment="Top"  />
+                    <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="2" Height="20.28" VerticalAlignment="Top"  />
+                    <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="3" Height="20.28" VerticalAlignment="Top"  />
+                    <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="4" Height="20.28" VerticalAlignment="Top"  />
+                    <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="4" Height="27" VerticalAlignment="Top" Margin="0,55.486,10,0" Grid.ColumnSpan="2"  />
+                    <CheckBox x:Name="cbxErase" Content="Erase" Command="{Binding EraseMode}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Grid.Row="1" Grid.Column="1"  />
+                    <RadioButton x:Name="rbPOI" Content="POI" Command="{Binding InputMode}" CommandParameter="POI"  Grid.Row="2"  Grid.Column="1"  />
+                    <RadioButton x:Name="rbRoute" Content="Route" Command="{Binding InputMode}" CommandParameter="Route"  Grid.Row="3"  Grid.Column="1"  />
+                    <RadioButton x:Name="rbRegion" Content="Region" Command="{Binding InputMode}" CommandParameter="Region"  Grid.Row="4" Grid.Column="1"  />
                     <Slider
-                        Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"
+                        Grid.Column="1" Grid.Row="4" VerticalAlignment="Bottom"
                         Minimum="1" 
                         LargeChange="4" 
                         TickFrequency="1" 
                         Maximum="40" 
                         SmallChange="1" 
                         TickPlacement="TopLeft"
-                        Value="{Binding DrawingAttributesForNewStrokeWidthHeight}" 
+                        Value="{Binding DrawingAttributesForNewStrokeWidthHeight}" Margin="0,0,10,0.143" Grid.ColumnSpan="2" 
                     />
-                    <local:MapElementProperties_UC Grid.Row="2" 
+                    <local:MapElementProperties_UC Grid.Row="5" 
                         Layers="{Binding Layers}"
                         SelectedLayers="{Binding LayersForNewElement}" 
                         SelectedMemberPath="IsSelectedForNewStroke"
                         DrawingAttributes="{Binding DrawingAttributesForNewStroke}"
                         ElementName="{Binding ElementNameForNewElement, Mode=TwoWay}"
-                        ElementDetails="{Binding ElementDetailsForNewElement, Mode=TwoWay}" Grid.ColumnSpan="2" Margin="0,2.96,0,0.04" />
+                        ElementDetails="{Binding ElementDetailsForNewElement, Mode=TwoWay}" Grid.ColumnSpan="3" Margin="0,2.857,0,0.143" />
+                    <Label x:Name="lblSize" Content="Size" HorizontalAlignment="Left" Margin="10,52.486,0,0" Grid.Row="4" VerticalAlignment="Top" Width="39"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Select">

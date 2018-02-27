@@ -44,13 +44,13 @@
             <RowDefinition Height="*" />
             <!-- rest of the bar -->
         </Grid.RowDefinitions>
-        <Label x:Name="lblName" Content="Name" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="26" />
-        <Label x:Name="lblColor" Content="Color" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" Height="26"/>
+        <Label x:Name="lblName" Content="Name" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top"  />
+        <Label x:Name="lblColor" Content="Color" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" />
         <Label x:Name="lblLayers" Content="Layers" Grid.Column="1" VerticalAlignment="Top" Grid.Row="5"/>
         <Label x:Name="lblDetails" Content="Details" Grid.Column="1" VerticalAlignment="Top" Grid.Row="7"/>
 
-        <TextBox x:Name="txtName" Grid.Column="2" Height="23" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"
-                  Text="{Binding ElementName, Mode=TwoWay}"/>
+        <TextBox x:Name="txtName" Grid.Column="2" Grid.Row="1" TextWrapping="Wrap"
+                  Text="{Binding ElementName, Mode=TwoWay}" Height="30" VerticalAlignment="Top"/>
         <xctk:ColorPicker Height="29" Grid.Row="3" VerticalAlignment="Top" Grid.Column="2" ShowRecentColors="True"
                           SelectedColor="{Binding DrawingAttributes.Color}"/>
         <xctk:CheckListBox x:Name="checkListBox" Grid.Row="5" Grid.Column="2"
