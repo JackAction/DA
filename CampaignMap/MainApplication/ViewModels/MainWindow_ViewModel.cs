@@ -372,7 +372,7 @@ namespace MainApplication
         {
             var canvas = (InkCanvas)sender;
             var mouseDownPoint = e.GetPosition(canvas);
-            PictureDimension pictureDimension = new PictureDimension(@"C:\Users\JackAction\Documents\DA\CampaignMap\MainApplication\Pin.png");
+            PictureDimension pictureDimension = new PictureDimension(@"C:\Users\Fabian\Documents\DA\CampaignMap\MainApplication\Pin.png");
             var x = mouseDownPoint.Y - pictureDimension.Height;
             var y = mouseDownPoint.X;
 

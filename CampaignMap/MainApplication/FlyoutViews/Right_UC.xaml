@@ -54,6 +54,7 @@
                         <RowDefinition Height="29*" />
                         <!-- rest of the bar -->
                     </Grid.RowDefinitions>
+                    <Rectangle Fill="#CC3C3737" Grid.Row="1" Height="425" VerticalAlignment="Top" Margin="10,0.333,10,0" Grid.ColumnSpan="3" Grid.RowSpan="5"  />
                     <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="1" Height="20.28" VerticalAlignment="Top"  />
                     <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="2" Height="20.28" VerticalAlignment="Top"  />
                     <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="3" Height="20.28" VerticalAlignment="Top"  />

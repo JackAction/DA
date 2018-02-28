@@ -59,7 +59,7 @@
                            SelectedMemberPath="{Binding SelectedMemberPath}"
                            ItemsSource="{Binding Layers}"
                            SelectedItemsOverride="{Binding SelectedLayers}"
-                           Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListSmall}" />
+                           Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListSmall}" Margin="0,3,0.02,5" Grid.RowSpan="2" />
         <!--<xctk:MultiLineTextEditor Grid.Row="7" Grid.Column="2" DropDownWidth="180" DropDownHeight="80"
                                   Text="{Binding ElementDetails, Mode=TwoWay}"/>-->
         <TextBox x:Name="textBox" Grid.Column="2" Grid.Row="7" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto"

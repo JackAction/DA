@@ -158,8 +158,8 @@
                     SelectedLayer_Workaround="{Binding SelectedLayer_Workaround}"/>
             </Border>
             <Grid>
-                <Button x:Name="btnLeftMenuHide" Width="48" Height="48" Click="btnLeftMenuHide_Click" Content="Hide" Visibility="Hidden"/>
-                <Button x:Name="btnLeftMenuShow" Width="48" Height="48" Click="btnLeftMenuShow_Click" Content="Show"/>
+                <Button x:Name="btnLeftMenuHide" Style="{DynamicResource IconLeftButton}" Width="48" Height="48" Click="btnLeftMenuHide_Click"  Visibility="Hidden"/>
+                <Button x:Name="btnLeftMenuShow" Style="{DynamicResource IconRightButton}" Width="48" Height="48" Click="btnLeftMenuShow_Click" />
             </Grid>
         </StackPanel>
 
@@ -171,15 +171,15 @@
                     CreateCampaign="{Binding CreateCampaign}"/>
             </Border>
             <Grid>
-                <Button x:Name="btnTopMenuHide" Width="48" Height="48" Click="btnTopMenuHide_Click" Content="Hide" Visibility="Hidden"/>
-                <Button x:Name="btnTopMenuShow" Width="48" Height="48" Click="btnTopMenuShow_Click" Content="Show"/>
+                <Button x:Name="btnTopMenuHide" Style="{DynamicResource IconUpButton}" Width="48" Height="48" Click="btnTopMenuHide_Click" Visibility="Hidden"/>
+                <Button x:Name="btnTopMenuShow" Style="{DynamicResource IconDownButton}" Width="48" Height="48" Click="btnTopMenuShow_Click" />
             </Grid>
         </StackPanel>
 
         <StackPanel Panel.ZIndex="2" x:Name="pnlRightMenu" Orientation="Horizontal" Height="600" HorizontalAlignment="Right" Margin="0,0,-300,0">
             <Grid>
-                <Button x:Name="btnRightMenuHide" Width="48" Height="48" Click="btnRightMenuHide_Click" Content="Hide" Visibility="Hidden"/>
-                <Button x:Name="btnRightMenuShow" Width="48" Height="48" Click="btnRightMenuShow_Click" Content="Show"/>
+                <Button x:Name="btnRightMenuHide" Style="{DynamicResource IconRightButton}" Width="48" Height="48" Click="btnRightMenuHide_Click" Visibility="Hidden"/>
+                <Button x:Name="btnRightMenuShow" Style="{DynamicResource IconLeftButton}" Width="48" Height="48" Click="btnRightMenuShow_Click" />
             </Grid>
             <Border Width="300" >
                 <local:Right_UC
@@ -200,8 +200,8 @@
 
         <StackPanel Panel.ZIndex="2" x:Name="pnlBottomMenu" Orientation="Vertical" Width="400" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,-100">
             <Grid>
-                <Button x:Name="btnBottomMenuHide" Width="48" Height="48" Click="btnBottomMenuHide_Click" Content="Hide" Visibility="Hidden"/>
-                <Button x:Name="btnBottomMenuShow" Width="48" Height="48" Click="btnBottomMenuShow_Click" Content="Show"/>
+                <Button x:Name="btnBottomMenuHide" Style="{DynamicResource IconDownButton}" Width="48" Height="48" Click="btnBottomMenuHide_Click" Visibility="Hidden"/>
+                <Button x:Name="btnBottomMenuShow" Style="{DynamicResource IconUpButton}" Width="48" Height="48" Click="btnBottomMenuShow_Click" />
             </Grid>
             <Border BorderBrush="#AF1719" BorderThickness="1" Height="100" Background="#4C808080" />
         </StackPanel>
