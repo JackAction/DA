@@ -62,7 +62,7 @@ namespace MainApplication
 
         public void SetLayersOfStroke(Stroke stroke, Layer_Model layer)
         {
-            if (layer.IsSelectedInExistingStroke)
+            if (layer.IsSelectedInExistingElement)
             {
                 stroke.AddPropertyData(layer.Id, layer.Name);
             }

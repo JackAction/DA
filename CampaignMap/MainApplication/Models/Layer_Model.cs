@@ -14,8 +14,8 @@ namespace MainApplication
 
         public bool IsSelectedForVisibilityHandling { get; set; }
 
-        public bool IsSelectedForNewStroke { get; set; }
+        public bool IsSelectedForNewElement { get; set; }
 
-        public bool IsSelectedInExistingStroke { get; set; }
+        public bool IsSelectedInExistingElement { get; set; }
     }
 }

@@ -10,7 +10,7 @@
         xmlns:i2="http://schemas.microsoft.com/expression/2010/interactions"
         mc:Ignorable="d"
         Title="DnD Campaign Map" Height="800" Width="1200"
-        Loaded="MainWindow_Loaded"
+        Loaded="MainWindow_Loaded" Icon="favicon.ico"
         >
 
     <Window.Resources>
@@ -39,34 +39,34 @@
             <!--#region Storyboards für Flyout Windows -->
 
             <Storyboard x:Key="sbShowLeftMenu" >
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
             </Storyboard>
             <Storyboard x:Key="sbHideLeftMenu">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="-150,0,0,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
             </Storyboard>
 
 
             <Storyboard x:Key="sbShowTopMenu" >
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,-100,0,0" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
             </Storyboard>
             <Storyboard x:Key="sbHideTopMenu">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,-100,0,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,-100,0,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
             </Storyboard>
 
 
             <Storyboard x:Key="sbShowRightMenu" >
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,-150,0" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,0,20,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
             </Storyboard>
             <Storyboard x:Key="sbHideRightMenu">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,-300,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,0,-320,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
             </Storyboard>
 
 
             <Storyboard x:Key="sbShowBottomMenu" >
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,-100" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
             </Storyboard>
             <Storyboard x:Key="sbHideBottomMenu">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,0,-100" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,0,0,-100" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
             </Storyboard>
 
             <!--#endregion-->
@@ -176,12 +176,12 @@
             </Grid>
         </StackPanel>
 
-        <StackPanel Panel.ZIndex="2" x:Name="pnlRightMenu" Orientation="Horizontal" Height="600" HorizontalAlignment="Right" Margin="0,0,-300,0">
+        <StackPanel Panel.ZIndex="2" x:Name="pnlRightMenu" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,-320,0">
             <Grid>
                 <Button x:Name="btnRightMenuHide" Style="{DynamicResource IconRightButton}" Width="48" Height="48" Click="btnRightMenuHide_Click" Visibility="Hidden"/>
                 <Button x:Name="btnRightMenuShow" Style="{DynamicResource IconLeftButton}" Width="48" Height="48" Click="btnRightMenuShow_Click" />
             </Grid>
-            <Border Width="300" >
+            <Border Width="340" >
                 <local:Right_UC
                     EraseMode="{Binding EraseMode}"
                     InputMode="{Binding MapElementInputMode}"
@@ -194,7 +194,7 @@
                     ElementNameForNewElement="{Binding ElementNameForNewElement, Mode=TwoWay}"
                     ElementDetailsForNewElement="{Binding ElementDetailsForNewElement, Mode=TwoWay}"
                     ElementNameOfSelectedElement="{Binding ElementNameForSelectedElement, Mode=TwoWay}"
-                    ElementDetailsOfSelectedElement="{Binding ElementDetailsForSelectedElement, Mode=TwoWay}"/>
+                    ElementDetailsOfSelectedElement="{Binding ElementDetailsForSelectedElement, Mode=TwoWay}" Margin="20,0,0,0"/>
             </Border>
         </StackPanel>
 

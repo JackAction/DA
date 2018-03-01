@@ -181,5 +181,16 @@ namespace MainApplication
 
         #endregion
 
+        private void btnInputMode_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as Button).Content.ToString() == "Draw")
+            {
+                tabControl.SelectedIndex = 0;
+            }
+            else
+            {
+                tabControl.SelectedIndex = 1;
+            }
+        }
     }
 }

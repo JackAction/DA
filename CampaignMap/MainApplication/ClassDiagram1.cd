@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="MainApplication.Left_UC" BaseTypeListCollapsed="true">
-    <Position X="16.5" Y="6" Width="4" />
+    <Position X="16.5" Y="6" Width="3.25" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -30,18 +30,18 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="MainApplication.Right_UC" BaseTypeListCollapsed="true">
-    <Position X="20.75" Y="1.5" Width="4.5" />
+    <Position X="20.75" Y="1.5" Width="4.25" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAQAAgEAEAAAAAAAgAKEIABQQCBAAkGABAIIEAAiE=</HashCode>
+      <HashCode>AAAAQAAgEAEAAAAAAAgAKEIABQQCJAAkGABAIIEAAiE=</HashCode>
       <FileName>FlyoutViews\Right_UC.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="MainApplication.Top_UC" BaseTypeListCollapsed="true">
-    <Position X="16.5" Y="3.25" Width="3.25" />
+    <Position X="16.5" Y="3.25" Width="2.25" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -51,37 +51,37 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="MainApplication.ImageFilterString" Collapsed="true">
-    <Position X="3.75" Y="6.25" Width="1.5" />
+  <Class Name="MainApplication.ImageFilterString">
+    <Position X="13.25" Y="13.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\ImageFilterString.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainApplication.PictureDimension" Collapsed="true">
-    <Position X="3.75" Y="7" Width="1.5" />
+  <Class Name="MainApplication.PictureDimension">
+    <Position X="15.5" Y="12.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\PictureDimension.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainApplication.ScaleToPercentConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="3.75" Y="5.5" Width="2" />
+  <Class Name="MainApplication.ScaleToPercentConverter" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="12.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\ScaleToPercentConverter.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="MainApplication.XMLHelper&lt;T&gt;" Collapsed="true">
-    <Position X="3.75" Y="7.75" Width="1.5" />
+  <Class Name="MainApplication.XMLHelper&lt;T&gt;">
+    <Position X="15.5" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\XMLHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MainApplication.MainWindow" BaseTypeListCollapsed="true">
-    <Position X="16.5" Y="1.5" Width="3.5" />
+    <Position X="16.5" Y="1.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -92,61 +92,145 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="MainApplication.Campaign_Model" Collapsed="true">
-    <Position X="6.5" Y="7.5" Width="1.5" />
+  <Class Name="MainApplication.Campaign_Model">
+    <Position X="6.5" Y="7.5" Width="4" />
+    <AssociationLine Name="Layers" Type="MainApplication.Layer_Model" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.25" Y="10.401" />
+        <Point X="8.25" Y="10.525" />
+        <Point X="8.25" Y="10.525" />
+        <Point X="8.25" Y="15.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-2.963" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="StrokeDataList" Type="MainApplication.StrokeData_Model" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.5" Y="7.952" />
+        <Point X="12.875" Y="7.952" />
+        <Point X="12.875" Y="11" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.143" Y="0.12" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="InvisibleStrokes" Type="System.Windows.Ink.Stroke" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.875" Y="10.401" />
+        <Point X="8.875" Y="12.894" />
+        <Point X="11.938" Y="12.894" />
+        <Point X="11.938" Y="13.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.131" Y="0.206" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Strokes" Type="System.Windows.Ink.Stroke" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.562" Y="10.401" />
+        <Point X="8.562" Y="13.812" />
+        <Point X="10.75" Y="13.812" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.091" Y="0.089" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAACAAACEEAEAAAAAAAgAQAACiAAAAEBEAAAAAAAAA=</HashCode>
       <FileName>Models\Campaign_Model.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Layers" />
+      <Property Name="POIs" />
+      <Property Name="StrokeDataList" />
+      <Property Name="InvisibleStrokes" />
+      <Property Name="Strokes" />
+    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="MainApplication.Layer_Model" Collapsed="true">
-    <Position X="8.5" Y="7.5" Width="1.5" />
+  <Class Name="MainApplication.Layer_Model">
+    <Position X="8" Y="15.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>BAADAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAABAAAAAAAQAAAAAAABAAAACAAAAAAA=</HashCode>
       <FileName>Models\Layer_Model.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainApplication.POI_Model" Collapsed="true">
-    <Position X="6.5" Y="8.25" Width="1.5" />
+  <Class Name="MainApplication.POI_Model">
+    <Position X="4.5" Y="11" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Layers" Type="MainApplication.Layer_Model" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="11.5" />
+        <Point X="8.25" Y="11.5" />
+        <Point X="8.25" Y="15.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-3.002" Y="0.079" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIARAAAAAAEAAAQAABAAAAAEAAAAAAAACAA=</HashCode>
       <FileName>Models\POI_Model.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Symbol" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Layers" />
+    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="MainApplication.StrokeData_Model" Collapsed="true">
-    <Position X="10.25" Y="7.5" Width="1.5" />
+  <Class Name="MainApplication.StrokeData_Model">
+    <Position X="11.25" Y="11" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAABAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\StrokeData_Model.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainApplication.Symbol_Model" Collapsed="true">
-    <Position X="8.5" Y="8.25" Width="1.5" />
+  <Class Name="MainApplication.Symbol_Model">
+    <Position X="5.25" Y="14.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Symbol_Model.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainApplication.Campaign_Repository" Collapsed="true">
-    <Position X="6.25" Y="10.25" Width="1.75" />
+  <Class Name="MainApplication.Campaign_Repository">
+    <Position X="13.25" Y="16.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAgIAAAAAAAAAAAAAAAAAQAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Repositories\Campaign_Repository.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainApplication.Campaign_ViewModel" Collapsed="true">
-    <Position X="8.5" Y="6.25" Width="1.75" />
+  <Class Name="MainApplication.Campaign_ViewModel">
+    <Position X="23.25" Y="14.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\Campaign_ViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainApplication.MainWindow_ViewModel" Collapsed="true">
-    <Position X="6.25" Y="6.25" Width="2" />
+  <Class Name="MainApplication.MainWindow_ViewModel">
+    <Position X="18.5" Y="13" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="CampaignVM" Type="MainApplication.Campaign_ViewModel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="23" Y="13.611" />
+        <Point X="25.312" Y="13.611" />
+        <Point X="25.312" Y="14.25" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>oJCBgEAuERIBAACUIACEBEhwBCkCARAAnABCkBCCCAg=</HashCode>
+      <HashCode>oJCBgEAuERIBAACUIACEBEhwBCkCARAAlABCkBCCCAg=</HashCode>
       <FileName>ViewModels\MainWindow_ViewModel.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CampaignVM" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="MainApplication.Properties.Resources" Collapsed="true">
     <Position X="0.5" Y="1.25" Width="1.5" />
@@ -159,6 +243,15 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Ink.Stroke" Collapsed="true">
+    <Position X="10.75" Y="13.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
