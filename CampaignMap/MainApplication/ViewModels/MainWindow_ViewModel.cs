@@ -25,6 +25,26 @@ namespace MainApplication
             SelectedStroke = new Stroke(new StylusPointCollection(new StylusPoint[] { new StylusPoint(100, 100) }));
         }
 
+        #region ApplicationState
+
+        private bool _campaignLoaded;
+
+        public bool CampaignLoaded
+        {
+            get { return _campaignLoaded; }
+            set
+            {
+                if (_campaignLoaded == value)
+                {
+                    return;
+                }
+                _campaignLoaded = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region Campaign Handling
 
         private readonly Campaign_Repository campaignRepository;
@@ -91,6 +111,7 @@ namespace MainApplication
                     {
                         AddPOIToCanvas(canvas, poi);
                     }
+                    CampaignLoaded = true;
                 }
                 catch (Exception fail)
                 {
@@ -123,6 +144,7 @@ namespace MainApplication
 
                     InkCanvas canvas = (InkCanvas)((MainWindow)window).FindName("content");
                     canvas.Children.Clear();
+                    CampaignLoaded = true;
                 }
                 catch (Exception fail)
                 {
