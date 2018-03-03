@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MainApplication"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignWidth="150">
+             d:DesignWidth="250">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -31,13 +31,9 @@
                            SelectedMemberPath="IsSelectedForVisibilityHandling"
                            ItemsSource="{Binding Layers}"
                            Command="{Binding LayerChanged}"
-                           Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListBig}" />
-
-        <Button x:Name="btnAddLayer" 
-                Click="btnAddLayer_Click"
-                Content="Add" Grid.Row="2" Margin="4,9,101,72" />
-        <TextBox x:Name="txtNameOfNewLayer" HorizontalAlignment="Left" Height="23" Margin="51,10,0,0" Grid.Row="2" TextWrapping="Wrap" 
-                 Text="" VerticalAlignment="Top" Width="95" Visibility="Visible" KeyUp="txtNameOfNewLayer_KeyUp">
+                           Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListBig}" ItemSelectionChanged="checkListBox_ItemSelectionChanged" />
+        <TextBox x:Name="txtNameOfNewLayer" HorizontalAlignment="Left" Height="23" Margin="66,10,0,0" Grid.Row="2" TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Top" Width="168" Visibility="Visible" KeyUp="txtNameOfNewLayer_KeyUp">
             <TextBox.InputBindings>
                 <KeyBinding 
                     Key="Enter" 
@@ -46,13 +42,17 @@
             </TextBox.InputBindings>
         </TextBox>
 
-        <TextBox x:Name="txtNameOfSelectedLayer" HorizontalAlignment="Left" Height="23" Margin="51,38,0,0" Grid.Row="2" TextWrapping="Wrap" 
-                 Text="{Binding SelectedLayer_Workaround.Name}" VerticalAlignment="Top" Width="95"
+        <TextBox x:Name="txtNameOfSelectedLayer" HorizontalAlignment="Left" Height="23" Margin="66,38,0,0" Grid.Row="2" TextWrapping="Wrap" 
+                 Text="{Binding SelectedLayer_Workaround.Name}" VerticalAlignment="Top" Width="168"
                  KeyUp="txtNameOfSelectedLayer_KeyUp"/>
 
         <Button x:Name="delete" 
                 Command="{Binding DeleteLayer}" 
-                Content="X" Grid.Row="2" Margin="128,38,4,45" Width="Auto" />
+                Content="X" Grid.Row="2" Margin="208,38,16,45" Width="26"
+                Click="delete_Click" Height="23" />
+        <Button x:Name="btnAddLayer" 
+                Click="btnAddLayer_Click"
+                Content="Add" Grid.Row="2" Margin="6,9,190,72" Width="54" Height="25" />
 
     </Grid>
 </UserControl>

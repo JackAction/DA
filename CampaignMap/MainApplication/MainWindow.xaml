@@ -42,7 +42,7 @@
                 <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,0,0,0" SpeedRatio="8" DecelerationRatio="1" Duration="0:0:1" />
             </Storyboard>
             <Storyboard x:Key="sbHideLeftMenu">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="-150,0,0,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="-250,0,0,0" SpeedRatio="8" AccelerationRatio="1" Duration="0:0:1" />
             </Storyboard>
 
 
@@ -92,22 +92,22 @@
 			Command="{StaticResource Commands.JumpBackToPrevZoom}"
 			/>
         <KeyBinding
-			Key="P"
+			Gesture="CTRL+P"
 			Command="{Binding MapElementInputMode}"
             CommandParameter="POI"
 			/>
         <KeyBinding
-			Key="S"
+			Gesture="CTRL+S"
 			Command="{Binding MapElementInputMode}"
             CommandParameter="Select"
 			/>
         <KeyBinding
-			Key="R"
+			Gesture="CTRL+R"
 			Command="{Binding MapElementInputMode}"
             CommandParameter="Route"
 			/>
         <KeyBinding
-			Key="E"
+			Gesture="CTRL+E"
 			Command="{Binding MapElementInputMode}"
             CommandParameter="Region"
 			/>
@@ -148,8 +148,8 @@
     </Window.DataContext>
 
     <Grid>
-        <StackPanel Panel.ZIndex="2" x:Name="pnlLeftMenu" Orientation="Horizontal"  HorizontalAlignment="Left" Margin="-150,0,0,0">
-            <Border Width="150" >
+        <StackPanel Panel.ZIndex="2" x:Name="pnlLeftMenu" Orientation="Horizontal"  HorizontalAlignment="Left" Margin="-250,0,0,0">
+            <Border Width="250" >
                 <local:Left_UC 
                     DeleteLayer="{Binding DeleteLayer}"
                     AddLayer="{Binding AddLayer}"

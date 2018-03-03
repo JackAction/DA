@@ -95,7 +95,7 @@ namespace MainApplication
         {
             if (e.Key == Key.Enter)
             {
-                txtNameOfSelectedLayer.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                txtNameOfSelectedLayer.MoveFocus(new TraversalRequest(FocusNavigationDirection.Previous));
             }
         }
 
@@ -103,6 +103,8 @@ namespace MainApplication
         {
             txtNameOfNewLayer.Text = "";
             txtNameOfNewLayer.Visibility = Visibility.Visible;
+            //btnAddLayer.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            txtNameOfNewLayer.Focus();
         }
 
         private void txtNameOfNewLayer_KeyUp(object sender, KeyEventArgs e)
@@ -111,6 +113,16 @@ namespace MainApplication
             {
                 txtNameOfNewLayer.Visibility = Visibility.Hidden; 
             }
+        }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            txtNameOfSelectedLayer.Text = "";
+        }
+
+        private void checkListBox_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
+        {
+            txtNameOfSelectedLayer.Focus();
         }
     }
 }

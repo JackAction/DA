@@ -89,7 +89,7 @@
                     <Label x:Name="lblSize" Content="Size" HorizontalAlignment="Left" Margin="38,0,0,0" Grid.Row="5" VerticalAlignment="Bottom" Width="39" Height="30"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Select">
+            <TabItem Header="Select" Foreground="LightGray">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
