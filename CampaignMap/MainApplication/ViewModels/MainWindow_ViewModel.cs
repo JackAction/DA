@@ -27,18 +27,18 @@ namespace MainApplication
 
         #region ApplicationState
 
-        private bool _campaignLoaded;
+        private bool _isACampaignOpen;
 
-        public bool CampaignLoaded
+        public bool IsACampaignOpen
         {
-            get { return _campaignLoaded; }
+            get { return _isACampaignOpen; }
             set
             {
-                if (_campaignLoaded == value)
+                if (_isACampaignOpen == value)
                 {
                     return;
                 }
-                _campaignLoaded = value;
+                _isACampaignOpen = value;
                 RaisePropertyChanged();
             }
         }
@@ -48,6 +48,7 @@ namespace MainApplication
         #region Campaign Handling
 
         private readonly Campaign_Repository campaignRepository;
+        private string currentCampaignPath;
 
         private Campaign_ViewModel _campaignVM;
 
@@ -83,6 +84,7 @@ namespace MainApplication
                 try
                 {
                     campaignRepository.Save(CampaignVM.Campaign, save.FileName);
+                    currentCampaignPath = save.FileName;
                 }
                 catch (Exception fail)
                 {
@@ -93,6 +95,13 @@ namespace MainApplication
 
         void LoadCampaign_Execute(object window)
         {
+            if (IsACampaignOpen)
+            {
+                if (UserWantsToCancel())
+                {
+                    return;
+                }
+            }
             OpenFileDialog open = new OpenFileDialog();
             open.Title = "Open Campaign";
             open.Filter = "xml files (*.xml)|*.xml";
@@ -111,7 +120,8 @@ namespace MainApplication
                     {
                         AddPOIToCanvas(canvas, poi);
                     }
-                    CampaignLoaded = true;
+                    IsACampaignOpen = true;
+                    currentCampaignPath = open.FileName;
                 }
                 catch (Exception fail)
                 {
@@ -122,6 +132,13 @@ namespace MainApplication
 
         void CreateCampaign_Execute(object window)
         {
+            if (IsACampaignOpen)
+            {
+                if (UserWantsToCancel())
+                {
+                    return;
+                }
+            }
             OpenFileDialog open = new OpenFileDialog();
             open.Title = "Choose Background Picture";
             open.Filter = ImageFilterString.GetImageFilter();
@@ -144,7 +161,8 @@ namespace MainApplication
 
                     InkCanvas canvas = (InkCanvas)((MainWindow)window).FindName("content");
                     canvas.Children.Clear();
-                    CampaignLoaded = true;
+                    IsACampaignOpen = true;
+                    currentCampaignPath = null;
                 }
                 catch (Exception fail)
                 {
@@ -152,6 +170,31 @@ namespace MainApplication
                 }
             }
         }
+
+        private bool UserWantsToCancel()
+        {
+            MessageBoxResult result = MessageBox.Show("Aktuelle Kampagne speichern, bevor sie geschlossen wird?", "Speichern", MessageBoxButton.YesNoCancel);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    if (currentCampaignPath == null)
+                    {
+                        SaveCampaign_Execute();
+                    }
+                    else
+                    {
+                        campaignRepository.Save(CampaignVM.Campaign, currentCampaignPath);
+                    }
+                    return false;
+                case MessageBoxResult.No:
+                    return false;
+                case MessageBoxResult.Cancel:
+                    return true;
+                default:
+                    return true;
+            }
+        }
+
 
         #endregion
 
