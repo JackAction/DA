@@ -103,15 +103,16 @@ namespace MainApplication
         {
             txtNameOfNewLayer.Text = "";
             txtNameOfNewLayer.Visibility = Visibility.Visible;
-            //btnAddLayer.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             txtNameOfNewLayer.Focus();
+            btnAddLayer.IsEnabled = false;
         }
 
         private void txtNameOfNewLayer_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                txtNameOfNewLayer.Visibility = Visibility.Hidden; 
+                txtNameOfNewLayer.Visibility = Visibility.Hidden;
+                btnAddLayer.IsEnabled = true; 
             }
         }
 

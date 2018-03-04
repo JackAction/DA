@@ -66,7 +66,8 @@ namespace MainApplication
             }
         }
 
-        public RelayCommand SaveCampaign { get { return new RelayCommand(SaveCampaign_Execute); } }
+        public RelayCommand SaveCampaign { get { return new RelayCommand(SaveCampaign_Execute, Save_CanExecute); } }
+        public RelayCommand SaveCampaign_Workaround { get { return new RelayCommand(SaveCampaign_Workaround_Execute, Save_CanExecute); } }
         public RelayCommand<object> LoadCampaign { get { return new RelayCommand<object>(LoadCampaign_Execute); } }
         public RelayCommand<object> CreateCampaign { get { return new RelayCommand<object>(CreateCampaign_Execute); } }
 
@@ -90,6 +91,27 @@ namespace MainApplication
                 {
                     MessageBox.Show(fail.Message);
                 }
+            }
+        }
+
+        bool Save_CanExecute()
+        {
+            if (currentCampaignPath == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        void SaveCampaign_Workaround_Execute()
+        {
+            if (currentCampaignPath != null)
+            {
+                campaignRepository.Save(CampaignVM.Campaign, currentCampaignPath);
+            }
+            else
+            {
+                SaveCampaign_Execute();
             }
         }
 
