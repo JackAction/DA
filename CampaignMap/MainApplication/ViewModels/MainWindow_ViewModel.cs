@@ -238,7 +238,7 @@ namespace MainApplication
 
         #endregion
 
-        #region EditSelectedElement
+        #region Edit&DeleteSelectedElement
 
         #region EditSelectedStroke
 
@@ -288,7 +288,7 @@ namespace MainApplication
 
         #endregion
 
-        #region EditSelectedPOI
+        #region Edit&DeleteSelectedPOI
 
         private POI_Model _selectedPOI = new POI_Model();
 
@@ -303,6 +303,21 @@ namespace MainApplication
                 }
                 _selectedPOI = value;
                 RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Falls ein POI von dem InkCanvas gelöscht wird, muss er auch im CamapignModel gelöscht werden.
+        /// Das macht diese Methode.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void DeletePOI(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                CampaignVM.Campaign.POIs.Remove(SelectedPOI);
+                SelectedPOI = new POI_Model();
             }
         }
 

@@ -379,6 +379,11 @@
                                         TargetObject="{Binding}"
                                         MethodName="AddPOI"/>
                                 </i:EventTrigger>
+                                <i:EventTrigger EventName="PreviewKeyDown">
+                                    <i2:CallMethodAction
+                                        TargetObject="{Binding}"
+                                        MethodName="DeletePOI"/>
+                                </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </InkCanvas>
 

@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace MainApplication
 {
     public class XMLHelper<T>
     {
+        /// <summary>
+        /// Speichert das mitgegebene Objekt <paramref name="singleObject"/> als XML im Pfad <paramref name="path"/> ab.
+        /// </summary>
+        /// <param name="path">Speicherpfad</param>
+        /// <param name="singleObject">Zu speicherndes Objekt</param>
         public static void Serialize(string path, T singleObject)
         {
             try
@@ -18,7 +20,7 @@ namespace MainApplication
 
                 xs.Serialize(stm, singleObject);
                 stm.Close();
-        }
+            }
             catch (Exception)
             {
 
@@ -26,6 +28,11 @@ namespace MainApplication
             }
         }
 
+        /// <summary>
+        /// Liefert ein Objekt einer XML Datei im Pfad <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">Pfad der XML Datei</param>
+        /// <returns>Deserialisiertes Objekt</returns>
         public static T Deserialize(string path)
         {
             try

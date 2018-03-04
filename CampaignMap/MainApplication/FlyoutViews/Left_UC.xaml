@@ -33,7 +33,7 @@
                            Command="{Binding LayerChanged}"
                            Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource LayerListBig}" ItemSelectionChanged="checkListBox_ItemSelectionChanged" />
         <TextBox x:Name="txtNameOfNewLayer" HorizontalAlignment="Left" Height="23" Margin="66,10,0,0" Grid.Row="2" TextWrapping="Wrap" 
-                 Text="" VerticalAlignment="Top" Width="168" Visibility="Visible" KeyUp="txtNameOfNewLayer_KeyUp">
+                 Text="" VerticalAlignment="Top" Width="168" Visibility="Hidden" KeyUp="txtNameOfNewLayer_KeyUp">
             <TextBox.InputBindings>
                 <KeyBinding 
                     Key="Enter" 
