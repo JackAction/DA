@@ -66,10 +66,19 @@ namespace MainApplication
             }
         }
 
-        public RelayCommand SaveCampaign { get { return new RelayCommand(SaveCampaign_Execute, Save_CanExecute); } }
-        public RelayCommand SaveCampaign_Workaround { get { return new RelayCommand(SaveCampaign_Workaround_Execute, Save_CanExecute); } }
+        public RelayCommand SaveCampaign { get { return new RelayCommand(SaveCampaign_Execute, SaveCampaign_CanExecute); } }
+        public RelayCommand SaveCampaign_Workaround { get { return new RelayCommand(SaveCampaign_Workaround_Execute, SaveCampaign_Workaround_CanExecute); } }
         public RelayCommand<object> LoadCampaign { get { return new RelayCommand<object>(LoadCampaign_Execute); } }
         public RelayCommand<object> CreateCampaign { get { return new RelayCommand<object>(CreateCampaign_Execute); } }
+
+        bool SaveCampaign_CanExecute()
+        {
+            if (CampaignVM.Campaign.BackgroundImagePath == null)
+            {
+                return false;
+            }
+            return true;
+        }
 
         void SaveCampaign_Execute()
         {
@@ -94,7 +103,7 @@ namespace MainApplication
             }
         }
 
-        bool Save_CanExecute()
+        bool SaveCampaign_Workaround_CanExecute()
         {
             if (currentCampaignPath == null)
             {
