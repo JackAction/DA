@@ -16,6 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    
     <Grid DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Right_UC}}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -27,13 +28,22 @@
             <RowDefinition Height="30"/>
             <!-- Tab Buttons -->
             <RowDefinition Height="620"/>
-            <!-- mode selection -->
-            <!-- map element properties -->
+            <!-- mode selection & map element propertie-->
             <RowDefinition Height="*" />
             <!-- rest of the bar -->
         </Grid.RowDefinitions>
-        <Button x:Name="btnDraw" Grid.Row="1" Grid.Column="0" Command="{Binding InputMode}" CommandParameter="Draw" Content="Draw" Height="30" Click="btnInputMode_Click" Margin="0,0,5,0"  />
-        <Button x:Name="btnSelect" Grid.Row="1" Grid.Column="1" Command="{Binding InputMode}" CommandParameter="Select" Content="Select" Height="30" Click="btnInputMode_Click" Margin="5,0,0,0" />
+        <Button x:Name="btnDraw" Grid.Row="1" Grid.Column="0" Height="30" Margin="0,0,5,0" 
+                Command="{Binding InputMode}" 
+                CommandParameter="Draw" 
+                Content="Draw" 
+                Click="btnInputMode_Click"  />
+
+        <Button x:Name="btnSelect" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"
+                Command="{Binding InputMode}" 
+                CommandParameter="Select" 
+                Content="Select" Height="30" 
+                Click="btnInputMode_Click"  />
+
         <TabControl x:Name="tabControl" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
             <TabControl.ItemContainerStyle>
                 <Style TargetType="{x:Type TabItem}">
@@ -51,41 +61,59 @@
                         <RowDefinition Height="30" />
                         <!-- rest of the bar -->
                         <RowDefinition Height="30"/>
+                        <!-- erase -->
                         <RowDefinition Height="30"/>
+                        <!-- POI -->
                         <RowDefinition Height="30"/>
+                        <!-- route -->
                         <RowDefinition Height="30"/>
+                        <!-- region -->
                         <RowDefinition Height="50"/>
-                        <!-- mode selection -->
+                        <!-- size -->
                         <RowDefinition Height="450" />
                         <!-- map element properties -->
                         <RowDefinition Height="*" />
                         <!-- rest of the bar -->
                     </Grid.RowDefinitions>
                     <Rectangle Fill="#CC3C3737" Height="630" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="7" Margin="0,20,0,0"  />
-                    <!--<Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="1" Height="20" VerticalAlignment="Top" Margin="0,0.169,0,0"  />
-                    <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="2" Height="20" VerticalAlignment="Top" Margin="0,0.169,0,0"  />
-                    <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="3" Height="20" VerticalAlignment="Top" Margin="0,0.169,0,0"  />
-                    <Rectangle Fill="#CC3C3737" Grid.Column="1" Grid.Row="4" Height="20" VerticalAlignment="Top" Margin="0,0.169,0,0"  />-->
-                    <CheckBox x:Name="cbxErase" Content="Erase" Command="{Binding EraseMode}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Grid.Row="1" Grid.Column="1" Height="20" />
-                    <RadioButton x:Name="rbPOI" Content="POI" Command="{Binding InputMode}" CommandParameter="POI"  Grid.Row="2"  Grid.Column="1" Height="20"  />
-                    <RadioButton x:Name="rbRoute" Content="Route" Command="{Binding InputMode}" CommandParameter="Route"  Grid.Row="3"  Grid.Column="1" Height="20"  />
-                    <RadioButton x:Name="rbRegion" Content="Region" Command="{Binding InputMode}" CommandParameter="Region"  Grid.Row="4" Grid.Column="1" Height="20"  />
-                    <Slider Grid.Row="5" VerticalAlignment="Bottom"
-                        Minimum="1" 
-                        LargeChange="4" 
-                        TickFrequency="1" 
-                        Maximum="40" 
-                        SmallChange="1" 
-                        TickPlacement="TopLeft"
-                        Value="{Binding DrawingAttributesForNewStrokeWidthHeight}" Height="24" Grid.Column="1" 
-                    />
-                    <local:MapElementProperties_UC Grid.Row="6" 
-                        Layers="{Binding Layers}"
-                        SelectedLayers="{Binding LayersForNewElement}" 
-                        SelectedMemberPath="IsSelectedForNewElement"
-                        DrawingAttributes="{Binding DrawingAttributesForNewStroke}"
-                        ElementName="{Binding ElementNameForNewElement, Mode=TwoWay}"
-                        ElementDetails="{Binding ElementDetailsForNewElement, Mode=TwoWay}" Grid.ColumnSpan="3"   />
+
+                    <CheckBox x:Name="cbxErase" Grid.Row="1" Grid.Column="1" Height="20"
+                              Content="Erase" 
+                              Command="{Binding EraseMode}" 
+                              CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" />
+
+                    <RadioButton x:Name="rbPOI" Grid.Row="2"  Grid.Column="1" Height="20" 
+                                 Content="POI" 
+                                 Command="{Binding InputMode}" 
+                                 CommandParameter="POI" />
+
+                    <RadioButton x:Name="rbRoute" Grid.Row="3"  Grid.Column="1" Height="20"
+                                 Content="Route" 
+                                 Command="{Binding InputMode}" 
+                                 CommandParameter="Route" />
+
+                    <RadioButton x:Name="rbRegion" Grid.Row="4" Grid.Column="1" Height="20" 
+                                 Content="Region" 
+                                 Command="{Binding InputMode}" 
+                                 CommandParameter="Region" />
+
+                    <Slider Grid.Row="5" VerticalAlignment="Bottom" Height="24" Grid.Column="1"
+                            Minimum="1" 
+                            LargeChange="4" 
+                            TickFrequency="1" 
+                            Maximum="40" 
+                            SmallChange="1" 
+                            TickPlacement="TopLeft"
+                            Value="{Binding DrawingAttributesForNewStrokeWidthHeight}" />
+
+                    <local:MapElementProperties_UC Grid.Row="6" Grid.ColumnSpan="3"
+                                                   Layers="{Binding Layers}"
+                                                   SelectedLayers="{Binding LayersForNewElement}" 
+                                                   SelectedMemberPath="IsSelectedForNewElement"
+                                                   DrawingAttributes="{Binding DrawingAttributesForNewStroke}"
+                                                   ElementName="{Binding ElementNameForNewElement, Mode=TwoWay}"
+                                                   ElementDetails="{Binding ElementDetailsForNewElement, Mode=TwoWay}" />
+
                     <Label x:Name="lblSize" Content="Size" HorizontalAlignment="Left" Margin="38,0,0,0" Grid.Row="5" VerticalAlignment="Bottom" Width="39" Height="30"/>
                 </Grid>
             </TabItem>
@@ -95,28 +123,32 @@
                         <RowDefinition Height="30" />
                         <!-- rest of the bar -->
                         <RowDefinition Height="30"/>
+                        <!-- erase -->
                         <RowDefinition Height="30"/>
+                        <!-- POI -->
                         <RowDefinition Height="30"/>
+                        <!-- route -->
                         <RowDefinition Height="30"/>
+                        <!-- region -->
                         <RowDefinition Height="50"/>
-                        <!-- mode selection -->
+                        <!-- size -->
                         <RowDefinition Height="450" />
                         <!-- map element properties -->
                         <RowDefinition Height="*" />
                         <!-- rest of the bar -->
                     </Grid.RowDefinitions>
                     <Rectangle Fill="#CC3C3737" Height="450" VerticalAlignment="Top" Grid.Row="6"  />
-                    <local:MapElementProperties_UC Grid.Row="6"
-                        LayerChanged ="{Binding LayerChanged}"
-                        Layers="{Binding Layers}"
-                        SelectedLayers="{Binding LayersOfSelectedElement}" 
-                        SelectedMemberPath="IsSelectedInExistingElement"
-                        DrawingAttributes="{Binding DrawingAttributesOfSelectedStroke}"
-                        ElementName="{Binding ElementNameOfSelectedElement, Mode=TwoWay}"
-                        ElementDetails="{Binding ElementDetailsOfSelectedElement, Mode=TwoWay}" Grid.ColumnSpan="3" />
+
+                    <local:MapElementProperties_UC Grid.Row="6" Grid.ColumnSpan="3"
+                                                   LayerChanged ="{Binding LayerChanged}"
+                                                   Layers="{Binding Layers}"
+                                                   SelectedLayers="{Binding LayersOfSelectedElement}" 
+                                                   SelectedMemberPath="IsSelectedInExistingElement"
+                                                   DrawingAttributes="{Binding DrawingAttributesOfSelectedStroke}"
+                                                   ElementName="{Binding ElementNameOfSelectedElement, Mode=TwoWay}"
+                                                   ElementDetails="{Binding ElementDetailsOfSelectedElement, Mode=TwoWay}" />
                 </Grid>
             </TabItem>
         </TabControl>
-
     </Grid>
 </UserControl>
