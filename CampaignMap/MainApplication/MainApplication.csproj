@@ -106,7 +106,6 @@
       <DependentUpon>Right_UC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Campaign_ViewModel.cs" />
-    <Compile Include="ViewModels\Layer_ViewModel.cs" />
     <Compile Include="ViewModels\MainWindow_ViewModel.cs" />
     <Page Include="CampaignMapResourceDictionary.xaml">
       <SubType>Designer</SubType>
@@ -186,20 +185,14 @@
     <Resource Include="map_faerunLarge.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="map_faerunLarge_2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pin.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\arrow-right.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Pin.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    <Content Include="Images\Pin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\arrow-left.png">

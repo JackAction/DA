@@ -10,7 +10,6 @@
     <Style x:Key="Text">
         <Setter Property="Control.FontSize" Value="16" />
         <Setter Property="Control.Foreground" Value="LightGray" />
-
     </Style>
 
     <Style TargetType="{x:Type Window}" BasedOn="{StaticResource Text}">
@@ -18,7 +17,7 @@
     </Style>
 
     <Style TargetType="{x:Type Label}" BasedOn="{StaticResource Text}">
-        <!--<Setter Property="Background" Value="#CC3C3737" />-->
+        
     </Style>
 
     <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource Text}">
@@ -164,6 +163,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
 
 </ResourceDictionary>

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Ink;
-using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.Collections.ObjectModel;
 
@@ -24,7 +21,6 @@ namespace MainApplication
         public string BackgroundImagePath { get; set; }
         public int BackgroundImageHeight { get; set; }
         public int BackGroundImageWidth { get; set; }
-        //public string StrokePath { get; set; }
 
         [XmlIgnore]
         public StrokeCollection Strokes { get; set; }
@@ -38,12 +34,22 @@ namespace MainApplication
 
         public ObservableCollection<Layer_Model> Layers { get; set; }
 
+        /// <summary>
+        /// Liefert die StrokeData, welche zu dem mitgegebenem Stroke <paramref name="stroke"/> gehören.
+        /// </summary>
+        /// <param name="stroke">Stroke</param>
+        /// <returns>StrokeData des übergebenen Strokes</returns>
         public StrokeData_Model GetStrokeDataOfStroke(Stroke stroke)
         {
             List<Guid> guidLayers = stroke.GetPropertyDataIds().ToList();
             return StrokeDataList.SingleOrDefault(x => x.Id == guidLayers.SingleOrDefault(r => r.Equals(x.Id)));
         }
 
+        /// <summary>
+        /// Liefert die Layer, welche dem mitgegebenem <paramref name="stroke"/> zugeordnet sind.
+        /// </summary>
+        /// <param name="stroke">Stroke</param>
+        /// <returns>Layer des übergebenen Strokes</returns>
         public ObservableCollection<Layer_Model> GetLayersOfStroke(Stroke stroke)
         {
             List<Guid> guidLayers = stroke.GetPropertyDataIds().ToList();
@@ -60,6 +66,11 @@ namespace MainApplication
             return layers;
         }
 
+        /// <summary>
+        /// Entfernt oder fügt den <paramref name="layer"/> dem <paramref name="stroke"/> hinzu.
+        /// </summary>
+        /// <param name="stroke">Stroke</param>
+        /// <param name="layer">Layer der verändert wurde</param>
         public void SetLayersOfStroke(Stroke stroke, Layer_Model layer)
         {
             if (layer.IsSelectedInExistingElement)
@@ -72,9 +83,13 @@ namespace MainApplication
             }
         }
 
-
+        /// <summary>
+        /// Iteriert über alle Kartenelemente und macht diese sichtbar oder unsichtbar aufgrund dem <paramref name="layer"/>.
+        /// </summary>
+        /// <param name="layer"></param>
         public void UpdateVisibilityOfMapElements(Layer_Model layer)
         {
+            // Setze Kartenelemente sichtbar
             if (layer.IsSelectedForVisibilityHandling)
             {
                 // Setze POI Visibility
@@ -95,9 +110,11 @@ namespace MainApplication
                     }
                 }
             }
+            // Setze Kartenelemente unsichtbar
             else
             {
                 List<Layer_Model> inactiveLayers = Layers.Where(l => l.IsSelectedForVisibilityHandling == false).ToList();
+
                 // Setze POI Visibility
                 foreach (var poi in POIs)
                 {
@@ -149,7 +166,5 @@ namespace MainApplication
                 }
             }
         }
-
-
     }
 }

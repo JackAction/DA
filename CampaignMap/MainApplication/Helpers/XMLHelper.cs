@@ -7,7 +7,7 @@ namespace MainApplication
     public class XMLHelper<T>
     {
         /// <summary>
-        /// Speichert das mitgegebene Objekt <paramref name="singleObject"/> als XML im Pfad <paramref name="path"/> ab.
+        /// Speichert <paramref name="singleObject"/> als XML im <paramref name="path"/> ab.
         /// </summary>
         /// <param name="path">Speicherpfad</param>
         /// <param name="singleObject">Zu speicherndes Objekt</param>
@@ -29,7 +29,7 @@ namespace MainApplication
         }
 
         /// <summary>
-        /// Liefert ein Objekt einer XML Datei im Pfad <paramref name="path"/>.
+        /// Liefert ein Objekt einer XML Datei im <paramref name="path"/>.
         /// </summary>
         /// <param name="path">Pfad der XML Datei</param>
         /// <returns>Deserialisiertes Objekt</returns>

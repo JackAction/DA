@@ -98,7 +98,7 @@ namespace MainApplication
                 }
                 catch (Exception fail)
                 {
-                    MessageBox.Show(fail.Message);
+                    MessageBox.Show(fail.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -116,7 +116,14 @@ namespace MainApplication
         {
             if (currentCampaignPath != null)
             {
-                campaignRepository.Save(CampaignVM.Campaign, currentCampaignPath);
+                try
+                {
+                    campaignRepository.Save(CampaignVM.Campaign, currentCampaignPath);
+                }
+                catch (Exception fail)
+                {
+                    MessageBox.Show(fail.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
@@ -156,7 +163,7 @@ namespace MainApplication
                 }
                 catch (Exception fail)
                 {
-                    MessageBox.Show(fail.Message);
+                    MessageBox.Show(fail.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -197,7 +204,7 @@ namespace MainApplication
                 }
                 catch (Exception fail)
                 {
-                    MessageBox.Show(fail.Message);
+                    MessageBox.Show(fail.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -483,7 +490,7 @@ namespace MainApplication
         {
             var canvas = (InkCanvas)sender;
             var mouseDownPoint = e.GetPosition(canvas);
-            PictureDimension pictureDimension = new PictureDimension(@"C:\Users\JackAction\Documents\DA\CampaignMap\MainApplication\Pin.png");
+            PictureDimension pictureDimension = new PictureDimension(AppDomain.CurrentDomain.BaseDirectory + @"Images/Pin.png");
             var x = mouseDownPoint.Y - pictureDimension.Height;
             var y = mouseDownPoint.X;
 
@@ -502,7 +509,7 @@ namespace MainApplication
             Image image = new Image
             {
                 //Width = 100, // Um Pin kleiner zu machen
-                Source = new BitmapImage(new Uri(@"Pin.png", UriKind.Relative)),
+                Source = new BitmapImage(new Uri(@"../Images/Pin.png", UriKind.Relative)),
                 Tag = poi
 
             };
@@ -640,6 +647,21 @@ namespace MainApplication
                     break;
             }
         }
+
+        #endregion
+
+        #region Symbol Handling
+
+        private ObservableCollection<Symbol_Model> _symbols = new ObservableCollection<Symbol_Model>();
+
+        public ObservableCollection<Symbol_Model> Symbols
+        {
+            get { return _symbols; }
+            set { _symbols = value; }
+        }
+
+
+
 
         #endregion
 
