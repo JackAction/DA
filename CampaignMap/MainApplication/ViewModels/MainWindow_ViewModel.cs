@@ -66,12 +66,12 @@ namespace MainApplication
             }
         }
 
+        public RelayCommand SaveAsCampaign { get { return new RelayCommand(SaveAsCampaign_Execute, SaveAsCampaign_CanExecute); } }
         public RelayCommand SaveCampaign { get { return new RelayCommand(SaveCampaign_Execute, SaveCampaign_CanExecute); } }
-        public RelayCommand SaveCampaign_Workaround { get { return new RelayCommand(SaveCampaign_Workaround_Execute, SaveCampaign_Workaround_CanExecute); } }
         public RelayCommand<object> LoadCampaign { get { return new RelayCommand<object>(LoadCampaign_Execute); } }
         public RelayCommand<object> CreateCampaign { get { return new RelayCommand<object>(CreateCampaign_Execute); } }
 
-        bool SaveCampaign_CanExecute()
+        bool SaveAsCampaign_CanExecute()
         {
             if (CampaignVM.Campaign.BackgroundImagePath == null)
             {
@@ -84,7 +84,7 @@ namespace MainApplication
         /// Speichert die Kampagne ab. Pfad muss definiert werden.
         /// (Eigentlich SaveAs)
         /// </summary>
-        void SaveCampaign_Execute()
+        void SaveAsCampaign_Execute()
         {
             SaveFileDialog save = new SaveFileDialog();
             save.Title = "Save Campaign";
@@ -107,7 +107,7 @@ namespace MainApplication
             }
         }
 
-        bool SaveCampaign_Workaround_CanExecute()
+        bool SaveCampaign_CanExecute()
         {
             if (currentCampaignPath == null)
             {
@@ -119,7 +119,7 @@ namespace MainApplication
         /// <summary>
         /// Speichert die Kampagne ohne nach dem Pfad zu fragen.
         /// </summary>
-        void SaveCampaign_Workaround_Execute()
+        void SaveCampaign_Execute()
         {
             if (currentCampaignPath != null)
             {
@@ -134,7 +134,7 @@ namespace MainApplication
             }
             else
             {
-                SaveCampaign_Execute();
+                SaveAsCampaign_Execute();
             }
         }
 
@@ -234,7 +234,7 @@ namespace MainApplication
                 case MessageBoxResult.Yes:
                     if (currentCampaignPath == null)
                     {
-                        SaveCampaign_Execute();
+                        SaveAsCampaign_Execute();
                     }
                     else
                     {
@@ -279,7 +279,7 @@ namespace MainApplication
         /// </summary>
         void DeleteLayer_Execute()
         {
-            CampaignVM.Campaign.Layers.Remove(SelectedLayer_Workaround);
+            CampaignVM.Campaign.RemoveLayer(SelectedLayer_Workaround);
         }
 
         /// <summary>

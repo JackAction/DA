@@ -28,6 +28,18 @@ namespace MainApplication
             set { SetValue(SaveCampaignProperty, value); }
         }
 
+        public static readonly DependencyProperty SaveAsCampaignProperty =
+            DependencyProperty.Register(
+                "SaveAsCampaign",
+                typeof(ICommand),
+                typeof(Top_UC),
+                new UIPropertyMetadata(null));
+        public ICommand SaveAsCampaign
+        {
+            get { return (ICommand)GetValue(SaveAsCampaignProperty); }
+            set { SetValue(SaveAsCampaignProperty, value); }
+        }
+
         public static readonly DependencyProperty LoadCampaignProperty =
             DependencyProperty.Register(
                 "LoadCampaign",

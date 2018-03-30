@@ -113,7 +113,7 @@
 			/>
         <KeyBinding
 			Gesture="CTRL+S"
-			Command="{Binding SaveCampaign_Workaround}"
+			Command="{Binding SaveCampaign}"
 			/>
 
     </Window.InputBindings>
@@ -171,6 +171,7 @@
             <Border Height="100" >
                 <local:Top_UC 
                     SaveCampaign="{Binding SaveCampaign}"
+                    SaveAsCampaign="{Binding SaveAsCampaign}"
                     LoadCampaign="{Binding LoadCampaign}"
                     CreateCampaign="{Binding CreateCampaign}"/>
             </Border>
@@ -411,5 +412,7 @@
                 </ZoomAndPan:ZoomAndPanControl>
             </ScrollViewer>
         </DockPanel>
+        <ToggleButton x:Name = "tbPanMode" Content = "Pan"  
+         Panel.ZIndex="2" Margin = "10,0,0,24" Width = "40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
     </Grid>
 </Window>

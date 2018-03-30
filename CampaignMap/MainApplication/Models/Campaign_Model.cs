@@ -84,6 +84,40 @@ namespace MainApplication
         }
 
         /// <summary>
+        /// Löscht einen Layer aus der Layerliste und allen Strokes die den Layer verwenden.
+        /// </summary>
+        /// <param name="layer">Layer der gelöscht werden soll</param>
+        public void RemoveLayer(Layer_Model layer)
+        {
+            // Lösche Layers in InvisivleStrokes
+            foreach (var stroke in InvisibleStrokes.ToList())
+            {
+                if (stroke.ContainsPropertyData(layer.Id))
+                {
+                    stroke.RemovePropertyData(layer.Id);
+                }
+            }
+            // Lösche Layers in Strokes
+            foreach (var stroke in Strokes.ToList())
+            {
+                if (stroke.ContainsPropertyData(layer.Id))
+                {
+                    stroke.RemovePropertyData(layer.Id);
+                }
+            }
+            // Lösche Layers in POI's
+            foreach (var poi in POIs)
+            {
+                if (poi.Layers.Any(x => x.Id == layer.Id))
+                {
+                    poi.Layers.Remove(layer);
+                }
+            }
+            // Lösche Layer selbst
+            Layers.Remove(layer);
+        }
+
+        /// <summary>
         /// Iteriert über alle Kartenelemente und macht diese sichtbar oder unsichtbar aufgrund dem <paramref name="layer"/>.
         /// </summary>
         /// <param name="layer"></param>

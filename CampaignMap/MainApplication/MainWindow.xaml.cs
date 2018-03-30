@@ -93,6 +93,12 @@ namespace MainApplication
                 // Geändert nach Rechtsklick
                 mouseHandlingMode = MouseHandlingMode.Panning;
             }
+            else if (mouseButtonDown == MouseButton.Left && tbPanMode.IsChecked.GetValueOrDefault())
+            {
+                // Just a plain old left-down initiates panning mode.
+                // Geändert nach Rechtsklick
+                mouseHandlingMode = MouseHandlingMode.Panning;
+            }
 
             if (mouseHandlingMode != MouseHandlingMode.None)
             {

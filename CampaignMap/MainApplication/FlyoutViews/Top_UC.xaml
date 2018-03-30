@@ -29,6 +29,10 @@
             <!-- empty space -->
             <ColumnDefinition Width="80" />
             <!-- save -->
+            <ColumnDefinition Width="8"/>
+            <!-- empty space -->
+            <ColumnDefinition Width="80" />
+            <!-- save as -->
             <ColumnDefinition Width="*" />
             <!-- rest of the bar -->
         </Grid.ColumnDefinitions>
@@ -45,6 +49,10 @@
         <Button x:Name="btnSave" Grid.Column="5" Height="30"
                 Command="{Binding SaveCampaign}" 
                 Content="Save"  />
+
+        <Button x:Name="btnSaveAs" Grid.Column="7" Height="30"
+                Command="{Binding SaveAsCampaign}" 
+                Content="Save As"  />
 
     </Grid>
 </UserControl>
